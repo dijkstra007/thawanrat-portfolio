@@ -224,6 +224,7 @@ export default function Home() {
 
   const portfolioStyle = {
     '--hero-image': `url("${assetBase}/assets/thawanrat-packaging.png")`,
+    '--fah-mark': `url("${assetBase}/assets/fah-signature.png")`,
   } as CSSProperties;
 
   return (
@@ -294,12 +295,7 @@ export default function Home() {
           <div className="hero-copy">
             <h1>
               THAWANRAT T.
-              <img
-                className="fah-mark"
-                src={`${assetBase}/assets/fah-signature.png`}
-                alt=""
-                aria-hidden="true"
-              />
+              <span className="fah-mark" aria-hidden="true" />
             </h1>
             <p className="hero-role">Graphic Designer</p>
             <p className="hero-specialty">Packaging Design · Brand Identity</p>
