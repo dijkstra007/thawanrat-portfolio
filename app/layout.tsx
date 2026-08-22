@@ -12,7 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const siteOrigin = process.env.SITE_ORIGIN ?? 'http://localhost:3000';
+const siteOrigin = (process.env.SITE_ORIGIN ?? 'http://localhost:3000').replace(/\/$/, '');
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description:
     'Portfolio of Thawanrat T., a graphic designer specializing in packaging design and brand identity.',
   icons: {
-    icon: '/favicon.png',
+    icon: `${publicBasePath}/favicon.png`,
   },
   openGraph: {
     title: 'Thawanrat T. — Graphic Designer',
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og.png',
+        url: `${siteOrigin}/og.png`,
         width: 1200,
         height: 630,
         alt: 'Thawanrat T. graphic design portfolio',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Thawanrat T. — Graphic Designer',
     description: 'Packaging Design · Brand Identity · Visual Communication',
-    images: ['/og.png'],
+    images: [`${siteOrigin}/og.png`],
   },
 };
 

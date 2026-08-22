@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
 
 type Project = {
   id: number;
@@ -214,8 +215,12 @@ export default function Home() {
     setMobileNavOpen(false);
   };
 
+  const portfolioStyle = {
+    '--hero-image': `url("${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/assets/thawanrat-packaging.png")`,
+  } as CSSProperties;
+
   return (
-    <main className={workMenuOpen ? 'menu-open' : ''}>
+    <main className={workMenuOpen ? 'menu-open' : ''} style={portfolioStyle}>
       <header className="site-header">
         <div className="shell header-inner">
           <a className="wordmark" href="#top" aria-label="Fahworks home" onClick={closeMenus}>

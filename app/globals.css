@@ -188,7 +188,7 @@ a { color: inherit; text-decoration: none; }
   border: 0;
   padding: 28px max(32px, calc((100vw - 1180px) / 2));
   overflow: hidden;
-  background: url('/assets/thawanrat-packaging.png') center / cover no-repeat;
+  background: var(--hero-image) center / cover no-repeat;
   cursor: pointer;
   text-align: left;
 }
@@ -234,7 +234,7 @@ a { color: inherit; text-decoration: none; }
 .project-line strong { color: var(--ink); font-weight: 520; }
 .project-preview small { display: block; padding-left: 24px; color: #aaa; font-size: 10px; }
 
-.visual-fruit { background: url('/assets/thawanrat-packaging.png') 73% center / cover no-repeat; }
+.visual-fruit { background: var(--hero-image) 73% center / cover no-repeat; }
 .visual-blue { background: radial-gradient(circle at 70% 35%, #8dc4ff 0 11%, transparent 12%), linear-gradient(145deg, #0014ff, #4476ff 55%, #d5e8ff); }
 .visual-water { background: linear-gradient(135deg, #eff8f6 0 22%, #80c9ab 22% 48%, #006a4e 48% 74%, #f2dd5b 74%); }
 .visual-ink { background: linear-gradient(145deg, #111 0 34%, #353535 34% 68%, #0a0a0a 68%); }
