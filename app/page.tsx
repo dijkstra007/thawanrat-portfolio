@@ -26,9 +26,9 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'PTTOR Station — Self Service',
+    title: 'PTT Station — Self Serve',
     category: 'Campaign',
-    meta: 'Campaign · Digital · Print',
+    meta: 'Campaign · Branding · Digital · Print · OOH',
     year: '2026',
     visual: 'blue',
     description:
@@ -46,9 +46,9 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Protech Communication',
+    title: 'Protech Product Communication',
     category: 'Branding',
-    meta: 'Brand Identity · Catalogue',
+    meta: 'Graphic Design · Catalogue · Product',
     year: '2025',
     visual: 'ink',
     description:
@@ -58,7 +58,7 @@ const projects: Project[] = [
     id: 5,
     title: 'Chaidi brand packaging',
     category: 'Packaging',
-    meta: 'Packaging · Illustration',
+    meta: 'Packaging Design',
     year: '2024',
     visual: 'peach',
     description:
@@ -171,6 +171,8 @@ const expertise = [
 ];
 
 const categories = ['All', 'Packaging', 'Campaign', 'Branding', 'Digital'] as const;
+const featuredProjectIds = [2, 3, 5, 4];
+const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export default function Home() {
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
@@ -178,6 +180,11 @@ export default function Home() {
   const [archiveVisible, setArchiveVisible] = useState(false);
   const [filter, setFilter] = useState<(typeof categories)[number]>('All');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+
+  const featuredProjects = useMemo(
+    () => featuredProjectIds.map((id) => projects.find((project) => project.id === id)!),
+    [],
+  );
 
   const filteredProjects = useMemo(
     () => projects.filter((project) => filter === 'All' || project.category === filter),
@@ -216,7 +223,7 @@ export default function Home() {
   };
 
   const portfolioStyle = {
-    '--hero-image': `url("${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/assets/thawanrat-packaging.png")`,
+    '--hero-image': `url("${assetBase}/assets/thawanrat-packaging.png")`,
   } as CSSProperties;
 
   return (
@@ -285,8 +292,15 @@ export default function Home() {
       <div className="page-body" onClick={() => workMenuOpen && setWorkMenuOpen(false)}>
         <section className="hero shell" id="top">
           <div className="hero-copy">
-            <p className="eyebrow">Portfolio / 2026</p>
-            <h1>THAWANRAT T.</h1>
+            <h1>
+              THAWANRAT T.
+              <img
+                className="fah-mark"
+                src={`${assetBase}/assets/fah-signature.png`}
+                alt=""
+                aria-hidden="true"
+              />
+            </h1>
             <p className="hero-role">Graphic Designer</p>
             <p className="hero-specialty">Packaging Design · Brand Identity</p>
             <p className="hero-intro">
@@ -294,28 +308,26 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#work">View My Work</a>
-              <a className="button text-button" href="#experience">View Resume <span>↓</span></a>
+              <a className="button text-button" href="#experience">Download Resume <span>↓</span></a>
             </div>
           </div>
-          <aside className="award" aria-label="Award winning project">
-            <span className="award-icon">◇</span>
-            <p>
-              <strong>Award winning project</strong><br />
-              ThaiStar Packaging Awards 2023<br />
-              <small>Bronze Award · Student Consumer Package</small>
-            </p>
-          </aside>
+          <div className="hero-visual">
+            <button
+              className="hero-image"
+              type="button"
+              aria-label="Open the Thai fruit packaging case study"
+              onClick={() => setActiveProject(projects[0])}
+            />
+            <aside className="award" aria-label="Award winning project">
+              <span className="award-icon">◇</span>
+              <p>
+                <strong>Award winning project</strong><br />
+                ThaiStar Packaging Awards 2023<br />
+                <small>Bronze Award · Student Consumer Package</small>
+              </p>
+            </aside>
+          </div>
         </section>
-
-        <button
-          className="hero-image"
-          type="button"
-          aria-label="Open the Thai fruit packaging case study"
-          onClick={() => setActiveProject(projects[0])}
-        >
-          <span>Featured project</span>
-          <span>Thai fruit packaging ↗</span>
-        </button>
 
         <section className="selected-work shell section-pad" id="work">
           <div className="section-heading">
@@ -328,7 +340,7 @@ export default function Home() {
             </button>
           </div>
           <div className="preview-grid">
-            {projects.slice(0, 4).map((project) => (
+            {featuredProjects.map((project, index) => (
               <button
                 key={project.id}
                 className="project-preview"
@@ -336,10 +348,10 @@ export default function Home() {
                 onClick={() => setActiveProject(project)}
               >
                 <span className={`project-preview-image visual-${project.visual}`}>
-                  <span className="visual-number">0{project.id}</span>
+                  <span className="visual-number">0{index + 1}</span>
                 </span>
                 <span className="project-line">
-                  <span>0{project.id}</span>
+                  <span>0{index + 1}</span>
                   <strong>{project.title}</strong>
                 </span>
                 <small>{project.meta}</small>
@@ -352,8 +364,8 @@ export default function Home() {
           <section className="archive shell section-pad" id="all-work">
             <div className="archive-heading">
               <div>
-                <p className="eyebrow">Project archive</p>
-                <h2>All work.</h2>
+                <p className="eyebrow">Selected work</p>
+                <h2>Work that speaks.</h2>
               </div>
               <button className="archive-close" type="button" onClick={() => setArchiveVisible(false)}>
                 Close ×
@@ -504,14 +516,13 @@ export default function Home() {
             <p className="footer-note">I’m currently open to new opportunities.<br />Feel free to reach out.</p>
           </div>
           <div className="contact-links">
-            <a href="mailto:fah.thawanrat001@gmail.com">◉ &nbsp;fah.thawanrat001@gmail.com</a>
-            <a href="tel:+66800823850">◔ &nbsp;080-082-3850</a>
+            <a href="mailto:fah.thawanrat001@gmail.com">fah.thawanrat001@gmail.com</a>
+            <a href="tel:+66800823850">080-082-3850</a>
             <div>
               <a href="https://fastwork.co/" target="_blank" rel="noreferrer">Fastwork</a>
               <span> · </span>
               <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
-            <div className="social-marks" aria-hidden="true"><span /><span /><span /></div>
           </div>
         </div>
         <div className="shell footer-bottom">
@@ -523,11 +534,16 @@ export default function Home() {
       {activeProject && (
         <div className="case-overlay" role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <div className="case-study">
-            <button className="case-close" type="button" onClick={() => setActiveProject(null)}>
-              Close ×
-            </button>
+            <header className="case-bar">
+              <a className="wordmark" href="#top" onClick={() => setActiveProject(null)}>
+                f<span className="wordmark-mark" />hworks.
+              </a>
+              <button className="case-close" type="button" onClick={() => setActiveProject(null)}>
+                Close ×
+              </button>
+            </header>
             <div className="case-heading shell">
-              <p className="eyebrow">{activeProject.category} / {activeProject.year}</p>
+              <p className="eyebrow">Selected work</p>
               <h2>{activeProject.title}</h2>
               <div className="case-meta">
                 <span>Role<br /><strong>Graphic design</strong></span>
@@ -536,8 +552,7 @@ export default function Home() {
               </div>
             </div>
             <div className={`case-hero visual-${activeProject.visual}`}>
-              <span>0{activeProject.id}</span>
-              <strong>{activeProject.title}</strong>
+              {activeProject.visual === 'fruit' ? <span className="case-hero-photo" /> : null}
             </div>
             <div className="case-description shell">
               <p>{activeProject.description}</p>
