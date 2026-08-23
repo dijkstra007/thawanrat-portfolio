@@ -281,9 +281,7 @@ export default function Home() {
 
   const compactNav = archiveVisible || Boolean(activeProject);
 
-  return (
-    <main className={workMenuOpen ? 'menu-open' : ''} style={portfolioStyle}>
-      {!activeProject && (
+  const siteHeader = (
         <header className="site-header">
           <div className="shell header-inner">
             <a className="wordmark" href="#top" aria-label="Fahworks home" onClick={goHome}>
@@ -348,7 +346,11 @@ export default function Home() {
             </div>
           </div>
         </header>
-      )}
+  );
+
+  return (
+    <main className={workMenuOpen ? 'menu-open' : ''} style={portfolioStyle}>
+      {!activeProject && archiveVisible && siteHeader}
 
       <div className="page-body" aria-hidden={Boolean(activeProject)} onClick={() => workMenuOpen && setWorkMenuOpen(false)}>
         {archiveVisible ? (
@@ -387,6 +389,7 @@ export default function Home() {
                   aria-label="Open the Thai fruit packaging case study"
                   onClick={() => openProject(projects[0])}
                 />
+                {siteHeader}
                 <div className="shell hero-copy-shell">
                   <div className="hero-copy">
                     <h1>
