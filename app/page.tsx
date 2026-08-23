@@ -379,7 +379,7 @@ export default function Home() {
           </section>
         ) : (
           <>
-            <section className="hero shell" id="top">
+            <section className="hero" id="top">
               <div className="hero-stage">
                 <button
                   className="hero-image"
@@ -387,31 +387,33 @@ export default function Home() {
                   aria-label="Open the Thai fruit packaging case study"
                   onClick={() => openProject(projects[0])}
                 />
-                <div className="hero-copy">
-                  <h1>
-                    THAWANRAT T.
-                    <span className="fah-mark" aria-hidden="true" />
-                  </h1>
-                  <p className="hero-role">Graphic Designer</p>
-                  <p className="hero-specialty">Packaging Design • Brand Identity</p>
-                  <p className="hero-intro">
-                    I create thoughtful visual solutions across packaging, print, and digital media.
-                  </p>
-                  <div className="hero-actions">
-                    <a className="button primary" href="#work">View My Work</a>
-                    <a className="button text-button" href="#contact">
-                      Download Resume
-                      <svg className="download-icon" viewBox="0 0 16 14" aria-hidden="true">
-                        <path
-                          d="M8 1v8M4.5 6.5 8 10l3.5-3.5M2 13h12"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.4"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </a>
+                <div className="shell hero-copy-shell">
+                  <div className="hero-copy">
+                    <h1>
+                      THAWANRAT T.
+                      <span className="fah-mark" aria-hidden="true" />
+                    </h1>
+                    <p className="hero-role">Graphic Designer</p>
+                    <p className="hero-specialty">Packaging Design • Brand Identity</p>
+                    <p className="hero-intro">
+                      I create thoughtful visual solutions across packaging, print, and digital media.
+                    </p>
+                    <div className="hero-actions">
+                      <a className="button primary" href="#work">View My Work</a>
+                      <a className="button text-button" href="#contact">
+                        Download Resume
+                        <svg className="download-icon" viewBox="0 0 16 14" aria-hidden="true">
+                          <path
+                            d="M8 1v8M4.5 6.5 8 10l3.5-3.5M2 13h12"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <aside className="award" aria-label="Award winning project">
