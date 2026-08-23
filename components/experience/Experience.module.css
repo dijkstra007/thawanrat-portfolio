@@ -17,16 +17,6 @@
 
 .timeline { position: relative; }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 7px;
-  bottom: 9px;
-  left: 4px;
-  width: 1px;
-  background: #111;
-}
-
 .item {
   position: relative;
   display: grid;
@@ -34,6 +24,20 @@
   gap: 24px;
   min-height: 112px;
   padding: 0 0 30px 44px;
+}
+
+.item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: -8px;
+  left: 4px;
+  width: 1px;
+  background: #111;
+}
+
+.item:last-child {
+  padding-bottom: 0;
 }
 
 .dot {
