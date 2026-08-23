@@ -9,11 +9,13 @@ export const site = {
     intro: 'I create thoughtful visual solutions across packaging, print, and digital media.',
     workCta: 'View My Work',
     resumeCta: 'Download Resume',
+    resumeHref:
+      'https://drive.google.com/file/d/1b-SVyYHu0CdSU5SLMyX1NgUh5C1cqPtd/view?usp=drivesdk',
     imageAria: 'Open the Thai fruit packaging case study',
     awardAria: 'Award winning project',
     awardTitle: 'Award winning project',
     awardName: 'ThaiStar Packaging Awards 2023',
-    awardDetail: 'Bronze Award · Student Consumer Package',
+    awardDetail: 'Bronze Award – Student Consumer Package (Prototype)',
   },
   about: {
     eyebrow: 'About me',
@@ -63,8 +65,8 @@ export const site = {
     email: 'fah.thawanrat001@gmail.com',
     phoneDisplay: '080-082-3850',
     phoneHref: '+66800823850',
-    fastwork: 'https://fastwork.co/',
-    linkedin: 'https://www.linkedin.com/',
+    fastwork: 'https://fastwork.co/user/ffahworks',
+    linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9/',
   },
   caseStudy: {
     eyebrow: 'Selected work',
@@ -90,5 +92,6 @@ export const site = {
   assets: {
     heroImage: '/assets/thawanrat-packaging.png',
     fahMark: '/assets/fah-signature.png',
+    thaiStarMark: '/assets/thaistar-mark.png',
   },
 };

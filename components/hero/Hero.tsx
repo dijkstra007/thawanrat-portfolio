@@ -1,4 +1,5 @@
 import { site } from '@/content/site';
+import { assetPath } from '@/lib/assets';
 import type { Project } from '@/lib/types';
 import type { ReactNode } from 'react';
 import styles from './Hero.module.css';
@@ -33,7 +34,12 @@ export default function Hero({ header, onOpenHeroProject, heroProject }: HeroPro
             <p className={styles.intro}>{hero.intro}</p>
             <div className={styles.actions}>
               <a className="button primary" href="#work">{hero.workCta}</a>
-              <a className="button text-button" href="#contact">
+              <a
+                className="button text-button"
+                href={hero.resumeHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {hero.resumeCta}
                 <svg className={styles.downloadIcon} viewBox="0 0 16 14" aria-hidden="true">
                   <path
@@ -50,7 +56,14 @@ export default function Hero({ header, onOpenHeroProject, heroProject }: HeroPro
           </div>
         </div>
         <aside className={styles.award} aria-label={hero.awardAria}>
-          <span className={styles.awardIcon}>◇</span>
+          <img
+            className={styles.awardIcon}
+            src={assetPath(site.assets.thaiStarMark)}
+            alt=""
+            width={120}
+            height={90}
+            decoding="async"
+          />
           <p>
             <strong>{hero.awardTitle}</strong><br />
             {hero.awardName}<br />

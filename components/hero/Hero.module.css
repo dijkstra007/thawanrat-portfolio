@@ -133,13 +133,13 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  max-width: 280px;
-  padding: 12px 14px;
+  max-width: 400px;
+  padding: 12px 16px;
   border-radius: 10px;
   background: rgba(255, 255, 255, .88);
   backdrop-filter: blur(10px);
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .award p { margin: 0; }
@@ -154,9 +154,12 @@
 .award small { font-size: 9px; color: #666; }
 
 .awardIcon {
-  font-size: 28px;
-  color: #6c624d;
-  transform: rotate(45deg);
+  flex-shrink: 0;
+  width: 120px;
+  height: 90px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 @media (max-width: 900px) {
@@ -267,5 +270,8 @@
 
   .award small { font-size: 10px; }
 
-  .awardIcon { font-size: 22px; }
+  .awardIcon {
+    width: 96px;
+    height: 72px;
+  }
 }

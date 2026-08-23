@@ -83,6 +83,7 @@ export default function PortfolioApp() {
   const portfolioStyle = {
     '--hero-image': `url("${assetPath(site.assets.heroImage)}")`,
     '--fah-mark': `url("${assetPath(site.assets.fahMark)}")`,
+    '--thaistar-mark': `url("${assetPath(site.assets.thaiStarMark)}")`,
   } as CSSProperties;
 
   const header = (
