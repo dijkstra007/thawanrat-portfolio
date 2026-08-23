@@ -171,23 +171,101 @@
 }
 
 @media (max-width: 620px) {
-  .copyShell { padding-top: 72px; }
-  .title { font-size: clamp(42px, 13vw, 58px); }
-  .fahMark { width: 78px; height: 64px; right: -4px; bottom: -22px; }
-  .copy { max-width: none; padding: 28px 0 108px; }
-  .role { font-size: 28px; }
-  .specialty { font-size: 16px; }
-  .intro { width: auto; }
-  .actions { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .image { background-position: 70% 68%; }
-  .image::after {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, .28) 0%,
-      rgba(255, 255, 255, .08) 40%,
-      rgba(255, 255, 255, 0) 70%
-    );
+  .stage {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
-  .award { max-width: calc(100% - 24px); }
+
+  .copyShell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+  }
+
+  .title { font-size: clamp(40px, 12vw, 54px); }
+
+  .fahMark {
+    width: 68px;
+    height: 54px;
+    right: -6px;
+    bottom: -26px;
+  }
+
+  .copy {
+    max-width: none;
+    padding: 24px 0 32px;
+  }
+
+  .role {
+    margin-top: 24px;
+    font-size: 26px;
+  }
+
+  .specialty {
+    margin-top: 8px;
+    font-size: 15px;
+  }
+
+  .intro {
+    width: auto;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #111;
+  }
+
+  .title,
+  .role,
+  .specialty,
+  .intro {
+    text-shadow: 0 1px 18px rgba(255, 255, 255, 1), 0 0 2px rgba(255, 255, 255, .9);
+  }
+
+  .actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .image { background-position: 82% 62%; }
+
+  .image::after {
+    background:
+      linear-gradient(
+        105deg,
+        rgba(255, 255, 255, .88) 0%,
+        rgba(255, 255, 255, .72) 34%,
+        rgba(255, 255, 255, .32) 62%,
+        rgba(255, 255, 255, .06) 82%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, .5) 0%,
+        rgba(255, 255, 255, .18) 42%,
+        rgba(255, 255, 255, 0) 70%
+      );
+  }
+
+  .award {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 2;
+    width: min(100% - 32px, 520px);
+    max-width: none;
+    margin: 0 auto 20px;
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+
+  .award strong { font-size: 12px; }
+
+  .award small { font-size: 10px; }
+
   .awardIcon { font-size: 22px; }
 }
