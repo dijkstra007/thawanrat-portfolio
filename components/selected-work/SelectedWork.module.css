@@ -1,0 +1,79 @@
+.section { padding-top: 104px; padding-bottom: 104px; }
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 42px;
+}
+
+.heading h2 {
+  margin: 0;
+  font-size: var(--heading-size);
+  line-height: var(--heading-line);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--heading-tracking);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 16px;
+}
+
+.card {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.image {
+  position: relative;
+  aspect-ratio: 276 / 249;
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #e8e8e8;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover .image {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, .1);
+}
+
+.card strong {
+  display: block;
+  margin: 16px 0 3px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.card small {
+  display: block;
+  color: #aaa;
+  font-size: 10px;
+}
+
+@media (max-width: 900px) {
+  .section { padding-top: 82px; padding-bottom: 82px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 38px 14px; }
+}
+
+@media (max-width: 620px) {
+  .heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+}
