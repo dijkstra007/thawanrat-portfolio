@@ -157,9 +157,8 @@
   flex-shrink: 0;
   width: 120px;
   height: 90px;
-  object-fit: contain;
-  object-position: center;
   display: block;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
