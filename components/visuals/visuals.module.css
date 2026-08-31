@@ -1,0 +1,12 @@
+.fruit { background: var(--hero-image) 73% center / cover no-repeat; }
+.blue { background: radial-gradient(circle at 70% 35%, #8dc4ff 0 11%, transparent 12%), linear-gradient(145deg, #0014ff, #4476ff 55%, #d5e8ff); }
+.water { background: linear-gradient(135deg, #eff8f6 0 22%, #80c9ab 22% 48%, #006a4e 48% 74%, #f2dd5b 74%); }
+.ink { background: linear-gradient(145deg, #111 0 34%, #353535 34% 68%, #0a0a0a 68%); }
+.peach { background: radial-gradient(circle at 72% 36%, #ffecd1 0 16%, transparent 17%), linear-gradient(150deg, #f9e6dc, #e98b62 58%, #843d2d); }
+.electric { background: linear-gradient(125deg, #0c0c18 0 35%, #2f2aff 35% 64%, #9afcff 64%); }
+.paper { background: linear-gradient(135deg, #ece7df 0 44%, #faf7f0 44% 72%, #b7a486 72%); }
+.violet { background: radial-gradient(circle at 35% 30%, #ffb9e6 0 15%, transparent 16%), linear-gradient(145deg, #331b74, #8c54ff 58%, #f3c7ff); }
+.sun { background: linear-gradient(145deg, #fff4c9 0 32%, #ffd322 32% 63%, #ff6a22 63%); }
+.red { background: linear-gradient(135deg, #f4ece8 0 22%, #b62126 22% 60%, #53100e 60%); }
+.lime { background: linear-gradient(145deg, #f1ffb2 0 38%, #9cdd32 38% 70%, #2b651f 70%); }
+.slate { background: linear-gradient(145deg, #eef0f4, #697386 48%, #1f2732); }
