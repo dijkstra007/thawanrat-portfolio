@@ -22,8 +22,8 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
                 className={styles.logo}
                 src={assetPath(site.assets.logo)}
                 alt=""
-                width={140}
-                height={26}
+                width={560}
+                height={104}
                 decoding="async"
               />
             </a>

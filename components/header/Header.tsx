@@ -12,6 +12,7 @@ type HeaderProps = {
   workActive?: boolean;
   onGoHome: () => void;
   onCloseMenus: () => void;
+  onOpenWorkMenu: () => void;
   onToggleWorkMenu: () => void;
   onToggleMobileNav: () => void;
   onRevealArchive: (category: CategoryFilter) => void;
@@ -26,21 +27,29 @@ export default function Header({
   workActive = false,
   onGoHome,
   onCloseMenus,
+  onOpenWorkMenu,
   onToggleWorkMenu,
   onToggleMobileNav,
   onRevealArchive,
   onOpenProject,
 }: HeaderProps) {
+  const openWorkMenu = () => {
+    onOpenWorkMenu();
+  };
+
   return (
-    <header className={`${styles.header}${overlay ? ` ${styles.overlay}` : ''}`}>
+    <header
+      className={`${styles.header}${overlay ? ` ${styles.overlay}` : ''}${workMenuOpen ? ` ${styles.menuActive}` : ''}`}
+      onMouseLeave={() => workMenuOpen && onCloseMenus()}
+    >
       <div className={`shell ${styles.inner}`}>
         <a className={styles.wordmark} href="#top" aria-label={site.wordmarkAria} onClick={onGoHome}>
           <img
             className={styles.logo}
             src={assetPath(site.assets.logo)}
             alt=""
-            width={140}
-            height={26}
+            width={560}
+            height={104}
             decoding="async"
           />
         </a>
@@ -49,22 +58,60 @@ export default function Header({
           className={`${styles.nav}${mobileNavOpen ? ` ${styles.navOpen}` : ''}`}
           aria-label="Primary navigation"
         >
-          <button
-            className={`${styles.link}${workActive ? ` ${styles.active}` : ''}`}
-            type="button"
-            aria-expanded={workMenuOpen}
-            onClick={onToggleWorkMenu}
+          <div
+            className={styles.workArea}
+            onMouseEnter={openWorkMenu}
           >
-            Work
-          </button>
+            <button
+              className={`${styles.link}${workActive ? ` ${styles.active}` : ''}`}
+              type="button"
+              aria-expanded={workMenuOpen}
+              onFocus={openWorkMenu}
+              onClick={() => (workMenuOpen ? onToggleWorkMenu() : onOpenWorkMenu())}
+            >
+              Work
+            </button>
+
+            <div
+              className={`${styles.menu}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`}
+              aria-hidden={!workMenuOpen}
+            >
+              <div className={`shell ${styles.grid}`}>
+                <div>
+                  <p className={styles.label}>{site.workMenu.typesLabel}</p>
+                  {site.workMenu.types.map((item) => (
+                    <button key={item.label} onClick={() => onRevealArchive(item.category)}>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+                <div>
+                  <p className={styles.label}>{site.workMenu.featuredLabel}</p>
+                  {site.workMenu.featured.map((item) => (
+                    <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+                <div>
+                  <p className={styles.label}>{site.workMenu.awardsLabel}</p>
+                  {site.workMenu.awards.map((item) => (
+                    <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
           {!compact && (
             <>
-              <a className={styles.link} href="#about" onClick={onCloseMenus}>About</a>
-              <a className={styles.link} href="#experience" onClick={onCloseMenus}>Experience</a>
-              <a className={styles.link} href="#skills" onClick={onCloseMenus}>Skills</a>
+              <a className={styles.link} href="#about" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>About</a>
+              <a className={styles.link} href="#experience" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Experience</a>
+              <a className={styles.link} href="#skills" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Skills</a>
             </>
           )}
-          <a className={styles.link} href="#contact" onClick={onCloseMenus}>Contact</a>
+          <a className={styles.link} href="#contact" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Contact</a>
         </nav>
 
         <button
@@ -79,37 +126,6 @@ export default function Header({
         </button>
       </div>
 
-      <div
-        className={`${styles.menu}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`}
-        aria-hidden={!workMenuOpen}
-      >
-        <div className={`shell ${styles.grid}`}>
-          <div>
-            <p className={styles.label}>{site.workMenu.typesLabel}</p>
-            {site.workMenu.types.map((item) => (
-              <button key={item.label} onClick={() => onRevealArchive(item.category)}>
-                {item.label}
-              </button>
-            ))}
-          </div>
-          <div>
-            <p className={styles.label}>{site.workMenu.featuredLabel}</p>
-            {site.workMenu.featured.map((item) => (
-              <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
-                {item.label}
-              </button>
-            ))}
-          </div>
-          <div>
-            <p className={styles.label}>{site.workMenu.awardsLabel}</p>
-            {site.workMenu.awards.map((item) => (
-              <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
     </header>
   );
 }

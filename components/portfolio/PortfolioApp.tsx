@@ -94,6 +94,10 @@ export default function PortfolioApp() {
       workActive={workMenuOpen || archiveVisible}
       onGoHome={goHome}
       onCloseMenus={closeMenus}
+      onOpenWorkMenu={() => {
+        setWorkMenuOpen(true);
+        setMobileNavOpen(false);
+      }}
       onToggleWorkMenu={() => {
         setWorkMenuOpen((open) => !open);
         setMobileNavOpen(false);
@@ -109,7 +113,7 @@ export default function PortfolioApp() {
 
   return (
     <main className={`${styles.root}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`} style={portfolioStyle}>
-      {!activeProject && archiveVisible && header}
+      {!activeProject && header}
 
       <div
         className={styles.body}
@@ -120,7 +124,7 @@ export default function PortfolioApp() {
           <Archive projects={archivedProjects} onOpenProject={openProject} />
         ) : (
           <>
-            <Hero header={header} />
+            <Hero />
             <SelectedWork
               projects={selectedProjects}
               onOpenProject={openProject}

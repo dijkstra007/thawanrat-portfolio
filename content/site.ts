@@ -89,7 +89,7 @@ export const site = {
     ],
   },
   assets: {
-    logo: '/assets/logo-fahworks.png',
+    logo: '/assets/logo-fahworks@4x.png',
     heroImage: '/assets/thawanrat-packaging.png',
     fahMark: '/assets/fah-signature.png',
     thaiStarMark: '/assets/thaistar-mark.png',
