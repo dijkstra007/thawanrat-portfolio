@@ -3,25 +3,20 @@
 import { useRef, useState } from 'react';
 import type { TouchEvent } from 'react';
 import { visualClass } from '@/components/visuals/visuals';
+import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import { hasPreviousProject } from '@/lib/projects';
 import type { Project } from '@/lib/types';
 import styles from './CaseStudy.module.css';
 
-const categoryLabels: Record<Project['category'], string> = {
-  Packaging: 'PACKAGING DESIGN',
-  Campaign: 'CAMPAIGN',
-  Branding: 'BRANDING',
-  Digital: 'DIGITAL / CONTENT',
-};
-
 type CaseStudyProps = {
+  copy: SiteCopy['caseStudy'];
   project: Project;
   onClose: () => void;
   onAdjacent: (offset: number) => void;
 };
 
-export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyProps) {
+export default function CaseStudy({ copy, project, onClose, onAdjacent }: CaseStudyProps) {
   const showBack = hasPreviousProject(project);
   const images = project.images ?? [];
   const [imageIndex, setImageIndex] = useState(0);
@@ -52,11 +47,11 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={project.title}>
       <div className={styles.study}>
-        <button className={styles.close} type="button" onClick={onClose} aria-label="Close case study">
+        <button className={styles.close} type="button" onClick={onClose} aria-label={copy.closeLabel}>
           <span aria-hidden="true">×</span>
         </button>
         <div className={styles.heading}>
-          <p className="eyebrow">{categoryLabels[project.category]}</p>
+          <p className="eyebrow">{copy.categoryLabels[project.category]}</p>
           <h2>{project.title}</h2>
         </div>
         <div className={styles.content}>
@@ -76,7 +71,7 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
                       key={`${image}-${index}`}
                       className={styles.slide}
                       src={assetPath(image)}
-                      alt={`${project.title} — image ${index + 1}`}
+                      alt={project.title + ' — ' + copy.imageLabel + ' ' + (index + 1)}
                       draggable="false"
                     />
                   ))}
@@ -89,7 +84,7 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
                     className={`${styles.imageButton} ${styles.previous}`}
                     type="button"
                     onClick={() => moveImage(-1)}
-                    aria-label="Previous image"
+                    aria-label={copy.previousImageLabel}
                   >
                     <span aria-hidden="true">‹</span>
                   </button>
@@ -97,7 +92,7 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
                     className={`${styles.imageButton} ${styles.next}`}
                     type="button"
                     onClick={() => moveImage(1)}
-                    aria-label="Next image"
+                    aria-label={copy.nextImageLabel}
                   >
                     <span aria-hidden="true">›</span>
                   </button>
@@ -106,14 +101,14 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
             </div>
 
             {images.length > 1 ? (
-              <div className={styles.dots} role="group" aria-label="Choose project image">
+              <div className={styles.dots} role="group" aria-label={copy.chooseImageLabel}>
                 {images.map((image, index) => (
                   <button
                     key={`${image}-${index}`}
                     className={`${styles.dot}${index === imageIndex ? ` ${styles.dotActive}` : ''}`}
                     type="button"
                     onClick={() => setImageIndex(index)}
-                    aria-label={`Show image ${index + 1}`}
+                    aria-label={copy.showImagePrefix + ' ' + (index + 1)}
                     aria-current={index === imageIndex ? 'true' : undefined}
                   />
                 ))}
@@ -125,11 +120,11 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
             <div className={`${styles.pager}${showBack ? '' : ` ${styles.single}`}`}>
               {showBack ? (
                 <button type="button" onClick={() => onAdjacent(-1)}>
-                  <span aria-hidden="true">‹‹</span> Back
+                  <span aria-hidden="true">‹‹</span> {copy.backLabel}
                 </button>
               ) : null}
               <button type="button" onClick={() => onAdjacent(1)}>
-                Next <span aria-hidden="true">››</span>
+                {copy.nextLabel} <span aria-hidden="true">››</span>
               </button>
             </div>
           </div>

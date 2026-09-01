@@ -1,8 +1,11 @@
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import styles from './Footer.module.css';
 
-export default function Footer() {
-  const copy = site.footer;
+type FooterProps = {
+  copy: SiteCopy['footer'];
+};
+
+export default function Footer({ copy }: FooterProps) {
 
   return (
     <footer className={styles.footer} id="contact">

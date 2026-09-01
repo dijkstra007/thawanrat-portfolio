@@ -1,15 +1,15 @@
 import { visualClass } from '@/components/visuals/visuals';
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import type { Project } from '@/lib/types';
 import styles from './Archive.module.css';
 
 type ArchiveProps = {
+  copy: SiteCopy['archive'];
   projects: Project[];
   onOpenProject: (project: Project) => void;
 };
 
-export default function Archive({ projects, onOpenProject }: ArchiveProps) {
-  const copy = site.archive;
+export default function Archive({ copy, projects, onOpenProject }: ArchiveProps) {
 
   return (
     <section className={`shell ${styles.section}`} id="all-work">

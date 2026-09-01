@@ -1,26 +1,38 @@
 import { featuredProjectIds, projects } from '@/content/projects';
-import type { CategoryFilter, Project } from '@/lib/types';
+import type { CategoryFilter, Locale, Project, ProjectRecord } from '@/lib/types';
 
-export function getProjectById(id: number) {
+function localizeProject(project: ProjectRecord, locale: Locale): Project {
+  const { copy, ...details } = project;
+  return {
+    ...details,
+    ...copy[locale],
+  };
+}
+
+export function getProjectById(id: number, locale: Locale = 'en') {
   const project = projects.find((item) => item.id === id);
   if (!project) {
     throw new Error(`Unknown project id: ${id}`);
   }
-  return project;
+  return localizeProject(project, locale);
 }
 
-export function getFeaturedProjects() {
-  return featuredProjectIds.map((id) => getProjectById(id));
+export function getFeaturedProjects(locale: Locale = 'en') {
+  return featuredProjectIds.map((id) => getProjectById(id, locale));
 }
 
-export function filterProjects(filter: CategoryFilter) {
-  if (filter === 'All') return projects;
-  return projects.filter((project) => project.category === filter);
+export function filterProjects(filter: CategoryFilter, locale: Locale = 'en') {
+  const matchingProjects = filter === 'All'
+    ? projects
+    : projects.filter((project) => project.category === filter);
+
+  return matchingProjects.map((project) => localizeProject(project, locale));
 }
 
-export function adjacentProject(current: Project, offset: number) {
+export function adjacentProject(current: Project, offset: number, locale: Locale = 'en') {
   const index = projects.findIndex((project) => project.id === current.id);
-  return projects[(index + offset + projects.length) % projects.length];
+  const nextProject = projects[(index + offset + projects.length) % projects.length];
+  return getProjectById(nextProject.id, locale);
 }
 
 export function hasPreviousProject(current: Project) {

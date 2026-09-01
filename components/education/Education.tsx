@@ -1,8 +1,11 @@
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import styles from './Education.module.css';
 
-export default function Education() {
-  const copy = site.education;
+type EducationProps = {
+  copy: SiteCopy['education'];
+};
+
+export default function Education({ copy }: EducationProps) {
 
   return (
     <section className={styles.section}>

@@ -1,9 +1,13 @@
 import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import styles from './About.module.css';
 
-export default function About() {
-  const copy = site.about;
+type AboutProps = {
+  copy: SiteCopy['about'];
+};
+
+export default function About({ copy }: AboutProps) {
 
   return (
     <section className={styles.section} id="about">
@@ -11,7 +15,7 @@ export default function About() {
         <div className={styles.photo}>
           <img
             src={assetPath(site.assets.aboutImage)}
-            alt="Thawanrat smiling in a café"
+            alt={copy.imageAlt}
             width={3024}
             height={3024}
             loading="lazy"

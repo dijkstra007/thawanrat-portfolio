@@ -1,16 +1,16 @@
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import type { Project } from '@/lib/types';
 import { visualClass } from '@/components/visuals/visuals';
 import styles from './SelectedWork.module.css';
 
 type SelectedWorkProps = {
+  copy: SiteCopy['selectedWork'];
   projects: Project[];
   onOpenProject: (project: Project) => void;
   onViewAll: () => void;
 };
 
-export default function SelectedWork({ projects, onOpenProject, onViewAll }: SelectedWorkProps) {
-  const copy = site.selectedWork;
+export default function SelectedWork({ copy, projects, onOpenProject, onViewAll }: SelectedWorkProps) {
 
   return (
     <section className={`shell ${styles.section}`} id="work">

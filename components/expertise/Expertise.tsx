@@ -1,10 +1,15 @@
-import { expertise } from '@/content/expertise';
 import { designTools, productivityTools } from '@/content/skills';
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import styles from './Expertise.module.css';
 
-export default function Expertise() {
-  const copy = site.expertise;
+type ExpertiseGroup = [string, ...string[]];
+
+type ExpertiseProps = {
+  copy: SiteCopy['expertise'];
+  groups: ExpertiseGroup[];
+};
+
+export default function Expertise({ copy, groups }: ExpertiseProps) {
 
   return (
     <section className={styles.section} id="skills">
@@ -12,7 +17,7 @@ export default function Expertise() {
         <p className="eyebrow">{copy.eyebrow}</p>
         <h2>{copy.heading}</h2>
         <div className={styles.grid}>
-          {expertise.map(([title, ...items]) => (
+          {groups.map(([title, ...items]) => (
             <article key={title}>
               <h3>{title}</h3>
               <ul>

@@ -95,6 +95,50 @@
   display: none;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.language {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.languageOption {
+  padding: 4px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.languageOption:hover,
+.languageOption:focus-visible,
+.languageActive {
+  color: var(--blue);
+}
+
+.languageActive {
+  border-bottom-color: currentColor;
+  font-weight: 600;
+}
+
+.languageOption:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.languageDivider {
+  color: #b2b2b2;
+  font-size: 11px;
+}
+
 .menu {
   position: absolute;
   inset: 100% 0 auto;
@@ -161,6 +205,10 @@
     gap: 22px;
   }
 
+  .actions {
+    gap: 18px;
+  }
+
   .grid {
     gap: 38px;
   }
@@ -185,6 +233,18 @@
   .wordmark {
     width: 140px;
     height: 26px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .language {
+    gap: 5px;
+  }
+
+  .languageOption {
+    font-size: 10px;
   }
 
   .toggle {

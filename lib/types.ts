@@ -1,3 +1,7 @@
+export type Locale = 'en' | 'th';
+
+export type Localized<T> = Record<Locale, T>;
+
 export type ProjectCategory = 'Packaging' | 'Campaign' | 'Branding' | 'Digital';
 
 export type CategoryFilter = ProjectCategory | 'All';
@@ -25,6 +29,10 @@ export type Project = {
   visual: ProjectVisual;
   description: string;
   images?: string[];
+};
+
+export type ProjectRecord = Omit<Project, 'title' | 'meta' | 'description'> & {
+  copy: Localized<Pick<Project, 'title' | 'meta' | 'description'>>;
 };
 
 export type Experience = {

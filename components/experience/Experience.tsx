@@ -1,9 +1,13 @@
-import { experience } from '@/content/experience';
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
+import type { Experience as ExperienceItem } from '@/lib/types';
 import styles from './Experience.module.css';
 
-export default function Experience() {
-  const copy = site.experience;
+type ExperienceProps = {
+  copy: SiteCopy['experience'];
+  items: ExperienceItem[];
+};
+
+export default function Experience({ copy, items }: ExperienceProps) {
 
   return (
     <section className={`shell ${styles.section}`} id="experience">
@@ -13,7 +17,7 @@ export default function Experience() {
           <h2>{copy.heading[0]}<br />{copy.heading[1]}</h2>
         </div>
         <div className={styles.timeline}>
-          {experience.map((item) => (
+          {items.map((item) => (
             <article className={styles.item} key={`${item.company}-${item.year}`}>
               <span className={styles.dot} />
               <div>
