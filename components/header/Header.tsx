@@ -9,10 +9,13 @@ type HeaderProps = {
   compact?: boolean;
   workMenuOpen: boolean;
   mobileNavOpen: boolean;
+  mobileWorkOpen: boolean;
   workActive?: boolean;
   onGoHome: () => void;
   onCloseMenus: () => void;
   onOpenWorkMenu: () => void;
+  onOpenMobileWork: () => void;
+  onCloseMobileWork: () => void;
   onToggleWorkMenu: () => void;
   onToggleMobileNav: () => void;
   onRevealArchive: (category: CategoryFilter) => void;
@@ -24,16 +27,37 @@ export default function Header({
   compact = false,
   workMenuOpen,
   mobileNavOpen,
+  mobileWorkOpen,
   workActive = false,
   onGoHome,
   onCloseMenus,
   onOpenWorkMenu,
+  onOpenMobileWork,
+  onCloseMobileWork,
   onToggleWorkMenu,
   onToggleMobileNav,
   onRevealArchive,
   onOpenProject,
 }: HeaderProps) {
   const openWorkMenu = () => {
+    if (!mobileNavOpen) onOpenWorkMenu();
+  };
+
+  const closeWorkMenuOnMouseEnter = () => {
+    if (!mobileNavOpen) onCloseMenus();
+  };
+
+  const handleWorkClick = () => {
+    if (mobileNavOpen) {
+      onOpenMobileWork();
+      return;
+    }
+
+    if (workMenuOpen) {
+      onToggleWorkMenu();
+      return;
+    }
+
     onOpenWorkMenu();
   };
 
@@ -58,60 +82,117 @@ export default function Header({
           className={`${styles.nav}${mobileNavOpen ? ` ${styles.navOpen}` : ''}`}
           aria-label="Primary navigation"
         >
-          <div
-            className={styles.workArea}
-            onMouseEnter={openWorkMenu}
-          >
-            <button
-              className={`${styles.link}${workActive ? ` ${styles.active}` : ''}`}
-              type="button"
-              aria-expanded={workMenuOpen}
-              onFocus={openWorkMenu}
-              onClick={() => (workMenuOpen ? onToggleWorkMenu() : onOpenWorkMenu())}
-            >
-              Work
-            </button>
+          {mobileNavOpen && mobileWorkOpen ? (
+            <div className={styles.mobileSubmenu}>
+              <button
+                className={styles.mobileBack}
+                type="button"
+                onClick={onCloseMobileWork}
+              >
+                <span className={styles.backIcon} aria-hidden="true">‹</span>
+                <span>Work</span>
+              </button>
 
-            <div
-              className={`${styles.menu}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`}
-              aria-hidden={!workMenuOpen}
-            >
-              <div className={`shell ${styles.grid}`}>
-                <div>
-                  <p className={styles.label}>{site.workMenu.typesLabel}</p>
-                  {site.workMenu.types.map((item) => (
-                    <button key={item.label} onClick={() => onRevealArchive(item.category)}>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <p className={styles.label}>{site.workMenu.featuredLabel}</p>
-                  {site.workMenu.featured.map((item) => (
-                    <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <p className={styles.label}>{site.workMenu.awardsLabel}</p>
-                  {site.workMenu.awards.map((item) => (
-                    <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
+              <div className={styles.mobileSubmenuGroup}>
+                <p className={styles.mobileSubmenuLabel}>{site.workMenu.typesLabel}</p>
+                {site.workMenu.types.map((item) => (
+                  <button
+                    key={item.label}
+                    className={styles.mobileSubmenuLink}
+                    type="button"
+                    onClick={() => onRevealArchive(item.category)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className={styles.mobileSubmenuGroup}>
+                <p className={styles.mobileSubmenuLabel}>{site.workMenu.featuredLabel}</p>
+                {site.workMenu.featured.map((item) => (
+                  <button
+                    key={item.id}
+                    className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
+                    type="button"
+                    onClick={() => onOpenProject(getProjectById(item.id))}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className={styles.mobileSubmenuGroup}>
+                <p className={styles.mobileSubmenuLabel}>{site.workMenu.awardsLabel}</p>
+                {site.workMenu.awards.map((item) => (
+                  <button
+                    key={item.id}
+                    className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
+                    type="button"
+                    onClick={() => onOpenProject(getProjectById(item.id))}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-          {!compact && (
+          ) : (
             <>
-              <a className={styles.link} href="#about" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>About</a>
-              <a className={styles.link} href="#experience" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Experience</a>
-              <a className={styles.link} href="#skills" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Skills</a>
+              <div
+                className={styles.workArea}
+                onMouseEnter={openWorkMenu}
+              >
+                <button
+                  className={`${styles.link}${workActive ? ` ${styles.active}` : ''}`}
+                  type="button"
+                  aria-expanded={mobileNavOpen ? mobileWorkOpen : workMenuOpen}
+                  onFocus={openWorkMenu}
+                  onClick={handleWorkClick}
+                >
+                  Work
+                </button>
+
+                <div
+                  className={`${styles.menu}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`}
+                  aria-hidden={!workMenuOpen}
+                >
+                  <div className={`shell ${styles.grid}`}>
+                    <div>
+                      <p className={styles.label}>{site.workMenu.typesLabel}</p>
+                      {site.workMenu.types.map((item) => (
+                        <button key={item.label} onClick={() => onRevealArchive(item.category)}>
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div>
+                      <p className={styles.label}>{site.workMenu.featuredLabel}</p>
+                      {site.workMenu.featured.map((item) => (
+                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div>
+                      <p className={styles.label}>{site.workMenu.awardsLabel}</p>
+                      {site.workMenu.awards.map((item) => (
+                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {!compact && (
+                <>
+                  <a className={styles.link} href="#about" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>About</a>
+                  <a className={styles.link} href="#experience" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Experience</a>
+                  <a className={styles.link} href="#skills" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Skills</a>
+                </>
+              )}
+              <a className={styles.link} href="#contact" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Contact</a>
             </>
           )}
-          <a className={styles.link} href="#contact" onMouseEnter={onCloseMenus} onClick={onCloseMenus}>Contact</a>
         </nav>
 
         <button

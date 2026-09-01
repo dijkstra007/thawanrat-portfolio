@@ -21,6 +21,7 @@ import styles from './PortfolioApp.module.css';
 export default function PortfolioApp() {
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
   const [archiveVisible, setArchiveVisible] = useState(false);
   const [filter, setFilter] = useState<CategoryFilter>('All');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -37,6 +38,7 @@ export default function PortfolioApp() {
         }
         setWorkMenuOpen(false);
         setMobileNavOpen(false);
+        setMobileWorkOpen(false);
         setArchiveVisible(false);
       }
     };
@@ -51,6 +53,7 @@ export default function PortfolioApp() {
   const closeMenus = () => {
     setWorkMenuOpen(false);
     setMobileNavOpen(false);
+    setMobileWorkOpen(false);
   };
 
   const goHome = () => {
@@ -91,20 +94,26 @@ export default function PortfolioApp() {
       compact={archiveVisible}
       workMenuOpen={workMenuOpen}
       mobileNavOpen={mobileNavOpen}
+      mobileWorkOpen={mobileWorkOpen}
       workActive={workMenuOpen || archiveVisible}
       onGoHome={goHome}
       onCloseMenus={closeMenus}
       onOpenWorkMenu={() => {
         setWorkMenuOpen(true);
         setMobileNavOpen(false);
+        setMobileWorkOpen(false);
       }}
+      onOpenMobileWork={() => setMobileWorkOpen(true)}
+      onCloseMobileWork={() => setMobileWorkOpen(false)}
       onToggleWorkMenu={() => {
         setWorkMenuOpen((open) => !open);
         setMobileNavOpen(false);
+        setMobileWorkOpen(false);
       }}
       onToggleMobileNav={() => {
         setMobileNavOpen((open) => !open);
         setWorkMenuOpen(false);
+        setMobileWorkOpen(false);
       }}
       onRevealArchive={revealArchive}
       onOpenProject={openProject}
