@@ -12,7 +12,6 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
 import SelectedWork from '@/components/selected-work/SelectedWork';
-import { projects } from '@/content/projects';
 import { site } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import { adjacentProject, filterProjects, getFeaturedProjects } from '@/lib/projects';
@@ -22,6 +21,7 @@ import styles from './PortfolioApp.module.css';
 export default function PortfolioApp() {
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
   const [archiveVisible, setArchiveVisible] = useState(false);
   const [filter, setFilter] = useState<CategoryFilter>('All');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -38,6 +38,7 @@ export default function PortfolioApp() {
         }
         setWorkMenuOpen(false);
         setMobileNavOpen(false);
+        setMobileWorkOpen(false);
         setArchiveVisible(false);
       }
     };
@@ -52,6 +53,7 @@ export default function PortfolioApp() {
   const closeMenus = () => {
     setWorkMenuOpen(false);
     setMobileNavOpen(false);
+    setMobileWorkOpen(false);
   };
 
   const goHome = () => {
@@ -92,16 +94,25 @@ export default function PortfolioApp() {
       compact={archiveVisible}
       workMenuOpen={workMenuOpen}
       mobileNavOpen={mobileNavOpen}
-      workActive={workMenuOpen || archiveVisible}
+      mobileWorkOpen={mobileWorkOpen}
       onGoHome={goHome}
       onCloseMenus={closeMenus}
+      onOpenWorkMenu={() => {
+        setWorkMenuOpen(true);
+        setMobileNavOpen(false);
+        setMobileWorkOpen(false);
+      }}
+      onOpenMobileWork={() => setMobileWorkOpen(true)}
+      onCloseMobileWork={() => setMobileWorkOpen(false)}
       onToggleWorkMenu={() => {
         setWorkMenuOpen((open) => !open);
         setMobileNavOpen(false);
+        setMobileWorkOpen(false);
       }}
       onToggleMobileNav={() => {
         setMobileNavOpen((open) => !open);
         setWorkMenuOpen(false);
+        setMobileWorkOpen(false);
       }}
       onRevealArchive={revealArchive}
       onOpenProject={openProject}
@@ -110,7 +121,7 @@ export default function PortfolioApp() {
 
   return (
     <main className={`${styles.root}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`} style={portfolioStyle}>
-      {!activeProject && archiveVisible && header}
+      {header}
 
       <div
         className={styles.body}
@@ -121,7 +132,7 @@ export default function PortfolioApp() {
           <Archive projects={archivedProjects} onOpenProject={openProject} />
         ) : (
           <>
-            <Hero header={header} heroProject={projects[0]} onOpenHeroProject={openProject} />
+            <Hero />
             <SelectedWork
               projects={selectedProjects}
               onOpenProject={openProject}
@@ -137,7 +148,7 @@ export default function PortfolioApp() {
 
       {!activeProject && <Footer />}
       {activeProject && (
-        <CaseStudy project={activeProject} onClose={() => setActiveProject(null)} onAdjacent={showAdjacent} />
+        <CaseStudy key={activeProject.id} project={activeProject} onClose={() => setActiveProject(null)} onAdjacent={showAdjacent} />
       )}
     </main>
   );

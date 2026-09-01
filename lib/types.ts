@@ -24,6 +24,7 @@ export type Project = {
   year: string;
   visual: ProjectVisual;
   description: string;
+  images?: string[];
 };
 
 export type Experience = {
