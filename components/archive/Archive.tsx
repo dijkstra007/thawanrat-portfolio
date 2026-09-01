@@ -1,6 +1,5 @@
 import { visualClass } from '@/components/visuals/visuals';
 import { site } from '@/content/site';
-import { padIndex } from '@/lib/format';
 import type { Project } from '@/lib/types';
 import styles from './Archive.module.css';
 
@@ -21,7 +20,7 @@ export default function Archive({ projects, onOpenProject }: ArchiveProps) {
         </div>
       </div>
       <div className={styles.grid}>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <button
             key={project.id}
             className={styles.card}
@@ -30,7 +29,6 @@ export default function Archive({ projects, onOpenProject }: ArchiveProps) {
           >
             <span className={`${styles.visual} ${visualClass(project.visual)}`} />
             <span className={styles.copy}>
-              <span>{padIndex(index)}</span>
               <strong>{project.title}</strong>
               <small>{project.meta}</small>
             </span>

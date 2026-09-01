@@ -46,7 +46,7 @@
 
 .copy {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 1fr;
   margin-top: 14px;
   color: #aaa;
   font-size: 13px;
@@ -59,7 +59,6 @@
 }
 
 .copy small {
-  grid-column: 2;
   margin-top: 3px;
   color: #aaa;
   font-size: 10px;
