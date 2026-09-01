@@ -22,3 +22,8 @@ export function adjacentProject(current: Project, offset: number) {
   const index = projects.findIndex((project) => project.id === current.id);
   return projects[(index + offset + projects.length) % projects.length];
 }
+
+export function hasPreviousProject(current: Project) {
+  const index = projects.findIndex((project) => project.id === current.id);
+  return index > 0;
+}

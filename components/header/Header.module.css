@@ -81,8 +81,7 @@
   font-weight: 400;
 }
 
-.link:hover,
-.active {
+.link:hover {
   color: var(--blue);
   border-color: currentColor;
 }

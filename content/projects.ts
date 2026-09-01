@@ -10,6 +10,11 @@ export const projects: Project[] = [
     meta: 'Packaging · Branding · Award',
     year: '2023',
     visual: 'fruit',
+    images: [
+      '/assets/thawanrat-packaging.png',
+      '/assets/thawanrat-packaging.png',
+      '/assets/thawanrat-packaging.png',
+    ],
     description:
       'A playful packaging system that turns familiar Thai fruits into sculptural gifts. The collection balances shelf impact, cultural character, and production-ready construction.',
   },

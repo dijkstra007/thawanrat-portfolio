@@ -2,17 +2,29 @@
   position: fixed;
   inset: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 32px;
   overflow-y: auto;
-  background: #fff;
+  background: rgba(17, 17, 17, .2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   animation: fade-in .2s ease both;
 }
 
 .study {
   position: relative;
-  width: 100%;
-  min-height: 100%;
+  width: min(1320px, 100%);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
   margin: 0 auto;
+  border-radius: 16px;
+  padding-bottom: 36px;
   background: #fff;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .2);
+  animation: popup-in .35s cubic-bezier(.2, .7, .2, 1) both;
 }
 
 .close {
@@ -50,7 +62,7 @@
   width: calc(100% - 80px);
   max-width: none;
   margin-inline: auto;
-  padding: 32px 10px 88px;
+  padding: 48px 10px 88px;
 }
 
 .heading h2 {
@@ -71,6 +83,10 @@
   align-items: stretch;
 }
 
+.media {
+  min-width: 0;
+}
+
 .hero {
   position: relative;
   width: 100%;
@@ -79,12 +95,114 @@
   overflow: hidden;
   background: #d9d9d9;
   border-radius: 10px;
+  touch-action: pan-y;
 }
 
 .photo {
   position: absolute;
   inset: 0;
   background: var(--hero-image) center / cover no-repeat;
+}
+
+.slides {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 73% center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.imageButton {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .48);
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(255, 255, 255, .44);
+  color: rgba(17, 17, 17, .72);
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity .28s ease, background .2s ease, color .2s ease, transform .32s cubic-bezier(.2, .7, .2, 1);
+}
+
+.previous {
+  left: 16px;
+  transform: translate(-8px, -50%);
+}
+
+.next {
+  right: 16px;
+  transform: translate(8px, -50%);
+}
+
+.hero:hover .imageButton,
+.imageButton:focus-visible {
+  opacity: .58;
+  transform: translate(0, -50%);
+}
+
+.hero:hover .imageButton:hover {
+  opacity: .94;
+  background: rgba(255, 255, 255, .78);
+  color: #111;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.imageButton:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(17, 17, 17, .22);
+  cursor: pointer;
+}
+
+.dotActive {
+  background: var(--blue);
+  transform: scale(1.25);
+}
+
+@media (hover: none) {
+  .imageButton {
+    opacity: .58;
+  }
+
+  .previous,
+  .next {
+    transform: translateY(-50%);
+  }
 }
 
 .details {
@@ -104,10 +222,14 @@
 
 .pager {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: auto;
   white-space: nowrap;
+}
+
+.single {
+  justify-content: flex-end;
 }
 
 .pager button {
@@ -136,7 +258,28 @@
   to { opacity: 1; }
 }
 
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 900px) {
+  .overlay {
+    padding: 16px;
+  }
+
+  .study {
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    border-radius: 12px;
+  }
+
   .close {
     top: 20px;
     right: 20px;
@@ -144,7 +287,7 @@
 
   .heading {
     width: calc(100% - 40px);
-    padding-top: 32px;
+    padding-top: 40px;
     padding-bottom: 56px;
   }
 
@@ -164,6 +307,18 @@
 }
 
 @media (max-width: 620px) {
+  .overlay {
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  .study {
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    border-radius: 10px;
+    padding-bottom: 24px;
+  }
+
   .heading,
   .content {
     width: calc(100% - 32px);

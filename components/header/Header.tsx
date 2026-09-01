@@ -10,7 +10,6 @@ type HeaderProps = {
   workMenuOpen: boolean;
   mobileNavOpen: boolean;
   mobileWorkOpen: boolean;
-  workActive?: boolean;
   onGoHome: () => void;
   onCloseMenus: () => void;
   onOpenWorkMenu: () => void;
@@ -28,7 +27,6 @@ export default function Header({
   workMenuOpen,
   mobileNavOpen,
   mobileWorkOpen,
-  workActive = false,
   onGoHome,
   onCloseMenus,
   onOpenWorkMenu,
@@ -142,7 +140,7 @@ export default function Header({
                 onMouseEnter={openWorkMenu}
               >
                 <button
-                  className={`${styles.link}${workActive ? ` ${styles.active}` : ''}`}
+                  className={styles.link}
                   type="button"
                   aria-expanded={mobileNavOpen ? mobileWorkOpen : workMenuOpen}
                   onFocus={openWorkMenu}

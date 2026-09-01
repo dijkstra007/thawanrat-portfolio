@@ -95,7 +95,6 @@ export default function PortfolioApp() {
       workMenuOpen={workMenuOpen}
       mobileNavOpen={mobileNavOpen}
       mobileWorkOpen={mobileWorkOpen}
-      workActive={workMenuOpen || archiveVisible}
       onGoHome={goHome}
       onCloseMenus={closeMenus}
       onOpenWorkMenu={() => {
@@ -122,7 +121,7 @@ export default function PortfolioApp() {
 
   return (
     <main className={`${styles.root}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`} style={portfolioStyle}>
-      {!activeProject && header}
+      {header}
 
       <div
         className={styles.body}
@@ -149,7 +148,7 @@ export default function PortfolioApp() {
 
       {!activeProject && <Footer />}
       {activeProject && (
-        <CaseStudy project={activeProject} onClose={() => setActiveProject(null)} onAdjacent={showAdjacent} />
+        <CaseStudy key={activeProject.id} project={activeProject} onClose={() => setActiveProject(null)} onAdjacent={showAdjacent} />
       )}
     </main>
   );
