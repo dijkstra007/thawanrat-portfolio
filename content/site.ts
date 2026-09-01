@@ -11,7 +11,6 @@ export const site = {
     resumeCta: 'Download Resume',
     resumeHref:
       'https://drive.google.com/file/d/1b-SVyYHu0CdSU5SLMyX1NgUh5C1cqPtd/view?usp=drivesdk',
-    imageAria: 'Open the Thai fruit packaging case study',
     awardAria: 'Award winning project',
     awardTitle: 'Award winning project',
     awardName: 'ThaiStar Packaging Awards 2023',
@@ -90,8 +89,10 @@ export const site = {
     ],
   },
   assets: {
+    logo: '/assets/logo-fahworks.png',
     heroImage: '/assets/thawanrat-packaging.png',
     fahMark: '/assets/fah-signature.png',
     thaiStarMark: '/assets/thaistar-mark.png',
+    aboutImage: '/assets/thawanrat-portrait.jpg',
   },
 };

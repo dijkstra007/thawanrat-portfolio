@@ -1,6 +1,7 @@
 import Footer from '@/components/footer/Footer';
 import { visualClass } from '@/components/visuals/visuals';
 import { site } from '@/content/site';
+import { assetPath } from '@/lib/assets';
 import type { Project } from '@/lib/types';
 import styles from './CaseStudy.module.css';
 
@@ -17,7 +18,14 @@ export default function CaseStudy({ project, onClose, onAdjacent }: CaseStudyPro
         <header className={styles.bar}>
           <div className={`shell ${styles.inner}`}>
             <a className={styles.wordmark} href="#top" onClick={onClose}>
-              f<span className={styles.mark} />hworks.
+              <img
+                className={styles.logo}
+                src={assetPath(site.assets.logo)}
+                alt=""
+                width={140}
+                height={26}
+                decoding="async"
+              />
             </a>
             <nav className={styles.nav} aria-label="Case study navigation">
               <button className={`${styles.link} ${styles.active}`} type="button" onClick={onClose}>

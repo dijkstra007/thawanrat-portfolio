@@ -1,27 +1,19 @@
 import { site } from '@/content/site';
 import { assetPath } from '@/lib/assets';
-import type { Project } from '@/lib/types';
 import type { ReactNode } from 'react';
 import styles from './Hero.module.css';
 
 type HeroProps = {
   header: ReactNode;
-  onOpenHeroProject: (project: Project) => void;
-  heroProject: Project;
 };
 
-export default function Hero({ header, onOpenHeroProject, heroProject }: HeroProps) {
+export default function Hero({ header }: HeroProps) {
   const { hero } = site;
 
   return (
     <section className={styles.hero} id="top">
       <div className={styles.stage}>
-        <button
-          className={styles.image}
-          type="button"
-          aria-label={hero.imageAria}
-          onClick={() => onOpenHeroProject(heroProject)}
-        />
+        <div className={styles.image} aria-hidden="true" />
         {header}
         <div className={`shell ${styles.copyShell}`}>
           <div className={styles.copy}>

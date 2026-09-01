@@ -12,7 +12,6 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
 import SelectedWork from '@/components/selected-work/SelectedWork';
-import { projects } from '@/content/projects';
 import { site } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import { adjacentProject, filterProjects, getFeaturedProjects } from '@/lib/projects';
@@ -121,7 +120,7 @@ export default function PortfolioApp() {
           <Archive projects={archivedProjects} onOpenProject={openProject} />
         ) : (
           <>
-            <Hero header={header} heroProject={projects[0]} onOpenHeroProject={openProject} />
+            <Hero header={header} />
             <SelectedWork
               projects={selectedProjects}
               onOpenProject={openProject}

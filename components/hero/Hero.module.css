@@ -24,7 +24,6 @@
   padding: 0;
   overflow: hidden;
   background: var(--hero-image) 72% 70% / cover no-repeat;
-  cursor: pointer;
 }
 
 .image::after {
@@ -38,11 +37,6 @@
     rgba(255, 255, 255, 0) 55%
   );
   pointer-events: none;
-}
-
-.image:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 4px;
 }
 
 .copyShell {
@@ -169,6 +163,23 @@
   .fahMark { width: 96px; height: 78px; right: -8px; bottom: -28px; }
   .copy { padding: 32px 0 96px; }
   .image { background-position: 72% 70%; }
+  .image::after {
+    background:
+      linear-gradient(
+        105deg,
+        rgba(255, 255, 255, .88) 0%,
+        rgba(255, 255, 255, .72) 34%,
+        rgba(255, 255, 255, .32) 62%,
+        rgba(255, 255, 255, .06) 82%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, .5) 0%,
+        rgba(255, 255, 255, .18) 42%,
+        rgba(255, 255, 255, 0) 70%
+      );
+  }
   .award { right: 16px; bottom: 16px; }
 }
 
@@ -233,24 +244,6 @@
   }
 
   .image { background-position: 82% 62%; }
-
-  .image::after {
-    background:
-      linear-gradient(
-        105deg,
-        rgba(255, 255, 255, .88) 0%,
-        rgba(255, 255, 255, .72) 34%,
-        rgba(255, 255, 255, .32) 62%,
-        rgba(255, 255, 255, .06) 82%,
-        rgba(255, 255, 255, 0) 100%
-      ),
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, .5) 0%,
-        rgba(255, 255, 255, .18) 42%,
-        rgba(255, 255, 255, 0) 70%
-      );
-  }
 
   .award {
     position: relative;

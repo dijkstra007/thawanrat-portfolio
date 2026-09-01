@@ -1,4 +1,5 @@
 import { site } from '@/content/site';
+import { assetPath } from '@/lib/assets';
 import { getProjectById } from '@/lib/projects';
 import type { CategoryFilter, Project } from '@/lib/types';
 import styles from './Header.module.css';
@@ -34,7 +35,14 @@ export default function Header({
     <header className={`${styles.header}${overlay ? ` ${styles.overlay}` : ''}`}>
       <div className={`shell ${styles.inner}`}>
         <a className={styles.wordmark} href="#top" aria-label={site.wordmarkAria} onClick={onGoHome}>
-          f<span className={styles.mark} />hworks.
+          <img
+            className={styles.logo}
+            src={assetPath(site.assets.logo)}
+            alt=""
+            width={140}
+            height={26}
+            decoding="async"
+          />
         </a>
 
         <nav
