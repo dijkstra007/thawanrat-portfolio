@@ -2,7 +2,7 @@ import type { ProjectRecord } from '@/lib/types';
 
 export const featuredProjectIds = [1, 2, 4, 7];
 
-export const projects: ProjectRecord[] = [
+const projectRecords: ProjectRecord[] = [
   {
     id: 1,
     category: 'Packaging',
@@ -785,3 +785,18 @@ export const projects: ProjectRecord[] = [
     images: ['/assets/projects/ptt-benz/69.png'],
   },
 ];
+
+// Keep projects from the same client together in the archive and adjacent navigation.
+const projectOrder = [
+  1, 4, 5, 6, 7, 11, 8, 9, 14, 2, 3, 12, 13,
+  10,
+  15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+  31, 32,
+  28, 29, 30,
+];
+
+export const projects: ProjectRecord[] = projectOrder.map((id) => {
+  const project = projectRecords.find((item) => item.id === id);
+  if (!project) throw new Error(`Unknown project id: ${id}`);
+  return project;
+});
