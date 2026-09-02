@@ -1,6 +1,8 @@
 import { visualClass } from '@/components/visuals/visuals';
 import type { SiteCopy } from '@/content/site';
+import { assetPath } from '@/lib/assets';
 import type { Project } from '@/lib/types';
+import NoBreakText from '@/components/typography/NoBreakText';
 import styles from './Archive.module.css';
 
 type ArchiveProps = {
@@ -27,10 +29,14 @@ export default function Archive({ copy, projects, onOpenProject }: ArchiveProps)
             type="button"
             onClick={() => onOpenProject(project)}
           >
-            <span className={`${styles.visual} ${visualClass(project.visual)}`} />
+            <span
+              className={`${styles.visual} ${visualClass(project.visual)}`}
+              style={project.images?.[0] ? { backgroundImage: `url("${assetPath(project.images[0])}")` } : undefined}
+              aria-hidden="true"
+            />
             <span className={styles.copy}>
-              <strong>{project.title}</strong>
-              <small>{project.meta}</small>
+              <strong><NoBreakText text={project.title} /></strong>
+              <small><NoBreakText text={project.meta} /></small>
             </span>
           </button>
         ))}

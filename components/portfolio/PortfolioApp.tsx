@@ -187,11 +187,6 @@ export default function PortfolioApp() {
       }}
       onOpenMobileWork={() => setMobileWorkOpen(true)}
       onCloseMobileWork={() => setMobileWorkOpen(false)}
-      onToggleWorkMenu={() => {
-        setWorkMenuOpen((open) => !open);
-        setMobileNavOpen(false);
-        setMobileWorkOpen(false);
-      }}
       onToggleMobileNav={() => {
         setMobileNavOpen((open) => !open);
         setWorkMenuOpen(false);
@@ -234,11 +229,13 @@ export default function PortfolioApp() {
       {!activeProject && <Footer copy={copy.footer} />}
       {activeProject && (
         <CaseStudy
-          key={activeProject.id}
           copy={copy.caseStudy}
+          navigation={copy.navigation}
+          locale={locale}
           project={activeProject}
           onClose={() => setActiveProjectId(null)}
           onAdjacent={showAdjacent}
+          onChangeLocale={changeLocale}
         />
       )}
     </main>

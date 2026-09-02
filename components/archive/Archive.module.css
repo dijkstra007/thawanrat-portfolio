@@ -21,6 +21,7 @@
 }
 
 .card {
+  min-width: 0;
   border: 0;
   padding: 0;
   background: none;
@@ -35,10 +36,13 @@
 
 .visual {
   position: relative;
-  aspect-ratio: 276 / 249;
+  aspect-ratio: 16 / 9;
   display: block;
   overflow: hidden;
   border-radius: 4px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   transition: transform .28s ease;
 }
 
@@ -56,12 +60,20 @@
   color: var(--ink);
   font-size: 13px;
   font-weight: 400;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-break: loose;
+  text-wrap: pretty;
 }
 
 .copy small {
   margin-top: 3px;
   color: #aaa;
   font-size: 10px;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-break: loose;
+  text-wrap: pretty;
 }
 
 @media (max-width: 900px) {

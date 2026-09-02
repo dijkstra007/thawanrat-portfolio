@@ -220,19 +220,23 @@ export const site = {
       workMenu: {
         typesLabel: 'Type of work',
         featuredLabel: 'Featured',
-        awardsLabel: 'Awards',
+        awardsLabel: 'More projects',
         types: [
           { label: 'Print / Packaging', category: 'Packaging' },
           { label: 'Branding', category: 'Branding' },
           { label: 'Digital / Content', category: 'Digital' },
+          { label: 'Campaign', category: 'Campaign' },
         ],
         featured: [
-          { label: 'PTT Station', id: 2 },
-          { label: 'Singha Water × PTT Station', id: 3 },
+          { label: 'Local Souvenir Packaging Design', id: 1 },
+          { label: 'Protein Snake packaging', id: 7 },
         ],
         awards: [
-          { label: 'Thai fruit packaging', id: 1 },
-          { label: 'Chaidi brand packaging', id: 5 },
+          { label: 'Social Media Content Design', id: 2 },
+          { label: 'Financial Data & Infographic Design', id: 3 },
+          { label: 'Chailai Packaging Design', id: 4 },
+          { label: 'Food & Beverage Graphic Design', id: 5 },
+          { label: 'Green Tea Packaging Design', id: 6 },
         ],
       },
     },
@@ -240,7 +244,7 @@ export const site = {
       metadata: {
         title: 'Thawanrat T. — นักออกแบบกราฟิก',
         description:
-          'ผลงานของ Thawanrat T. นักออกแบบกราฟิกที่เชี่ยวชาญด้านการออกแบบบรรจุภัณฑ์และอัตลักษณ์แบรนด์',
+          'ผลงานของ Thawanrat T. นักออกแบบกราฟิกที่เชี่ยวชาญด้านการออกแบบบรรจุ\u2060ภัณฑ์และอัตลักษณ์แบรนด์',
       },
       wordmarkAria: 'หน้าแรกของ Fahworks',
       navigation: {
@@ -259,9 +263,9 @@ export const site = {
       hero: {
         name: 'THAWANRAT T.',
         role: 'นักออกแบบกราฟิก',
-        specialty: 'ออกแบบบรรจุภัณฑ์ • อัตลักษณ์แบรนด์',
+        specialty: 'ออกแบบบรรจุ\u2060ภัณฑ์ • อัตลักษณ์แบรนด์',
         intro:
-          'ฉันสร้างงานออกแบบที่ใส่ใจในรายละเอียด ครอบคลุมทั้งบรรจุภัณฑ์ งานพิมพ์ และสื่อดิจิทัล',
+          'ฉันสร้างงานออกแบบที่ใส่ใจในรายละเอียด ครอบคลุมทั้งบรรจุ\u2060ภัณฑ์ งานพิมพ์ และสื่อดิจิทัล',
         workCta: 'ดูผลงาน',
         resumeCta: 'ดาวน์โหลดเรซูเม่',
         resumeHref:
@@ -269,13 +273,13 @@ export const site = {
         awardAria: 'ผลงานที่ได้รับรางวัล',
         awardTitle: 'ผลงานที่ได้รับรางวัล',
         awardName: 'ThaiStar Packaging Awards 2023',
-        awardDetail: 'รางวัลบรอนซ์ – บรรจุภัณฑ์อุปโภคบริโภคสำหรับนักศึกษา (ต้นแบบ)',
+        awardDetail: 'รางวัลบรอนซ์ – บรรจุ\u2060ภัณฑ์อุปโภคบริโภคสำหรับนักศึกษา (ต้นแบบ)',
       },
       about: {
         eyebrow: 'เกี่ยวกับฉัน',
         heading: ['ออกแบบอย่างมีความหมาย', 'ตั้งแต่แนวคิดจนถึงการผลิต'],
         body:
-          'ฉันเป็นนักออกแบบกราฟิกที่เชี่ยวชาญด้านบรรจุภัณฑ์ การสื่อสารแบรนด์ และอาร์ตเวิร์กที่พร้อมผลิตจริงสำหรับสื่อสิ่งพิมพ์และดิจิทัล',
+          'ฉันเป็นนักออกแบบกราฟิกที่เชี่ยวชาญด้านบรรจุ\u2060ภัณฑ์ การสื่อสารแบรนด์ และอาร์ตเวิร์กที่พร้อมผลิตจริงสำหรับสื่อสิ่งพิมพ์และดิจิทัล',
         imageAlt: 'ธวันรัตน์กำลังยิ้มในคาเฟ่',
         yearsValue: '3+',
         yearsLabel: 'ปีแห่งประสบการณ์',
@@ -334,7 +338,7 @@ export const site = {
         backLabel: 'ย้อนกลับ',
         nextLabel: 'ถัดไป',
         categoryLabels: {
-          Packaging: 'ออกแบบบรรจุภัณฑ์',
+          Packaging: 'ออกแบบบรรจุ\u2060ภัณฑ์',
           Campaign: 'แคมเปญ',
           Branding: 'แบรนดิ้ง',
           Digital: 'ดิจิทัล / คอนเทนต์',
@@ -343,19 +347,23 @@ export const site = {
       workMenu: {
         typesLabel: 'ประเภทงาน',
         featuredLabel: 'ผลงานเด่น',
-        awardsLabel: 'รางวัล',
+        awardsLabel: 'ผลงานอื่น ๆ',
         types: [
-          { label: 'งานพิมพ์ / บรรจุภัณฑ์', category: 'Packaging' },
+          { label: 'งานพิมพ์ / บรรจุ\u2060ภัณฑ์', category: 'Packaging' },
           { label: 'แบรนดิ้ง', category: 'Branding' },
           { label: 'ดิจิทัล / คอนเทนต์', category: 'Digital' },
+          { label: 'แคมเปญ', category: 'Campaign' },
         ],
         featured: [
-          { label: 'PTT Station', id: 2 },
-          { label: 'Singha Water × PTT Station', id: 3 },
+          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ของฝากท้อง\u2060ถิ่น', id: 1 },
+          { label: 'บรรจุ\u2060ภัณฑ์ Protein Snake', id: 7 },
         ],
         awards: [
-          { label: 'บรรจุภัณฑ์ผลไม้ไทย', id: 1 },
-          { label: 'บรรจุภัณฑ์แบรนด์ Chaidi', id: 5 },
+          { label: 'การออกแบบคอนเทนต์สำหรับ Social Media', id: 2 },
+          { label: 'การออกแบบข้อมูลการเงินและอินโฟกราฟิก', id: 3 },
+          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ ChaiLai', id: 4 },
+          { label: 'การออกแบบกราฟิกสำหรับอาหารและเครื่องดื่ม', id: 5 },
+          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ชาเขียว', id: 6 },
         ],
       },
     },

@@ -18,7 +18,6 @@ type HeaderProps = {
   onOpenWorkMenu: () => void;
   onOpenMobileWork: () => void;
   onCloseMobileWork: () => void;
-  onToggleWorkMenu: () => void;
   onToggleMobileNav: () => void;
   onRevealArchive: (category: CategoryFilter) => void;
   onOpenProject: (project: Project) => void;
@@ -38,7 +37,6 @@ export default function Header({
   onOpenWorkMenu,
   onOpenMobileWork,
   onCloseMobileWork,
-  onToggleWorkMenu,
   onToggleMobileNav,
   onRevealArchive,
   onOpenProject,
@@ -58,12 +56,7 @@ export default function Header({
       return;
     }
 
-    if (workMenuOpen) {
-      onToggleWorkMenu();
-      return;
-    }
-
-    onOpenWorkMenu();
+    onRevealArchive('All');
   };
 
   return (
