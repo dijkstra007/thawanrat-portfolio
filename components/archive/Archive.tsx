@@ -1,15 +1,17 @@
 import { visualClass } from '@/components/visuals/visuals';
-import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
+import { assetPath } from '@/lib/assets';
 import type { Project } from '@/lib/types';
+import NoBreakText from '@/components/typography/NoBreakText';
 import styles from './Archive.module.css';
 
 type ArchiveProps = {
+  copy: SiteCopy['archive'];
   projects: Project[];
   onOpenProject: (project: Project) => void;
 };
 
-export default function Archive({ projects, onOpenProject }: ArchiveProps) {
-  const copy = site.archive;
+export default function Archive({ copy, projects, onOpenProject }: ArchiveProps) {
 
   return (
     <section className={`shell ${styles.section}`} id="all-work">
@@ -27,10 +29,14 @@ export default function Archive({ projects, onOpenProject }: ArchiveProps) {
             type="button"
             onClick={() => onOpenProject(project)}
           >
-            <span className={`${styles.visual} ${visualClass(project.visual)}`} />
+            <span
+              className={`${styles.visual} ${visualClass(project.visual)}`}
+              style={project.images?.[0] ? { backgroundImage: `url("${assetPath(project.images[0])}")` } : undefined}
+              aria-hidden="true"
+            />
             <span className={styles.copy}>
-              <strong>{project.title}</strong>
-              <small>{project.meta}</small>
+              <strong><NoBreakText text={project.title} /></strong>
+              <small><NoBreakText text={project.meta} /></small>
             </span>
           </button>
         ))}

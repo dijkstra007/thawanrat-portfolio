@@ -1,9 +1,14 @@
 import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import styles from './Hero.module.css';
 
-export default function Hero() {
-  const { hero } = site;
+type HeroProps = {
+  copy: SiteCopy;
+};
+
+export default function Hero({ copy }: HeroProps) {
+  const { hero } = copy;
 
   return (
     <section className={styles.hero} id="top">

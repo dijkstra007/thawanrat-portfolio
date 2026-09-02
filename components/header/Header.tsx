@@ -1,10 +1,13 @@
 import { site } from '@/content/site';
+import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
 import { getProjectById } from '@/lib/projects';
-import type { CategoryFilter, Project } from '@/lib/types';
+import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './Header.module.css';
 
 type HeaderProps = {
+  copy: SiteCopy;
+  locale: Locale;
   overlay?: boolean;
   compact?: boolean;
   workMenuOpen: boolean;
@@ -15,13 +18,15 @@ type HeaderProps = {
   onOpenWorkMenu: () => void;
   onOpenMobileWork: () => void;
   onCloseMobileWork: () => void;
-  onToggleWorkMenu: () => void;
   onToggleMobileNav: () => void;
   onRevealArchive: (category: CategoryFilter) => void;
   onOpenProject: (project: Project) => void;
+  onChangeLocale: (locale: Locale) => void;
 };
 
 export default function Header({
+  copy,
+  locale,
   overlay = false,
   compact = false,
   workMenuOpen,
@@ -32,10 +37,10 @@ export default function Header({
   onOpenWorkMenu,
   onOpenMobileWork,
   onCloseMobileWork,
-  onToggleWorkMenu,
   onToggleMobileNav,
   onRevealArchive,
   onOpenProject,
+  onChangeLocale,
 }: HeaderProps) {
   const openWorkMenu = () => {
     if (!mobileNavOpen) onOpenWorkMenu();
@@ -51,12 +56,7 @@ export default function Header({
       return;
     }
 
-    if (workMenuOpen) {
-      onToggleWorkMenu();
-      return;
-    }
-
-    onOpenWorkMenu();
+    onRevealArchive('All');
   };
 
   return (
@@ -65,7 +65,7 @@ export default function Header({
       onMouseLeave={() => workMenuOpen && onCloseMenus()}
     >
       <div className={`shell ${styles.inner}`}>
-        <a className={styles.wordmark} href="#top" aria-label={site.wordmarkAria} onClick={onGoHome}>
+        <a className={styles.wordmark} href="#top" aria-label={copy.wordmarkAria} onClick={onGoHome}>
           <img
             className={styles.logo}
             src={assetPath(site.assets.logo)}
@@ -78,7 +78,7 @@ export default function Header({
 
         <nav
           className={`${styles.nav}${mobileNavOpen ? ` ${styles.navOpen}` : ''}`}
-          aria-label="Primary navigation"
+          aria-label={copy.navigation.menuLabel}
         >
           {mobileNavOpen && mobileWorkOpen ? (
             <div className={styles.mobileSubmenu}>
@@ -88,12 +88,12 @@ export default function Header({
                 onClick={onCloseMobileWork}
               >
                 <span className={styles.backIcon} aria-hidden="true">‹</span>
-                <span>Work</span>
+                <span>{copy.navigation.work}</span>
               </button>
 
               <div className={styles.mobileSubmenuGroup}>
-                <p className={styles.mobileSubmenuLabel}>{site.workMenu.typesLabel}</p>
-                {site.workMenu.types.map((item) => (
+                <p className={styles.mobileSubmenuLabel}>{copy.workMenu.typesLabel}</p>
+                {copy.workMenu.types.map((item) => (
                   <button
                     key={item.label}
                     className={styles.mobileSubmenuLink}
@@ -106,13 +106,13 @@ export default function Header({
               </div>
 
               <div className={styles.mobileSubmenuGroup}>
-                <p className={styles.mobileSubmenuLabel}>{site.workMenu.featuredLabel}</p>
-                {site.workMenu.featured.map((item) => (
+                <p className={styles.mobileSubmenuLabel}>{copy.workMenu.featuredLabel}</p>
+                {copy.workMenu.featured.map((item) => (
                   <button
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
                     type="button"
-                    onClick={() => onOpenProject(getProjectById(item.id))}
+                    onClick={() => onOpenProject(getProjectById(item.id, locale))}
                   >
                     {item.label}
                   </button>
@@ -120,13 +120,13 @@ export default function Header({
               </div>
 
               <div className={styles.mobileSubmenuGroup}>
-                <p className={styles.mobileSubmenuLabel}>{site.workMenu.awardsLabel}</p>
-                {site.workMenu.awards.map((item) => (
+                <p className={styles.mobileSubmenuLabel}>{copy.workMenu.awardsLabel}</p>
+                {copy.workMenu.awards.map((item) => (
                   <button
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
                     type="button"
-                    onClick={() => onOpenProject(getProjectById(item.id))}
+                    onClick={() => onOpenProject(getProjectById(item.id, locale))}
                   >
                     {item.label}
                   </button>
@@ -146,7 +146,7 @@ export default function Header({
                   onFocus={openWorkMenu}
                   onClick={handleWorkClick}
                 >
-                  Work
+                  {copy.navigation.work}
                 </button>
 
                 <div
@@ -155,25 +155,25 @@ export default function Header({
                 >
                   <div className={`shell ${styles.grid}`}>
                     <div>
-                      <p className={styles.label}>{site.workMenu.typesLabel}</p>
-                      {site.workMenu.types.map((item) => (
+                      <p className={styles.label}>{copy.workMenu.typesLabel}</p>
+                      {copy.workMenu.types.map((item) => (
                         <button key={item.label} onClick={() => onRevealArchive(item.category)}>
                           {item.label}
                         </button>
                       ))}
                     </div>
                     <div>
-                      <p className={styles.label}>{site.workMenu.featuredLabel}</p>
-                      {site.workMenu.featured.map((item) => (
-                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                      <p className={styles.label}>{copy.workMenu.featuredLabel}</p>
+                      {copy.workMenu.featured.map((item) => (
+                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id, locale))}>
                           {item.label}
                         </button>
                       ))}
                     </div>
                     <div>
-                      <p className={styles.label}>{site.workMenu.awardsLabel}</p>
-                      {site.workMenu.awards.map((item) => (
-                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id))}>
+                      <p className={styles.label}>{copy.workMenu.awardsLabel}</p>
+                      {copy.workMenu.awards.map((item) => (
+                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id, locale))}>
                           {item.label}
                         </button>
                       ))}
@@ -183,26 +183,56 @@ export default function Header({
               </div>
               {!compact && (
                 <>
-                  <a className={styles.link} href="#about" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>About</a>
-                  <a className={styles.link} href="#experience" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Experience</a>
-                  <a className={styles.link} href="#skills" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Skills</a>
+                  <a className={styles.link} href="#about" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.about}</a>
+                  <a className={styles.link} href="#experience" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.experience}</a>
+                  <a className={styles.link} href="#skills" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.skills}</a>
                 </>
               )}
-              <a className={styles.link} href="#contact" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>Contact</a>
+              <a className={styles.link} href="#contact" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.contact}</a>
             </>
           )}
         </nav>
 
+        <div className={styles.actions}>
+          <div className={styles.language} role="group" aria-label={copy.navigation.languageLabel}>
+            <button
+              className={[
+                styles.languageOption,
+                locale === 'en' ? styles.languageActive : '',
+              ].filter(Boolean).join(' ')}
+              type="button"
+              aria-label={copy.navigation.switchToEnglish}
+              aria-pressed={locale === 'en'}
+              onClick={() => onChangeLocale('en')}
+            >
+              EN
+            </button>
+            <span className={styles.languageDivider} aria-hidden="true">/</span>
+            <button
+              className={[
+                styles.languageOption,
+                locale === 'th' ? styles.languageActive : '',
+              ].filter(Boolean).join(' ')}
+              type="button"
+              aria-label={copy.navigation.switchToThai}
+              aria-pressed={locale === 'th'}
+              onClick={() => onChangeLocale('th')}
+            >
+              TH
+            </button>
+          </div>
+
         <button
           className={`${styles.toggle}${mobileNavOpen ? ` ${styles.toggleActive}` : ''}`}
           type="button"
-          aria-label="Toggle menu"
+          aria-label={mobileNavOpen ? copy.navigation.closeMenu : copy.navigation.openMenu}
           aria-expanded={mobileNavOpen}
           onClick={onToggleMobileNav}
         >
           <span />
           <span />
         </button>
+        </div>
       </div>
 
     </header>

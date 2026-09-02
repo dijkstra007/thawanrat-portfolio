@@ -95,6 +95,50 @@
   display: none;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.language {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.languageOption {
+  padding: 4px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.languageOption:hover,
+.languageOption:focus-visible,
+.languageActive {
+  color: var(--blue);
+}
+
+.languageActive {
+  border-bottom-color: currentColor;
+  font-weight: 600;
+}
+
+.languageOption:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.languageDivider {
+  color: #b2b2b2;
+  font-size: 11px;
+}
+
 .menu {
   position: absolute;
   inset: 100% 0 auto;
@@ -138,13 +182,15 @@
   border: 0;
   padding: 4px 0;
   background: transparent;
+  color: #777;
   cursor: pointer;
   text-align: left;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .grid > div:first-child button {
-  font-size: 24px;
+  color: #111;
+  font-size: 17px;
   letter-spacing: -.035em;
 }
 
@@ -159,6 +205,10 @@
 
   .nav {
     gap: 22px;
+  }
+
+  .actions {
+    gap: 18px;
   }
 
   .grid {
@@ -185,6 +235,18 @@
   .wordmark {
     width: 140px;
     height: 26px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .language {
+    gap: 5px;
+  }
+
+  .languageOption {
+    font-size: 10px;
   }
 
   .toggle {
@@ -306,9 +368,9 @@
     padding: 0;
     border: 0;
     background: none;
-    color: #2d2e33;
+    color: #111;
     cursor: pointer;
-    font-size: clamp(30px, 8.5vw, 44px);
+    font-size: clamp(22px, 6.4vw, 29px);
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: -.055em;
@@ -316,7 +378,8 @@
   }
 
   .mobileSubmenuLink.secondary {
-    font-size: clamp(22px, 6.4vw, 32px);
+    color: #777;
+    font-size: clamp(13px, 4vw, 17px);
     font-weight: 500;
   }
 
@@ -331,7 +394,7 @@
     width: 100%;
     padding: 0;
     text-align: left;
-    font-size: clamp(32px, 9.5vw, 48px);
+    font-size: clamp(24px, 7vw, 32px);
     font-weight: 600;
     line-height: 1.16;
     letter-spacing: -.055em;

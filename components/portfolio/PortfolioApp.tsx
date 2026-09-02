@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import type { CSSProperties } from 'react';
 import About from '@/components/about/About';
 import Archive from '@/components/archive/Archive';
@@ -12,28 +12,103 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
 import SelectedWork from '@/components/selected-work/SelectedWork';
+import { experience } from '@/content/experience';
+import { expertise } from '@/content/expertise';
 import { site } from '@/content/site';
 import { assetPath } from '@/lib/assets';
-import { adjacentProject, filterProjects, getFeaturedProjects } from '@/lib/projects';
-import type { CategoryFilter, Project } from '@/lib/types';
+import { adjacentProject, filterProjects, getFeaturedProjects, getProjectById } from '@/lib/projects';
+import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
 
+const languageStorageKey = 'thawanrat-portfolio-language';
+let fallbackLocale: Locale = 'en';
+const localeListeners = new Set<() => void>();
+
+function isLocale(value: string | null): value is Locale {
+  return value === 'en' || value === 'th';
+}
+
+function getLocaleSnapshot(): Locale {
+  if (typeof window === 'undefined') return 'en';
+
+  try {
+    const storedLocale = window.localStorage.getItem(languageStorageKey);
+    if (isLocale(storedLocale)) {
+      fallbackLocale = storedLocale;
+      return storedLocale;
+    }
+    fallbackLocale = 'en';
+    return fallbackLocale;
+  } catch {
+    return fallbackLocale;
+  }
+}
+
+function subscribeToLocale(listener: () => void) {
+  localeListeners.add(listener);
+
+  if (typeof window !== 'undefined') {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === languageStorageKey) listener();
+    };
+    window.addEventListener('storage', onStorage);
+
+    return () => {
+      localeListeners.delete(listener);
+      window.removeEventListener('storage', onStorage);
+    };
+  }
+
+  return () => {
+    localeListeners.delete(listener);
+  };
+}
+
+function getServerLocale(): Locale {
+  return 'en';
+}
+
+function setLocaleSnapshot(nextLocale: Locale) {
+  fallbackLocale = nextLocale;
+  try {
+    window.localStorage.setItem(languageStorageKey, nextLocale);
+  } catch {
+    // Keep the language switch usable when browser storage is unavailable.
+  }
+  localeListeners.forEach((listener) => listener());
+}
+
 export default function PortfolioApp() {
+  const locale = useSyncExternalStore(subscribeToLocale, getLocaleSnapshot, getServerLocale);
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
   const [archiveVisible, setArchiveVisible] = useState(false);
   const [filter, setFilter] = useState<CategoryFilter>('All');
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
 
-  const selectedProjects = useMemo(() => getFeaturedProjects(), []);
-  const archivedProjects = useMemo(() => filterProjects(filter), [filter]);
+  const copy = site.copy[locale];
+  const activeProject = activeProjectId === null
+    ? null
+    : getProjectById(activeProjectId, locale);
+  const selectedProjects = useMemo(() => getFeaturedProjects(locale), [locale]);
+  const archivedProjects = useMemo(() => filterProjects(filter, locale), [filter, locale]);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.documentElement.dataset.locale = locale;
+    document.title = copy.metadata.title;
+
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute('content', copy.metadata.description);
+
+  }, [copy.metadata.description, copy.metadata.title, locale]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        if (activeProject) {
-          setActiveProject(null);
+        if (activeProjectId !== null) {
+          setActiveProjectId(null);
           return;
         }
         setWorkMenuOpen(false);
@@ -43,17 +118,23 @@ export default function PortfolioApp() {
       }
     };
     window.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = activeProject || mobileNavOpen ? 'hidden' : '';
+    document.body.style.overflow = activeProjectId !== null || mobileNavOpen ? 'hidden' : '';
     return () => {
       window.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
     };
-  }, [activeProject, mobileNavOpen]);
+  }, [activeProjectId, mobileNavOpen]);
 
   const closeMenus = () => {
     setWorkMenuOpen(false);
     setMobileNavOpen(false);
     setMobileWorkOpen(false);
+  };
+
+  const changeLocale = (nextLocale: Locale) => {
+    if (nextLocale === locale) return;
+    setLocaleSnapshot(nextLocale);
+    closeMenus();
   };
 
   const goHome = () => {
@@ -65,7 +146,7 @@ export default function PortfolioApp() {
   const revealArchive = (category: CategoryFilter = 'All') => {
     setFilter(category);
     setArchiveVisible(true);
-    setActiveProject(null);
+    setActiveProjectId(null);
     closeMenus();
     window.setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -73,13 +154,13 @@ export default function PortfolioApp() {
   };
 
   const openProject = (project: Project) => {
-    setActiveProject(project);
+    setActiveProjectId(project.id);
     closeMenus();
   };
 
   const showAdjacent = (offset: number) => {
     if (!activeProject) return;
-    setActiveProject(adjacentProject(activeProject, offset));
+    setActiveProjectId(adjacentProject(activeProject, offset, locale).id);
   };
 
   const portfolioStyle = {
@@ -90,6 +171,8 @@ export default function PortfolioApp() {
 
   const header = (
     <Header
+      copy={copy}
+      locale={locale}
       overlay={!archiveVisible}
       compact={archiveVisible}
       workMenuOpen={workMenuOpen}
@@ -104,11 +187,6 @@ export default function PortfolioApp() {
       }}
       onOpenMobileWork={() => setMobileWorkOpen(true)}
       onCloseMobileWork={() => setMobileWorkOpen(false)}
-      onToggleWorkMenu={() => {
-        setWorkMenuOpen((open) => !open);
-        setMobileNavOpen(false);
-        setMobileWorkOpen(false);
-      }}
       onToggleMobileNav={() => {
         setMobileNavOpen((open) => !open);
         setWorkMenuOpen(false);
@@ -116,6 +194,7 @@ export default function PortfolioApp() {
       }}
       onRevealArchive={revealArchive}
       onOpenProject={openProject}
+      onChangeLocale={changeLocale}
     />
   );
 
@@ -129,26 +208,35 @@ export default function PortfolioApp() {
         onClick={() => workMenuOpen && setWorkMenuOpen(false)}
       >
         {archiveVisible ? (
-          <Archive projects={archivedProjects} onOpenProject={openProject} />
+          <Archive copy={copy.archive} projects={archivedProjects} onOpenProject={openProject} />
         ) : (
           <>
-            <Hero />
+            <Hero copy={copy} />
             <SelectedWork
+              copy={copy.selectedWork}
               projects={selectedProjects}
               onOpenProject={openProject}
               onViewAll={() => revealArchive('All')}
             />
-            <About />
-            <Experience />
-            <Expertise />
-            <Education />
+            <About copy={copy.about} />
+            <Experience copy={copy.experience} items={experience[locale]} />
+            <Expertise copy={copy.expertise} groups={expertise[locale]} />
+            <Education copy={copy.education} />
           </>
         )}
       </div>
 
-      {!activeProject && <Footer />}
+      {!activeProject && <Footer copy={copy.footer} />}
       {activeProject && (
-        <CaseStudy key={activeProject.id} project={activeProject} onClose={() => setActiveProject(null)} onAdjacent={showAdjacent} />
+        <CaseStudy
+          copy={copy.caseStudy}
+          navigation={copy.navigation}
+          locale={locale}
+          project={activeProject}
+          onClose={() => setActiveProjectId(null)}
+          onAdjacent={showAdjacent}
+          onChangeLocale={changeLocale}
+        />
       )}
     </main>
   );
