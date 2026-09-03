@@ -91,6 +91,12 @@ export type SiteCopy = {
     chooseImageLabel: string;
     showImagePrefix: string;
     imageLabel: string;
+    zoomInLabel: string;
+    zoomOutLabel: string;
+    resetZoomLabel: string;
+    zoomControlsLabel: string;
+    openViewerLabel: string;
+    closeViewerLabel: string;
     backLabel: string;
     nextLabel: string;
     categoryLabels: Record<ProjectCategory, string>;
@@ -208,6 +214,12 @@ export const site = {
         chooseImageLabel: 'Choose project image',
         showImagePrefix: 'Show image',
         imageLabel: 'image',
+        zoomInLabel: 'Zoom in',
+        zoomOutLabel: 'Zoom out',
+        resetZoomLabel: 'Reset zoom',
+        zoomControlsLabel: 'Image zoom controls',
+        openViewerLabel: 'Open image viewer',
+        closeViewerLabel: 'Close image viewer',
         backLabel: 'Back',
         nextLabel: 'Next',
         categoryLabels: {
@@ -335,6 +347,12 @@ export const site = {
         chooseImageLabel: 'เลือกภาพผลงาน',
         showImagePrefix: 'แสดงภาพที่',
         imageLabel: 'ภาพที่',
+        zoomInLabel: 'ซูมเข้า',
+        zoomOutLabel: 'ซูมออก',
+        resetZoomLabel: 'รีเซ็ตการซูม',
+        zoomControlsLabel: 'ตัวควบคุมการซูมภาพ',
+        openViewerLabel: 'เปิดดูภาพขนาดใหญ่',
+        closeViewerLabel: 'ปิดการดูภาพขนาดใหญ่',
         backLabel: 'ย้อนกลับ',
         nextLabel: 'ถัดไป',
         categoryLabels: {
