@@ -23,11 +23,15 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/pobpra/1.png',
-      '/assets/projects/pobpra/2.png',
-      '/assets/projects/pobpra/3.png',
-      '/assets/projects/pobpra/4.png',
-      '/assets/projects/pobpra/5.png',
+      '/assets/projects/local-souvenir/1.png',
+      '/assets/projects/local-souvenir/2.png',
+      '/assets/projects/local-souvenir/3.png',
+      '/assets/projects/local-souvenir/4.png',
+      '/assets/projects/local-souvenir/5.png',
+      '/assets/projects/local-souvenir/6.png',
+      '/assets/projects/local-souvenir/7.png',
+      '/assets/projects/local-souvenir/8.png',
+      '/assets/projects/local-souvenir/9.png',
     ],
   },
   {
@@ -108,9 +112,10 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/chailai-packaging/92.png',
-      '/assets/projects/chailai-packaging/93.png',
-      '/assets/projects/chailai-packaging/94.png',
+      '/assets/projects/chailai/1.jpg',
+      '/assets/projects/chailai/2.jpg',
+      '/assets/projects/chailai/3.jpg',
+      '/assets/projects/chailai/4.jpg',
     ],
   },
   {
@@ -133,11 +138,11 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/rinauchi/102.png',
-      '/assets/projects/rinauchi/103.png',
-      '/assets/projects/rinauchi/104.png',
-      '/assets/projects/rinauchi/105.png',
-      '/assets/projects/rinauchi/106.png',
+      '/assets/projects/food-beverage/1.png',
+      '/assets/projects/food-beverage/2.png',
+      '/assets/projects/food-beverage/3.png',
+      '/assets/projects/food-beverage/4.png',
+      '/assets/projects/food-beverage/5.png',
     ],
   },
   {
@@ -160,11 +165,12 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/matcha-packaging/95.png',
-      '/assets/projects/matcha-packaging/96.png',
-      '/assets/projects/matcha-packaging/97.png',
-      '/assets/projects/matcha-packaging/98.png',
-      '/assets/projects/matcha-packaging/99.png',
+      '/assets/projects/green-tea/1.png',
+      '/assets/projects/green-tea/2.jpg',
+      '/assets/projects/green-tea/3.jpg',
+      '/assets/projects/green-tea/4.jpg',
+      '/assets/projects/green-tea/5.jpg',
+      '/assets/projects/green-tea/6.jpg',
     ],
   },
   {
@@ -187,8 +193,8 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/protein-snake/100.png',
-      '/assets/projects/protein-snake/101.png',
+      '/assets/projects/protein-snake/1.png',
+      '/assets/projects/protein-snake/2.jpg',
     ],
   },
   {
@@ -211,9 +217,9 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/benja/11.png',
-      '/assets/projects/benja/12.png',
-      '/assets/projects/benja/13.png',
+      '/assets/projects/benja/1.png',
+      '/assets/projects/benja/2.png',
+      '/assets/projects/benja/3.png',
     ],
   },
   {
@@ -235,7 +241,12 @@ const projectRecords: ProjectRecord[] = [
           'การทดลองพัฒนาอัตลักษณ์แบรนด์ Aseel Thai Oud โดยผสานโลโก้ตัวอักษรที่เรียบสะอาดเข้ากับสัญลักษณ์ใบไม้ เพื่อสื่อถึงความเป็นธรรมชาติและประสบการณ์กลิ่นหอมที่มีระดับ',
       },
     },
-    images: ['/assets/projects/aseel-thai-oud/9.png', '/assets/projects/aseel-thai-oud/10.png'],
+    images: [
+      '/assets/projects/aseel-thai-oud/1.png',
+      '/assets/projects/aseel-thai-oud/2.png',
+      '/assets/projects/aseel-thai-oud/3.jpg',
+      '/assets/projects/aseel-thai-oud/4.jpg',
+    ],
   },
   {
     id: 10,
@@ -247,13 +258,13 @@ const projectRecords: ProjectRecord[] = [
         title: 'FIT\u00a0Auto Promotional Campaign',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A promotional graphic system for FIT\u00a0Auto and PTT Station, using bold color, clear offer messaging, and product imagery to make a service promotion easy to notice.',
+          'A promotional graphic system for FIT\u00a0Auto, using bold color, clear offer messaging, and product imagery to make a service promotion easy to notice.',
       },
       th: {
         title: 'แคมเปญโปรโมชั่น FIT\u00a0Auto',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบชุดกราฟิกสำหรับโปรโมชั่น FIT\u00a0Auto และ PTT Station โดยใช้สีที่โดด\u2060เด่น ข้อความข้อเสนอที่อ่านง่าย และภาพสินค้า เพื่อให้ผู้ชมเข้าใจโปรโมชั่นได้อย่างรวดเร็ว',
+          'ออกแบบชุดกราฟิกสำหรับโปรโมชั่น FIT\u00a0Auto โดยใช้สีที่โดด\u2060เด่น ข้อความข้อเสนอที่อ่านง่าย และภาพสินค้า เพื่อให้ผู้ชมเข้าใจโปรโมชั่นได้อย่างรวดเร็ว',
       },
     },
     images: ['/assets/projects/fitauto/34.png', '/assets/projects/fitauto/35.png'],
@@ -278,9 +289,10 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/juicena/20.png',
-      '/assets/projects/juicena/21.png',
-      '/assets/projects/juicena/22.png',
+      '/assets/projects/juicena/1.png',
+      '/assets/projects/juicena/2.png',
+      '/assets/projects/juicena/3.png',
+      '/assets/projects/juicena/4.png',
     ],
   },
   {
@@ -353,9 +365,9 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/mango-smith/6.png',
-      '/assets/projects/mango-smith/7.png',
-      '/assets/projects/mango-smith/8.png',
+      '/assets/projects/mango-smith/1.png',
+      '/assets/projects/mango-smith/2.png',
+      '/assets/projects/mango-smith/3.png',
     ],
   },
   {
@@ -365,16 +377,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'PTT Station — Free Drinking Water',
+        title: 'Free Drinking Water',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A promotional campaign for PTT Station’s free drinking water offer, using strong contrast, product imagery, and a direct callout to make the offer immediately clear. The project includes the original artwork and revised artwork from the same campaign.',
+          'A promotional campaign for a free drinking water offer, using strong contrast, product imagery, and a direct callout to make the offer immediately clear. The project includes the original artwork and revised artwork from the same campaign.',
       },
       th: {
-        title: 'PTT Station — แจกน้ำฟรี',
+        title: 'แจกน้ำฟรี',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบสื่อประชาสัมพันธ์แคมเปญแจกน้ำดื่มฟรีของ PTT Station โดยใช้สีตัดกันอย่างชัดเจน ภาพสินค้า และข้อความสั้นกระชับ เพื่อสื่อสารข้อเสนอให้เข้าใจได้ทันที โดยรวมทั้งอาร์ตเวิร์กชุดเดิมและชุดที่มีการแก้ไขไว้ในงานเดียวกัน',
+          'ออกแบบสื่อประชาสัมพันธ์แคมเปญแจกน้ำดื่มฟรี โดยใช้สีตัดกันอย่างชัดเจน ภาพสินค้า และข้อความสั้นกระชับ เพื่อสื่อสารข้อเสนอให้เข้าใจได้ทันที โดยรวมทั้งอาร์ตเวิร์กชุดเดิมและชุดที่มีการแก้ไขไว้ในงานเดียวกัน',
       },
     },
     images: [
@@ -391,16 +403,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'PTT Station — Singha × Café Amazon',
+        title: 'Singha × Café Amazon',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A promotional label and in-station communication set for PTT Station and Café Amazon, combining Singha Water and Café Amazon products with clear fuel-spend and free-drink messaging.',
+          'A promotional label and in-station communication set for a fuel-and-beverage offer, combining Singha Water and Café Amazon products with clear fuel-spend and free-drink messaging.',
       },
       th: {
-        title: 'PTT Station — ฉลากสิงห์ × Café Amazon',
+        title: 'ฉลากสิงห์ × Café Amazon',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบฉลากและสื่อประชาสัมพันธ์สำหรับ PTT Station และ Café Amazon โดยผสานภาพสินค้า Singha Water และ Café Amazon พร้อมสื่อสารโปรโมชั่นเติมน้ำมันและรับเครื่องดื่มฟรีให้เข้าใจได้ง่าย',
+          'ออกแบบฉลากและสื่อประชาสัมพันธ์สำหรับโปรโมชั่นเติมน้ำมันและรับเครื่องดื่มฟรี โดยผสานภาพสินค้า Singha Water และ Café Amazon ให้เข้าใจได้ง่าย',
       },
     },
     images: [
@@ -417,16 +429,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'PTT Station — Singha Super Power',
+        title: 'Singha Super Power',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A promotional key visual for PTT Station’s Super Power fuel offer, pairing Singha Water and Super Power 99 product imagery with a bold savings message.',
+          'A promotional key visual for a Super Power fuel offer, pairing Singha Water and Super Power 99 product imagery with a bold savings message.',
       },
       th: {
-        title: 'PTT Station — ฉลากสิงห์ Super Power',
+        title: 'ฉลากสิงห์ Super Power',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบ Key Visual สำหรับโปรโมชั่นน้ำมัน Super Power ของ PTT Station โดยใช้ภาพ Singha Water และ Super Power 99 ร่วมกับข้อความสิทธิประโยชน์ที่โดด\u2060เด่น',
+          'ออกแบบ Key Visual สำหรับโปรโมชั่นน้ำมัน Super Power โดยใช้ภาพ Singha Water และ Super Power 99 ร่วมกับข้อความสิทธิประโยชน์ที่โดด\u2060เด่น',
       },
     },
     images: [
@@ -442,16 +454,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'paper',
     copy: {
       en: {
-        title: 'PTT Station — Talad Term Suk',
+        title: 'Talad Term Suk',
         meta: 'Campaign · Community Communication',
         description:
-          'A community-focused campaign identity for PTT Station’s Talad Term Suk project, using warm illustration and a market scene to connect local products with a welcoming service-station experience.',
+          'A community-focused campaign identity for the Talad Term Suk project, using warm illustration and a market scene to connect local products with a welcoming service-station experience.',
       },
       th: {
-        title: 'PTT Station — ตลาดเติมสุข',
+        title: 'ตลาดเติมสุข',
         meta: 'แคมเปญ · สื่อสารชุมชน',
         description:
-          'ออกแบบสื่อแคมเปญตลาดเติมสุขของ PTT Station โดยใช้ภาพประกอบบรรยากาศตลาดและชุมชน เพื่อสื่อสารการสนับสนุนสินค้าจากชุมชนให้ดูอบอุ่นและเข้าถึงง่าย',
+          'ออกแบบสื่อแคมเปญตลาดเติมสุข โดยใช้ภาพประกอบบรรยากาศตลาดและชุมชน เพื่อสื่อสารการสนับสนุนสินค้าจากชุมชนให้ดูอบอุ่นและเข้าถึงง่าย',
       },
     },
     images: ['/assets/projects/ptt-talad-term-suk/63.png', '/assets/projects/ptt-talad-term-suk/64.png'],
@@ -463,16 +475,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'PTT Station — Self-Serve Fuel',
+        title: 'Self-Serve Fuel',
         meta: 'Campaign · Service Communication',
         description:
-          'A self-service fuel communication system for PTT Station, using clear savings messaging, service-point graphics, and the blueplus app callout to guide customers through the offer.',
+          'A self-service fuel communication system, using clear savings messaging, service-point graphics, and the blueplus app callout to guide customers through the offer.',
       },
       th: {
-        title: 'PTT Station — เติมเอง',
+        title: 'เติมเอง',
         meta: 'แคมเปญ · สื่อสารบริการ',
         description:
-          'ออกแบบชุดสื่อสื่อสารบริการเติมน้ำมันด้วยตนเองของ PTT Station โดยใช้ข้อความส่วนลดที่ชัดเจน กราฟิกบริเวณหัวจ่าย และการสื่อสารผ่านแอป blueplus เพื่อให้ลูกค้าเข้าใจสิทธิประโยชน์ได้ง่าย',
+          'ออกแบบชุดสื่อสื่อสารบริการเติมน้ำมันด้วยตนเอง โดยใช้ข้อความส่วนลดที่ชัดเจน กราฟิกบริเวณหัวจ่าย และการสื่อสารผ่านแอป blueplus เพื่อให้ลูกค้าเข้าใจสิทธิประโยชน์ได้ง่าย',
       },
     },
     images: [
@@ -490,16 +502,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'PTT Station — World Cup',
+        title: 'World Cup',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A football-themed promotional campaign for PTT Station and Super Power, using international team colors, football imagery, and a strong offer message to create an energetic seasonal visual.',
+          'A football-themed promotional campaign for Super Power, using international team colors, football imagery, and a strong offer message to create an energetic seasonal visual.',
       },
       th: {
-        title: 'PTT Station — ฟุตบอล',
+        title: 'ฟุตบอล',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบแคมเปญโปรโมชั่นธีมฟุตบอลสำหรับ PTT Station และ Super Power โดยใช้สีของทีมฟุตบอล ลูกฟุตบอล และข้อความข้อเสนอที่โดด\u2060เด่น เพื่อ\u2060สร้างบรรยากาศสนุกและมีพลัง',
+          'ออกแบบแคมเปญโปรโมชั่นธีมฟุตบอลสำหรับ Super Power โดยใช้สีของทีมฟุตบอล ลูกฟุตบอล และข้อความข้อเสนอที่โดด\u2060เด่น เพื่อ\u2060สร้างบรรยากาศสนุกและมีพลัง',
       },
     },
     images: [
@@ -515,16 +527,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'sun',
     copy: {
       en: {
-        title: 'PTT Station — Points x3',
+        title: 'Points x3',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A high-impact promotional graphic for PTT Station’s points multiplier offer, combining bold x3 typography, fuel-station branding, and a clear eligibility message.',
+          'A high-impact promotional graphic for a points multiplier offer, combining bold x3 typography, fuel-station branding, and a clear eligibility message.',
       },
       th: {
-        title: 'PTT Station — รับคะแนน x3',
+        title: 'รับคะแนน x3',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบสื่อโปรโมชั่นรับคะแนนสะสม x3 สำหรับ PTT Station โดยใช้ตัวอักษร x3 ขนาดใหญ่ สีสันที่โดด\u2060เด่น และข้อความเงื่อนไขที่อ่านง่าย',
+          'ออกแบบสื่อโปรโมชั่นรับคะแนนสะสม x3 โดยใช้ตัวอักษร x3 ขนาดใหญ่ สีสันที่โดด\u2060เด่น และข้อความเงื่อนไขที่อ่านง่าย',
       },
     },
     images: ['/assets/projects/ptt-points-x3/54.png', '/assets/projects/ptt-points-x3/55.png'],
@@ -536,16 +548,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'PTT Station — Friday x2',
+        title: 'Friday x2',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A recurring Friday promotion for PTT Station and blueplus members, using speed-inspired lines and bold x2 typography to communicate the weekly points benefit.',
+          'A recurring Friday promotion for blueplus members, using speed-inspired lines and bold x2 typography to communicate the weekly points benefit.',
       },
       th: {
-        title: 'PTT Station — ศุกร์ x2',
+        title: 'ศุกร์ x2',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบสื่อโปรโมชั่นประจำวันศุกร์สำหรับสมาชิก blueplus ของ PTT Station โดยใช้เส้นสายที่ให้ความรู้สึกเคลื่อนไหวและตัวอักษร x2 ที่เด่นชัด เพื่อสื่อสารสิทธิประโยชน์รับคะแนนประจำสัปดาห์',
+          'ออกแบบสื่อโปรโมชั่นประจำวันศุกร์สำหรับสมาชิก blueplus โดยใช้เส้นสายที่ให้ความรู้สึกเคลื่อนไหวและตัวอักษร x2 ที่เด่นชัด เพื่อสื่อสารสิทธิประโยชน์รับคะแนนประจำสัปดาห์',
       },
     },
     images: [
@@ -561,16 +573,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'violet',
     copy: {
       en: {
-        title: 'PTT Station — Fuel Coupons',
+        title: 'Fuel Coupons',
         meta: 'Campaign · Point of Sale · Promotion',
         description:
-          'A coupon sheet and point-of-sale communication set for PTT Station, organizing multiple fuel discount offers into a clear, practical format for customer use.',
+          'A coupon sheet and point-of-sale communication set, organizing multiple fuel discount offers into a clear, practical format for customer use.',
       },
       th: {
-        title: 'PTT Station — Coupon',
+        title: 'Coupon',
         meta: 'แคมเปญ · สื่อ ณ จุดขาย · โปรโมชั่น',
         description:
-          'ออกแบบชุดคูปองและสื่อ ณ จุดขายสำหรับ PTT Station โดยจัดวางส่วนลดน้ำมันหลายรูปแบบให้อยู่ในโครงสร้างที่ชัดเจนและใช้งานได้จริง',
+          'ออกแบบชุดคูปองและสื่อ ณ จุดขาย โดยจัดวางส่วนลดน้ำมันหลายรูปแบบให้อยู่ในโครงสร้างที่ชัดเจนและใช้งานได้จริง',
       },
     },
     images: ['/assets/projects/ptt-coupon/73.png'],
@@ -582,16 +594,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'lime',
     copy: {
       en: {
-        title: 'PTT Station — Green Travel',
+        title: 'Green Travel',
         meta: 'Campaign · Environmental Communication',
         description:
-          'A green mobility campaign for PTT Station and blueplus, visualizing a 100-point reward offer through biofuel, renewable-energy imagery, and an optimistic travel direction.',
+          'A green mobility campaign for blueplus, visualizing a 100-point reward offer through biofuel, renewable-energy imagery, and an optimistic travel direction.',
       },
       th: {
-        title: 'PTT Station — Green Travel',
+        title: 'Green Travel',
         meta: 'แคมเปญ · สื่อสารสิ่งแวดล้อม',
         description:
-          'ออกแบบแคมเปญ Green Travel สำหรับ PTT Station และ blueplus ถ่ายทอดสิทธิประโยชน์สะสม 100 คะแนนผ่านแนวคิดไบโอฟิวเอล พลังงานสะอาด และภาพการเดินทางที่เป็นมิตรต่อสิ่งแวดล้อม',
+          'ออกแบบแคมเปญ Green Travel สำหรับ blueplus ถ่ายทอดสิทธิประโยชน์สะสม 100 คะแนนผ่านแนวคิดไบโอฟิวเอล พลังงานสะอาด และภาพการเดินทางที่เป็นมิตรต่อสิ่งแวดล้อม',
       },
     },
     images: ['/assets/projects/ptt-green-travel/41.png', '/assets/projects/ptt-green-travel/42.png'],
@@ -603,16 +615,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'peach',
     copy: {
       en: {
-        title: 'PTT Station — Mommy Bucket',
+        title: 'Mommy Bucket',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'A family-friendly co-promotion for PTT Station and Stitch, using colorful bucket products, playful character imagery, and a clear fuel-spend reward message.',
+          'A family-friendly co-promotion with Stitch, using colorful bucket products, playful character imagery, and a clear fuel-spend reward message.',
       },
       th: {
-        title: 'PTT Station — Mommy Bucket',
+        title: 'Mommy Bucket',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบสื่อโปรโมชั่นร่วมระหว่าง PTT Station และ Stitch โดยใช้ภาพถังลายคาแรกเตอร์ สีสันสดใส และข้อความสิทธิพิเศษเมื่อเติมน้ำมันครบยอด',
+          'ออกแบบสื่อโปรโมชั่นร่วมกับ Stitch โดยใช้ภาพถังลายคาแรกเตอร์ สีสันสดใส และข้อความสิทธิพิเศษเมื่อเติมน้ำมันครบยอด',
       },
     },
     images: [
@@ -628,16 +640,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'PTT Station — New Member Card',
+        title: 'New Member Card',
         meta: 'Campaign · Membership Communication',
         description:
-          'A membership card launch graphic for PTT Station, combining the new blueplus card, a fuel-station scene, and a direct membership sign-up message.',
+          'A membership card launch graphic, combining the new blueplus card, a fuel-station scene, and a direct membership sign-up message.',
       },
       th: {
-        title: 'PTT Station — บัตรสมาชิกใหม่',
+        title: 'บัตรสมาชิกใหม่',
         meta: 'แคมเปญ · สื่อสารสมาชิก',
         description:
-          'ออกแบบสื่อประชาสัมพันธ์บัตรสมาชิกใหม่ของ PTT Station โดยนำภาพบัตร blueplus ฉากสถานีบริการ และข้อความเชิญชวนสมัครสมาชิกมาจัดวางให้โดด\u2060เด่น',
+          'ออกแบบสื่อประชาสัมพันธ์บัตรสมาชิกใหม่ โดยนำภาพบัตร blueplus ฉากสถานีบริการ และข้อความเชิญชวนสมัครสมาชิกมาจัดวางให้โดด\u2060เด่น',
       },
     },
     images: [
@@ -653,16 +665,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'slate',
     copy: {
       en: {
-        title: 'PTT Station — OR Mobile Lab',
+        title: 'OR Mobile Lab',
         meta: 'Infographic · Campaign',
         description:
-          'An educational infographic for PTT Station’s OR Mobile Lab, explaining common problems caused by contaminated fuel and presenting the inspection service in a clear, approachable visual format.',
+          'An educational infographic for OR Mobile Lab, explaining common problems caused by contaminated fuel and presenting the inspection service in a clear, approachable visual format.',
       },
       th: {
-        title: 'PTT Station — OR Mobile Lab',
+        title: 'OR Mobile Lab',
         meta: 'อินโฟกราฟิก · แคมเปญ',
         description:
-          'ออกแบบอินโฟกราฟิกให้ความรู้เกี่ยวกับ OR Mobile Lab ของ PTT Station อธิบายปัญหาที่อาจเกิดจากน้ำมันปนเปื้อน และนำ\u2060เสนอขั้นตอนการตรวจสอบให้เข้าใจง่าย',
+          'ออกแบบอินโฟกราฟิกให้ความรู้เกี่ยวกับ OR Mobile Lab อธิบายปัญหาที่อาจเกิดจากน้ำมันปนเปื้อน และนำ\u2060เสนอขั้นตอนการตรวจสอบให้เข้าใจง่าย',
       },
     },
     images: [
@@ -678,16 +690,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'Konica Minolta — Event Communication',
+        title: 'Event Communication',
         meta: 'Campaign · Event Communication',
         description:
-          'Designed event communication materials for Konica Minolta, including anniversary invitations, event schedules, and promotional visuals for print-industry showcases. The work combines energetic digital graphics with clear information to support both attendance and on-site communication.',
+          'Designed event communication materials, including anniversary invitations, event schedules, and promotional visuals for print-industry showcases. The work combines energetic digital graphics with clear information to support both attendance and on-site communication.',
       },
       th: {
-        title: 'Konica Minolta — สื่อประชาสัมพันธ์งานอีเวนต์',
+        title: 'สื่อประชาสัมพันธ์งานอีเวนต์',
         meta: 'แคมเปญ · สื่อประชาสัมพันธ์อีเวนต์',
         description:
-          'ออกแบบสื่อประชาสัมพันธ์สำหรับงานอีเวนต์ของ Konica Minolta ทั้งภาพเชิญร่วมงาน กำหนดการ และสื่อโปรโมตสำหรับงานแสดงนวัตกรรมด้านการพิมพ์ โดยผสานกราฟิกที่มีพลังเข้ากับข้อมูลที่อ่านง่าย เพื่อช่วยสื่อสารทั้งก่อนและระหว่างงาน',
+          'ออกแบบสื่อประชาสัมพันธ์สำหรับงานอีเวนต์ ทั้งภาพเชิญร่วมงาน กำหนดการ และสื่อโปรโมตสำหรับงานแสดงนวัตกรรมด้านการพิมพ์ โดยผสานกราฟิกที่มีพลังเข้ากับข้อมูลที่อ่านง่าย เพื่อช่วยสื่อสารทั้งก่อนและระหว่างงาน',
       },
     },
     images: ['/assets/projects/km-event/113.png', '/assets/projects/km-event/117.png'],
@@ -699,16 +711,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'Konica Minolta — Brochure & Promotion Design',
+        title: 'Brochure & Promotion Design',
         meta: 'Print · Brochure · Promotion',
         description:
-          'Created brochure and promotional layouts for Konica Minolta, presenting digital printing systems, office technology services, and seasonal offers. The designs organize product benefits, pricing, and contact information into clear, practical printed materials.',
+          'Created brochure and promotional layouts for digital printing systems, office technology services, and seasonal offers. The designs organize product benefits, pricing, and contact information into clear, practical printed materials.',
       },
       th: {
-        title: 'Konica Minolta — ออกแบบโบรชัวร์และสื่อโปรโมชั่น',
+        title: 'ออกแบบโบรชัวร์และสื่อโปรโมชั่น',
         meta: 'งานพิมพ์ · โบรชัวร์ · โปรโมชั่น',
         description:
-          'ออกแบบโบรชัวร์และสื่อโปรโมชั่นสำหรับ Konica Minolta เพื่อสื่อสารระบบการพิมพ์ดิจิทัล บริการด้านเทคโนโลยีสำนักงาน และข้อเสนอในช่วงเทศกาล โดยจัดลำดับข้อมูลสินค้า ราคา สิทธิประโยชน์ และช่องทางติดต่อให้อ่านง่ายและใช้งานได้จริง',
+          'ออกแบบโบรชัวร์และสื่อโปรโมชั่นสำหรับระบบการพิมพ์ดิจิทัล บริการด้านเทคโนโลยีสำนักงาน และข้อเสนอในช่วงเทศกาล โดยจัดลำดับข้อมูลสินค้า ราคา สิทธิประโยชน์ และช่องทางติดต่อให้อ่านง่ายและใช้งานได้จริง',
       },
     },
     images: [
@@ -724,16 +736,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'Konica Minolta — Social Media Promotion',
+        title: 'Social Media Promotion',
         meta: 'Digital · Social Media · Promotion',
         description:
-          'Designed social media promotion graphics for Konica Minolta printer and service offers. Product imagery, bold promotional typography, and clear benefit-led layouts were combined to make each offer easy to notice and understand across digital channels.',
+          'Designed social media promotion graphics for printer and service offers. Product imagery, bold promotional typography, and clear benefit-led layouts were combined to make each offer easy to notice and understand across digital channels.',
       },
       th: {
-        title: 'Konica Minolta — ออกแบบสื่อโปรโมชั่น Social Media',
+        title: 'ออกแบบสื่อโปรโมชั่น Social Media',
         meta: 'ดิจิทัล · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบกราฟิกสำหรับสื่อโปรโมชั่นบน Social Media ของ Konica Minolta ทั้งสินค้าเครื่องพิมพ์และบริการต่าง ๆ โดยใช้ภาพสินค้า ตัวอักษรที่โดด\u2060เด่น และการจัดวางข้อมูลสิทธิประโยชน์ให้เข้าใจง่ายและดึงดูดความสน\u2060ใจบนช่องทางดิจิทัล',
+          'ออกแบบกราฟิกสำหรับสื่อโปรโมชั่นบน Social Media ทั้งสินค้าเครื่องพิมพ์และบริการต่าง ๆ โดยใช้ภาพสินค้า ตัวอักษรที่โดด\u2060เด่น และการจัดวางข้อมูลสิทธิประโยชน์ให้เข้าใจง่ายและดึงดูดความสน\u2060ใจบนช่องทางดิจิทัล',
       },
     },
     images: [
@@ -749,61 +761,19 @@ const projectRecords: ProjectRecord[] = [
     visual: 'lime',
     copy: {
       en: {
-        title: 'PTT Station — Green Station Award Design',
+        title: 'Green Station Award Design',
         meta: 'Branding · Award Design',
         description:
-          'Developed a physical award and presentation system for PTT Station’s Green Station initiative. The design translates clean energy, circular economy, and green community themes into a modular trophy form and a clear visual identity across the 2025 and 2026 versions.',
+          'Developed a physical award and presentation system for the Green Station initiative. The design translates clean energy, circular economy, and green community themes into a modular trophy form and a clear visual identity across the 2025 and 2026 versions.',
       },
       th: {
-        title: 'PTT Station — ออกแบบโล่รางวัล Green Station',
+        title: 'ออกแบบโล่รางวัล Green Station',
         meta: 'แบรนดิ้ง · ออกแบบโล่รางวัล',
         description:
-          'ออกแบบโล่รางวัลและชุดนำ\u2060เสนอสำหรับโครงการ Green Station ของ PTT Station โดยถ่ายทอดแนวคิดพลังงานสะอาด เศรษฐกิจหมุนเวียน และชุมชนสีเขียวผ่านรูปทรงของโล่และระบบภาพลักษณ์ที่ต่อเนื่องในเวอร์ชันปี 2025 และ 2026',
+          'ออกแบบโล่รางวัลและชุดนำ\u2060เสนอสำหรับโครงการ Green Station โดยถ่ายทอดแนวคิดพลังงานสะอาด เศรษฐกิจหมุนเวียน และชุมชนสีเขียวผ่านรูปทรงของโล่และระบบภาพลักษณ์ที่ต่อเนื่องในเวอร์ชันปี 2025 และ 2026',
       },
     },
     images: ['/assets/projects/green-station/52.png', '/assets/projects/green-station/53.png'],
-  },
-  {
-    id: 33,
-    category: 'Packaging',
-    year: '2024–2025',
-    visual: 'blue',
-    copy: {
-      en: {
-        title: 'Konica Minolta — Coo Kits Label Design',
-        meta: 'Packaging · Label Design',
-        description:
-          'Developed a cookie label design for Coo Kits, combining a bold blue palette, playful typography, product information, and food photography into a clear packaging label.',
-      },
-      th: {
-        title: 'Konica Minolta — ออกแบบฉลาก Coo Kits',
-        meta: 'บรรจุภัณฑ์ · ออกแบบฉลาก',
-        description:
-          'ออกแบบฉลากคุกกี้ Coo Kits โดยใช้โทนสีน้ำเงิน ตัวอักษรที่มีเอกลักษณ์ ภาพสินค้า และข้อมูลผลิตภัณฑ์ให้จัดวางอย่างชัดเจนและน่าสนใจ',
-      },
-    },
-    images: ['/assets/projects/km-cookie-label/114.png'],
-  },
-  {
-    id: 34,
-    category: 'Packaging',
-    year: '2024–2025',
-    visual: 'peach',
-    copy: {
-      en: {
-        title: 'Konica Minolta — Menu Brochure Design',
-        meta: 'Print · Menu · Editorial',
-        description:
-          'Designed a fold-out restaurant menu for Savory Spoon, combining structured menu typography with food photography and a warm dining atmosphere across the panels.',
-      },
-      th: {
-        title: 'Konica Minolta — ออกแบบเมนูและแผ่นพับ',
-        meta: 'งานพิมพ์ · เมนู · สิ่งพิมพ์',
-        description:
-          'ออกแบบเมนูพับสำหรับร้านอาหาร Savory Spoon โดยจัดลำดับรายการอาหารและเครื่องดื่มให้เป็นระบบ พร้อมใช้ภาพอาหารและบรรยากาศร้านเพื่อสร้างความน่าสนใจในแต่ละแผ่นพับ',
-      },
-    },
-    images: ['/assets/projects/km-menu/115.png', '/assets/projects/km-menu/116.png'],
   },
   {
     id: 35,
@@ -812,16 +782,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'PTT Station — blueplus SME Brochure',
+        title: 'blueplus SME Brochure',
         meta: 'Campaign · Brochure · Membership Communication',
         description:
-          'Designed a blueplus SME brochure for PTT Station to explain membership benefits and easy registration options for commercial customers, combining clear information hierarchy with app-based registration visuals.',
+          'Designed a blueplus SME brochure to explain membership benefits and easy registration options for commercial customers, combining clear information hierarchy with app-based registration visuals.',
       },
       th: {
-        title: 'PTT Station — โบรชัวร์ blueplus SME',
+        title: 'โบรชัวร์ blueplus SME',
         meta: 'แคมเปญ · โบรชัวร์ · สื่อสารสมาชิก',
         description:
-          'ออกแบบโบรชัวร์ blueplus SME สำหรับ PTT Station เพื่อสื่อสารสิทธิประโยชน์และช่องทางการสมัครสำหรับลูกค้าเชิงพาณิชย์ โดยจัดลำดับข้อมูลให้เข้าใจง่ายและใช้ภาพขั้นตอนการสมัครผ่านแอปประกอบ',
+          'ออกแบบโบรชัวร์ blueplus SME เพื่อสื่อสารสิทธิประโยชน์และช่องทางการสมัครสำหรับลูกค้าเชิงพาณิชย์ โดยจัดลำดับข้อมูลให้เข้าใจง่ายและใช้ภาพขั้นตอนการสมัครผ่านแอปประกอบ',
       },
     },
     images: ['/assets/projects/ptt-blueplus-sme/59.png'],
@@ -833,16 +803,16 @@ const projectRecords: ProjectRecord[] = [
     visual: 'slate',
     copy: {
       en: {
-        title: 'PTT Station — New Year Promotion',
+        title: 'New Year Promotion',
         meta: 'Campaign · Social Media · Promotion',
         description:
-          'Created a New Year promotion for PTT Station, using a festive fireworks atmosphere, premium fuel imagery, and a direct daily-discount message for blueplus members.',
+          'Created a New Year promotion using a festive fireworks atmosphere, premium fuel imagery, and a direct daily-discount message for blueplus members.',
       },
       th: {
-        title: 'PTT Station — โปรโมชั่นฉลองปีใหม่',
+        title: 'โปรโมชั่นฉลองปีใหม่',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบสื่อโปรโมชั่นฉลองปีใหม่สำหรับ PTT Station โดยใช้บรรยากาศดอกไม้ไฟ ภาพลักษณ์ของน้ำมันเกรดพรีเมียม และข้อความส่วนลดรายวันที่สื่อสารสิทธิพิเศษสำหรับสมาชิก blueplus อย่างชัดเจน',
+          'ออกแบบสื่อโปรโมชั่นฉลองปีใหม่ โดยใช้บรรยากาศดอกไม้ไฟ ภาพลักษณ์ของน้ำมันเกรดพรีเมียม และข้อความส่วนลดรายวันที่สื่อสารสิทธิพิเศษสำหรับสมาชิก blueplus อย่างชัดเจน',
       },
     },
     images: [
@@ -910,43 +880,19 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'PTT Station — New Card Member Benefits',
+        title: 'New Card Member Benefits',
         meta: 'Campaign · Membership Communication · Promotion',
         description:
-          'Created a promotional graphic for PTT Station’s new blueplus card, highlighting fuel and Café Amazon discounts with the card, a clear membership message, and station imagery.',
+          'Created a promotional graphic for a new blueplus card, highlighting fuel and Café Amazon discounts with the card, a clear membership message, and station imagery.',
       },
       th: {
-        title: 'PTT Station — สิทธิพิเศษบัตรสมาชิกใหม่',
+        title: 'สิทธิพิเศษบัตรสมาชิกใหม่',
         meta: 'แคมเปญ · สื่อสารสมาชิก · โปรโมชั่น',
         description:
-          'ออกแบบสื่อโปรโมชั่นสำหรับบัตร blueplus ใหม่ของ PTT Station โดยเน้นสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon พร้อมสื่อสารการสมัครสมาชิกผ่านภาพบัตรและภาพสถานีบริการ',
+          'ออกแบบสื่อโปรโมชั่นสำหรับบัตร blueplus ใหม่ โดยเน้นสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon พร้อมสื่อสารการสมัครสมาชิกผ่านภาพบัตรและภาพสถานีบริการ',
       },
     },
     images: ['/assets/projects/ptt-new-card-benefits/68.png'],
-  },
-  {
-    id: 40,
-    category: 'Branding',
-    year: '—',
-    visual: 'ink',
-    copy: {
-      en: {
-        title: 'Aseel Thai Oud & Karen Coffee — Visual Story',
-        meta: 'Branding · Product Story',
-        description:
-          'Developed a visual story for Aseel Thai Oud and Karen Coffee, using documentary imagery of cultivation, raw materials, and the making process to bring the origin of the products into the brand presentation.',
-      },
-      th: {
-        title: 'Aseel Thai Oud & Karen Coffee — Visual Story',
-        meta: 'แบรนดิ้ง · เรื่องราวผลิตภัณฑ์',
-        description:
-          'พัฒนา Visual Story สำหรับ Aseel Thai Oud และ Karen Coffee โดยใช้ภาพบรรยากาศการเพาะปลูก วัตถุดิบ และกระบวนการทำงาน เพื่อถ่ายทอดที่มาของผลิตภัณฑ์ให้เป็นส่วนหนึ่งของการนำเสนอแบรนด์',
-      },
-    },
-    images: [
-      '/assets/projects/aseel-thai-oud-coffee/01.jpg',
-      '/assets/projects/aseel-thai-oud-coffee/02.jpg',
-    ],
   },
   {
     id: 41,
@@ -1116,16 +1062,107 @@ const projectRecords: ProjectRecord[] = [
     },
     images: ['/assets/projects/protech-facebook-cover/01.jpg'],
   },
+  {
+    id: 48,
+    category: 'Packaging',
+    year: '—',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Prototype Label Design',
+        meta: 'Packaging · Label Design',
+        description:
+          'A packaging label prototype exploring structure, information hierarchy, and visual finishing across multiple label applications.',
+      },
+      th: {
+        title: 'ออกแบบฉลากต้นแบบ',
+        meta: 'บรรจุภัณฑ์ · ออกแบบฉลาก',
+        description:
+          'ออกแบบฉลากต้นแบบโดยทดลองโครงสร้าง ลำดับข้อมูล และเทคนิคการตกแต่งผิวงาน เพื่อให้เหมาะกับการใช้งานบนฉลากหลายรูปแบบ',
+      },
+    },
+    images: [
+      '/assets/projects/prototype-label/port1-21.png',
+      '/assets/projects/prototype-label/port1-41.png',
+      '/assets/projects/prototype-label/ptoonn.jpg',
+    ],
+  },
+  {
+    id: 49,
+    category: 'Packaging',
+    year: '—',
+    visual: 'paper',
+    copy: {
+      en: {
+        title: 'Prototype Packaging Design',
+        meta: 'Packaging · Product Mockup',
+        description:
+          'A collection of packaging prototypes exploring form, material, and presentation through production-ready mockups.',
+      },
+      th: {
+        title: 'ออกแบบบรรจุภัณฑ์ต้นแบบ',
+        meta: 'บรรจุภัณฑ์ · ภาพจำลองผลิตภัณฑ์',
+        description:
+          'รวมงานออกแบบบรรจุภัณฑ์ต้นแบบที่ทดลองรูปทรง วัสดุ และการนำเสนอผ่านภาพจำลองผลิตภัณฑ์ที่พร้อมต่อยอดสู่การผลิต',
+      },
+    },
+    images: [
+      '/assets/projects/prototype-packaging/1.png',
+      '/assets/projects/prototype-packaging/2.png',
+      '/assets/projects/prototype-packaging/3.png',
+      '/assets/projects/prototype-packaging/4.png',
+      '/assets/projects/prototype-packaging/5.png',
+      '/assets/projects/prototype-packaging/6.png',
+      '/assets/projects/prototype-packaging/7.png',
+      '/assets/projects/prototype-packaging/8.png',
+      '/assets/projects/prototype-packaging/9.png',
+      '/assets/projects/prototype-packaging/10.png',
+      '/assets/projects/prototype-packaging/11.png',
+      '/assets/projects/prototype-packaging/12.png',
+      '/assets/projects/prototype-packaging/13.png',
+      '/assets/projects/prototype-packaging/14.png',
+      '/assets/projects/prototype-packaging/15.png',
+      '/assets/projects/prototype-packaging/16.png',
+      '/assets/projects/prototype-packaging/17.png',
+    ],
+  },
+  {
+    id: 50,
+    category: 'Packaging',
+    year: '—',
+    visual: 'ink',
+    copy: {
+      en: {
+        title: 'Spot UV Finishing',
+        meta: 'Print · Finishing',
+        description:
+          'A print-finishing exploration using spot UV to highlight selected details and create contrast across the surface.',
+      },
+      th: {
+        title: 'งานพิมพ์ Spot UV',
+        meta: 'งานพิมพ์ · เทคนิคพิเศษ',
+        description:
+          'ทดลองเทคนิคการพิมพ์ Spot UV เพื่อเน้นรายละเอียดบางส่วนและสร้างความแตกต่างของพื้นผิวบนชิ้นงาน',
+      },
+    },
+    images: [
+      '/assets/projects/spot-uv/1.png',
+      '/assets/projects/spot-uv/2.png',
+    ],
+  },
 ];
 
-// Keep projects from the same client together in the archive and adjacent navigation.
+// Group projects by category, then keep closely related visual directions together.
 const projectOrder = [
-  1, 4, 5, 6, 7, 11, 8, 9, 40, 14, 2, 3, 12, 13,
-  10,
-  15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
-  31, 35, 36, 39,
-  28, 29, 30, 33, 34, 37, 38, 41, 46, 47,
-  45,
+  // Packaging: product packs, prototypes/finishing, then print collateral.
+  1, 4, 6, 7, 11, 48, 49, 50, 29, 38, 47,
+  // Branding: logo and identity work.
+  8, 14, 9, 31,
+  // Digital: social content, then infographic and information design.
+  2, 30, 45, 3, 5, 46,
+  // Campaign: related visual campaigns, followed by corporate communications.
+  10, 17, 19, 22, 28, 39, 12, 13, 18, 15, 16, 20, 26, 35, 37, 41,
+  21, 23, 24, 25, 27, 36,
 ];
 
 export const projects: ProjectRecord[] = projectOrder.map((id) => {
