@@ -764,35 +764,368 @@ const projectRecords: ProjectRecord[] = [
     images: ['/assets/projects/green-station/52.png', '/assets/projects/green-station/53.png'],
   },
   {
-    id: 32,
+    id: 33,
+    category: 'Packaging',
+    year: '2024–2025',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Konica Minolta — Coo Kits Label Design',
+        meta: 'Packaging · Label Design',
+        description:
+          'Developed a cookie label design for Coo Kits, combining a bold blue palette, playful typography, product information, and food photography into a clear packaging label.',
+      },
+      th: {
+        title: 'Konica Minolta — ออกแบบฉลาก Coo Kits',
+        meta: 'บรรจุภัณฑ์ · ออกแบบฉลาก',
+        description:
+          'ออกแบบฉลากคุกกี้ Coo Kits โดยใช้โทนสีน้ำเงิน ตัวอักษรที่มีเอกลักษณ์ ภาพสินค้า และข้อมูลผลิตภัณฑ์ให้จัดวางอย่างชัดเจนและน่าสนใจ',
+      },
+    },
+    images: ['/assets/projects/km-cookie-label/114.png'],
+  },
+  {
+    id: 34,
+    category: 'Packaging',
+    year: '2024–2025',
+    visual: 'peach',
+    copy: {
+      en: {
+        title: 'Konica Minolta — Menu Brochure Design',
+        meta: 'Print · Menu · Editorial',
+        description:
+          'Designed a fold-out restaurant menu for Savory Spoon, combining structured menu typography with food photography and a warm dining atmosphere across the panels.',
+      },
+      th: {
+        title: 'Konica Minolta — ออกแบบเมนูและแผ่นพับ',
+        meta: 'งานพิมพ์ · เมนู · สิ่งพิมพ์',
+        description:
+          'ออกแบบเมนูพับสำหรับร้านอาหาร Savory Spoon โดยจัดลำดับรายการอาหารและเครื่องดื่มให้เป็นระบบ พร้อมใช้ภาพอาหารและบรรยากาศร้านเพื่อสร้างความน่าสนใจในแต่ละแผ่นพับ',
+      },
+    },
+    images: ['/assets/projects/km-menu/115.png', '/assets/projects/km-menu/116.png'],
+  },
+  {
+    id: 35,
     category: 'Campaign',
     year: '—',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'PTT Station — blueplus SME Brochure',
+        meta: 'Campaign · Brochure · Membership Communication',
+        description:
+          'Designed a blueplus SME brochure for PTT Station to explain membership benefits and easy registration options for commercial customers, combining clear information hierarchy with app-based registration visuals.',
+      },
+      th: {
+        title: 'PTT Station — โบรชัวร์ blueplus SME',
+        meta: 'แคมเปญ · โบรชัวร์ · สื่อสารสมาชิก',
+        description:
+          'ออกแบบโบรชัวร์ blueplus SME สำหรับ PTT Station เพื่อสื่อสารสิทธิประโยชน์และช่องทางการสมัครสำหรับลูกค้าเชิงพาณิชย์ โดยจัดลำดับข้อมูลให้เข้าใจง่ายและใช้ภาพขั้นตอนการสมัครผ่านแอปประกอบ',
+      },
+    },
+    images: ['/assets/projects/ptt-blueplus-sme/59.png'],
+  },
+  {
+    id: 36,
+    category: 'Campaign',
+    year: '2025–2026',
     visual: 'slate',
     copy: {
       en: {
-        title: 'PTT Station × Mercedes-Benz — Super Power X99',
-        meta: 'Campaign · Co-promotion · Key Visual',
+        title: 'PTT Station — New Year Promotion',
+        meta: 'Campaign · Social Media · Promotion',
         description:
-          'Created a co-promotion key visual for PTT Station and Mercedes-Benz, presenting Super Power X99 fuel, service benefits, and blueplus membership privileges. Automotive imagery, premium dark tones, and focused offer panels give the campaign a refined, high-performance character.',
+          'Created a New Year promotion for PTT Station, using a festive fireworks atmosphere, premium fuel imagery, and a direct daily-discount message for blueplus members.',
       },
       th: {
-        title: 'PTT Station × Mercedes-Benz — Super Power X99',
-        meta: 'แคมเปญ · โปรโมชั่นร่วม · Key Visual',
+        title: 'PTT Station — โปรโมชั่นฉลองปีใหม่',
+        meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
-          'ออกแบบ Key Visual สำหรับโปรโมชั่นร่วมระหว่าง PTT Station และ Mercedes-Benz เพื่อสื่อสารน้ำมัน Super Power X99 สิทธิประโยชน์ด้านบริการ และสิทธิพิเศษสำหรับสมาชิก blueplus โดยใช้ภาพรถยนต์ โทนสีเข้มแบบพรีเมียม และกล่องข้อมูลโปรโมชั่นที่อ่านง่าย',
+          'ออกแบบสื่อโปรโมชั่นฉลองปีใหม่สำหรับ PTT Station โดยใช้บรรยากาศดอกไม้ไฟ ภาพลักษณ์ของน้ำมันเกรดพรีเมียม และข้อความส่วนลดรายวันที่สื่อสารสิทธิพิเศษสำหรับสมาชิก blueplus อย่างชัดเจน',
       },
     },
-    images: ['/assets/projects/ptt-benz/69.png'],
+    images: [
+      '/assets/projects/ptt-new-year/74.png',
+      '/assets/projects/ptt-new-year/75.png',
+      '/assets/projects/ptt-new-year/77.png',
+    ],
+  },
+  {
+    id: 37,
+    category: 'Campaign',
+    year: '—',
+    visual: 'paper',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Event Backdrop',
+        meta: 'Branding · Event Backdrop',
+        description:
+          'Created a branded event backdrop for Protech Transfer, repeating the Protech mark around a central machinery-service message within a clean industrial frame.',
+      },
+      th: {
+        title: 'Protech Transfer — ออกแบบ Backdrop',
+        meta: 'แบรนดิ้ง · ออกแบบ Backdrop',
+        description:
+          'ออกแบบ Backdrop สำหรับ Protech Transfer โดยจัดวางโลโก้ Protech ซ้ำเป็นจังหวะรอบข้อความหลักเกี่ยวกับบริการเครื่องจักร พร้อมใช้กรอบลายอุตสาหกรรมเพื่อสร้างภาพลักษณ์ที่ชัดเจน',
+      },
+    },
+    images: ['/assets/projects/protech-backdrop/18.png'],
+  },
+  {
+    id: 38,
+    category: 'Packaging',
+    year: '—',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Machinery Posters',
+        meta: 'Print · Brochure · Product Communication',
+        description:
+          'Designed a product brochure for Protech Transfer, organizing machinery categories, product images, service details, and contact information into a structured industrial layout.',
+      },
+      th: {
+        title: 'Protech Transfer — โปสเตอร์เครื่องจักร',
+        meta: 'งานพิมพ์ · โบรชัวร์ · สื่อสารผลิตภัณฑ์',
+        description:
+          'ออกแบบโบรชัวร์ผลิตภัณฑ์สำหรับ Protech Transfer โดยจัดหมวดหมู่เครื่องจักร ภาพสินค้า รายละเอียดบริการ และข้อมูลติดต่อให้อยู่ในรูปแบบที่เป็นระบบและเหมาะกับงานอุตสาหกรรม',
+      },
+    },
+    images: [
+      '/assets/projects/protech-brochure/14.png',
+      '/assets/projects/protech-brochure/15.png',
+      '/assets/projects/protech-brochure/16.png',
+      '/assets/projects/protech-brochure/17.png',
+      '/assets/projects/protech-bgjf-poster/01.jpg',
+      '/assets/projects/protech-exhibition-poster/01.jpg',
+      '/assets/projects/protech-exhibition-poster/02.jpg',
+      '/assets/projects/protech-why/01.jpg',
+      '/assets/projects/protech-why/02.jpg',
+    ],
+  },
+  {
+    id: 39,
+    category: 'Campaign',
+    year: '—',
+    visual: 'electric',
+    copy: {
+      en: {
+        title: 'PTT Station — New Card Member Benefits',
+        meta: 'Campaign · Membership Communication · Promotion',
+        description:
+          'Created a promotional graphic for PTT Station’s new blueplus card, highlighting fuel and Café Amazon discounts with the card, a clear membership message, and station imagery.',
+      },
+      th: {
+        title: 'PTT Station — สิทธิพิเศษบัตรสมาชิกใหม่',
+        meta: 'แคมเปญ · สื่อสารสมาชิก · โปรโมชั่น',
+        description:
+          'ออกแบบสื่อโปรโมชั่นสำหรับบัตร blueplus ใหม่ของ PTT Station โดยเน้นสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon พร้อมสื่อสารการสมัครสมาชิกผ่านภาพบัตรและภาพสถานีบริการ',
+      },
+    },
+    images: ['/assets/projects/ptt-new-card-benefits/68.png'],
+  },
+  {
+    id: 40,
+    category: 'Branding',
+    year: '—',
+    visual: 'ink',
+    copy: {
+      en: {
+        title: 'Aseel Thai Oud & Karen Coffee — Visual Story',
+        meta: 'Branding · Product Story',
+        description:
+          'Developed a visual story for Aseel Thai Oud and Karen Coffee, using documentary imagery of cultivation, raw materials, and the making process to bring the origin of the products into the brand presentation.',
+      },
+      th: {
+        title: 'Aseel Thai Oud & Karen Coffee — Visual Story',
+        meta: 'แบรนดิ้ง · เรื่องราวผลิตภัณฑ์',
+        description:
+          'พัฒนา Visual Story สำหรับ Aseel Thai Oud และ Karen Coffee โดยใช้ภาพบรรยากาศการเพาะปลูก วัตถุดิบ และกระบวนการทำงาน เพื่อถ่ายทอดที่มาของผลิตภัณฑ์ให้เป็นส่วนหนึ่งของการนำเสนอแบรนด์',
+      },
+    },
+    images: [
+      '/assets/projects/aseel-thai-oud-coffee/01.jpg',
+      '/assets/projects/aseel-thai-oud-coffee/02.jpg',
+    ],
+  },
+  {
+    id: 41,
+    category: 'Campaign',
+    categoryLabel: {
+      en: 'Recruitment Communication',
+      th: 'สื่อประชาสัมพันธ์',
+    },
+    year: '—',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Recruitment Communication',
+        meta: 'Campaign · Recruitment · Corporate Identity',
+        description:
+          'Designed recruitment communication materials for Protech Transfer using the company’s CI system, applying its logo, industrial blue palette, typography, imagery, and layout consistently across hiring posters.',
+      },
+      th: {
+        title: 'Protech Transfer — สื่อประชาสัมพันธ์',
+        meta: 'สื่อประชาสัมพันธ์ · รับสมัครงาน · CI องค์กร',
+        description:
+          'ออกแบบสื่อประชาสัมพันธ์เพื่อการรับสมัครงานให้ Protech Transfer โดยใช้ CI ของบริษัท ทั้งโลโก้ โทนสีน้ำเงินแบบอุตสาหกรรม ตัวอักษร ภาพเครื่องจักร และการจัดวางให้สื่อสารตำแหน่งงานกับข้อมูลติดต่อได้อย่างชัดเจนและเป็นระบบ',
+      },
+    },
+    images: [
+      '/assets/projects/protech-recruitment/01.jpg',
+      '/assets/projects/protech-recruitment/02.jpg',
+      '/assets/projects/protech-recruitment/03.jpg',
+    ],
+  },
+  {
+    id: 46,
+    category: 'Digital',
+    year: '—',
+    visual: 'paper',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Infographic & Corporate Communication',
+        meta: 'Digital · Infographic · Corporate Communication',
+        description:
+          'Collected infographic and corporate communication work for Protech Transfer, translating company values, technical processes, precious-metal recovery, and brand information into clear, structured visual stories.',
+      },
+      th: {
+        title: 'Protech Transfer — อินโฟกราฟิกและสื่อสารองค์กร',
+        meta: 'ดิจิทัล · อินโฟกราฟิก · สื่อสารองค์กร',
+        description:
+          'รวบรวมงานอินโฟกราฟิกและสื่อสารองค์กรของ Protech Transfer ทั้งการสื่อสารคุณค่าขององค์กร กระบวนการทางเทคนิค การกู้คืนโลหะมีค่า และข้อมูลแบรนด์ให้อยู่ในรูปแบบที่ชัดเจนและเป็นระบบ',
+      },
+    },
+    images: [
+      '/assets/projects/protech-manager-formula/01.jpg',
+      '/assets/projects/protech-values/01.jpg',
+    ],
+  },
+  {
+    id: 47,
+    category: 'Packaging',
+    year: '2025',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Machinery Brochure',
+        meta: 'Print · Brochure · Product Communication',
+        description:
+          'Designed a bilingual machinery brochure system for Protech Transfer, organizing 17 machine series into clear product and technical-information pages while maintaining the company’s industrial CI across print communication.',
+      },
+      th: {
+        title: 'Protech Transfer — โบรชัวร์เครื่องจักร',
+        meta: 'งานพิมพ์ · โบรชัวร์ · สื่อสารผลิตภัณฑ์',
+        description:
+          'ออกแบบระบบโบรชัวร์เครื่องจักรสองภาษาสำหรับ Protech Transfer โดยจัดข้อมูลเครื่องจักร 17 ซีรีส์ให้อยู่ในหน้าแนะนำผลิตภัณฑ์และข้อมูลทางเทคนิคที่ชัดเจน พร้อมคง CI ของบริษัทในงานสื่อสารสิ่งพิมพ์ให้เป็นชุดเดียวกัน',
+      },
+    },
+    localizedImages: {
+      en: [
+        '/assets/projects/protech-machinery-brochure-en/01-cadica-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/01-cadica-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/02-canova-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/02-canova-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/03-cf-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/03-cf-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/04-coherent-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/04-coherent-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/05-eco-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/05-eco-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/06-ef-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/06-ef-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/07-embedding-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/07-embedding-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/08-evo-x-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/08-evo-x-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/09-mc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/09-mc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/10-mtc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/10-mtc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/11-new-vc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/11-new-vc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/12-open-melter-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/12-open-melter-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/13-protech-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/13-protech-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/14-revo-x-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/14-revo-x-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/15-rr-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/15-rr-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/16-tdl-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/16-tdl-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-en/17-vc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-en/17-vc-page-02.jpg',
+      ],
+      th: [
+        '/assets/projects/protech-machinery-brochure-th/01-cadica-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/01-cadica-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/02-canova-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/02-canova-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/03-cf-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/03-cf-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/04-coherent-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/04-coherent-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/05-eco-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/05-eco-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/06-ef-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/06-ef-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/07-embedding-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/07-embedding-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/08-evo-x-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/08-evo-x-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/09-mc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/09-mc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/10-mtc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/10-mtc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/11-new-vc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/11-new-vc-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/12-open-melter-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/12-open-melter-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/13-protech-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/13-protech-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/14-revo-x-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/14-revo-x-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/15-rr-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/15-rr-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/16-tdl-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/16-tdl-page-02.jpg',
+        '/assets/projects/protech-machinery-brochure-th/17-vc-page-01.jpg',
+        '/assets/projects/protech-machinery-brochure-th/17-vc-page-02.jpg',
+      ],
+    },
+  },
+  {
+    id: 45,
+    category: 'Digital',
+    year: '—',
+    visual: 'blue',
+    copy: {
+      en: {
+        title: 'Protech Transfer — Facebook Cover Design',
+        meta: 'Digital · Social Media · Brand Communication',
+        description:
+          'Designed a Facebook cover for Protech Transfer, combining the brand identity, machine range, service categories, and contact channels into one clear social media header.',
+      },
+      th: {
+        title: 'Protech Transfer — ออกแบบภาพปก Facebook',
+        meta: 'ดิจิทัล · โซเชียลมีเดีย · สื่อสารแบรนด์',
+        description:
+          'ออกแบบภาพปก Facebook สำหรับ Protech Transfer โดยรวมอัตลักษณ์แบรนด์ กลุ่มเครื่องจักร ประเภทบริการ และช่องทางติดต่อให้อยู่ในภาพ Header เดียวที่ชัดเจน',
+      },
+    },
+    images: ['/assets/projects/protech-facebook-cover/01.jpg'],
   },
 ];
 
 // Keep projects from the same client together in the archive and adjacent navigation.
 const projectOrder = [
-  1, 4, 5, 6, 7, 11, 8, 9, 14, 2, 3, 12, 13,
+  1, 4, 5, 6, 7, 11, 8, 9, 40, 14, 2, 3, 12, 13,
   10,
   15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
-  31, 32,
-  28, 29, 30,
+  31, 35, 36, 39,
+  28, 29, 30, 33, 34, 37, 38, 41, 46, 47,
+  45,
 ];
 
 export const projects: ProjectRecord[] = projectOrder.map((id) => {

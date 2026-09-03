@@ -2,9 +2,11 @@ import { featuredProjectIds, projects } from '@/content/projects';
 import type { CategoryFilter, Locale, Project, ProjectRecord } from '@/lib/types';
 
 function localizeProject(project: ProjectRecord, locale: Locale): Project {
-  const { copy, ...details } = project;
+  const { copy, categoryLabel, localizedImages, ...details } = project;
   return {
     ...details,
+    ...(localizedImages ? { images: localizedImages[locale] } : {}),
+    ...(categoryLabel ? { categoryLabel: categoryLabel[locale] } : {}),
     ...copy[locale],
   };
 }

@@ -41,10 +41,12 @@
   display: block;
   overflow: hidden;
   border-radius: 4px;
-  background: #e8e8e8;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(17, 17, 17, .08);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   transition: transform .3s ease, box-shadow .3s ease;
 }
 

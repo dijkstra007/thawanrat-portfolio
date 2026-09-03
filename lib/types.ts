@@ -24,6 +24,7 @@ export type Project = {
   id: number;
   title: string;
   category: ProjectCategory;
+  categoryLabel?: string;
   meta: string;
   year: string;
   visual: ProjectVisual;
@@ -31,7 +32,9 @@ export type Project = {
   images?: string[];
 };
 
-export type ProjectRecord = Omit<Project, 'title' | 'meta' | 'description'> & {
+export type ProjectRecord = Omit<Project, 'title' | 'categoryLabel' | 'meta' | 'description'> & {
+  categoryLabel?: Localized<string>;
+  localizedImages?: Localized<string[]>;
   copy: Localized<Pick<Project, 'title' | 'meta' | 'description'>>;
 };
 

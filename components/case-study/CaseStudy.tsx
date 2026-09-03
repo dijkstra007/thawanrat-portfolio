@@ -96,7 +96,7 @@ export default function CaseStudy({
           </button>
         </div>
         <div className={styles.heading}>
-          <p className="eyebrow">{copy.categoryLabels[project.category]}</p>
+          <p className="eyebrow">{project.categoryLabel ?? copy.categoryLabels[project.category]}</p>
           <h2><NoBreakText text={project.title} /></h2>
         </div>
         <div className={styles.content}>
