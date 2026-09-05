@@ -54,16 +54,16 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/social-media/82.png',
-      '/assets/projects/social-media/83.png',
-      '/assets/projects/social-media/84.png',
-      '/assets/projects/social-media/85.png',
-      '/assets/projects/social-media/86.png',
-      '/assets/projects/social-media/87.png',
-      '/assets/projects/social-media/88.png',
-      '/assets/projects/social-media/89.png',
-      '/assets/projects/social-media/90.png',
-      '/assets/projects/social-media/91.png',
+      '/assets/projects/social-media/port2-01.png',
+      '/assets/projects/social-media/port2-02.png',
+      '/assets/projects/social-media/port2-03.png',
+      '/assets/projects/social-media/port2-04.png',
+      '/assets/projects/social-media/port2-05.png',
+      '/assets/projects/social-media/port2-06.png',
+      '/assets/projects/social-media/port2-07.png',
+      '/assets/projects/social-media/port2-08.png',
+      '/assets/projects/social-media/port2-09.png',
+      '/assets/projects/social-media/port2-10.png',
     ],
   },
   {
@@ -86,10 +86,13 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/financial-infographic/78.png',
-      '/assets/projects/financial-infographic/79.png',
-      '/assets/projects/financial-infographic/80.png',
-      '/assets/projects/financial-infographic/81.png',
+      '/assets/projects/financial-infographic/port2-11.png',
+      '/assets/projects/financial-infographic/port2-12.png',
+      '/assets/projects/financial-infographic/port2-13.png',
+      '/assets/projects/financial-infographic/port2-14.png',
+      '/assets/projects/financial-infographic/port2-15.png',
+      '/assets/projects/financial-infographic/port2-16.png',
+      '/assets/projects/financial-infographic/port2-18.png',
     ],
   },
   {
@@ -255,19 +258,19 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'FIT\u00a0Auto Promotional Campaign',
+        title: 'FIT Auto Promotional Campaign',
         meta: 'Campaign · Social Media · Promotion',
         description:
           'A promotional graphic system for FIT\u00a0Auto, using bold color, clear offer messaging, and product imagery to make a service promotion easy to notice.',
       },
       th: {
-        title: 'แคมเปญโปรโมชั่น FIT\u00a0Auto',
+        title: 'แคมเปญโปรโมชั่น FIT Auto',
         meta: 'แคมเปญ · โซเชียลมีเดีย · โปรโมชั่น',
         description:
           'ออกแบบชุดกราฟิกสำหรับโปรโมชั่น FIT\u00a0Auto โดยใช้สีที่โดด\u2060เด่น ข้อความข้อเสนอที่อ่านง่าย และภาพสินค้า เพื่อให้ผู้ชมเข้าใจโปรโมชั่นได้อย่างรวดเร็ว',
       },
     },
-    images: ['/assets/projects/fitauto/34.png', '/assets/projects/fitauto/35.png'],
+    images: ['/assets/projects/fitauto/01-34.png', '/assets/projects/fitauto/02-port1-38.png'],
   },
   {
     id: 11,
@@ -390,10 +393,10 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/ptt-water/32.png',
-      '/assets/projects/ptt-water/33.png',
-      '/assets/projects/ptt-water/50.png',
-      '/assets/projects/ptt-water/51.png',
+      '/assets/projects/ptt-water/01.jpg',
+      '/assets/projects/ptt-water/02.jpg',
+      '/assets/projects/ptt-water/03.jpg',
+      '/assets/projects/ptt-water/04.jpg',
     ],
   },
   {
@@ -416,10 +419,11 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/ptt-singha-amazon/46.png',
-      '/assets/projects/ptt-singha-amazon/47.png',
-      '/assets/projects/ptt-singha-amazon/48.png',
-      '/assets/projects/ptt-singha-amazon/49.png',
+      '/assets/projects/ptt-singha-amazon/01.png',
+      '/assets/projects/ptt-singha-amazon/02.jpg',
+      '/assets/projects/ptt-singha-amazon/03.jpg',
+      '/assets/projects/ptt-singha-amazon/04.jpg',
+      '/assets/projects/ptt-singha-amazon/05.jpg',
     ],
   },
   {
@@ -442,9 +446,11 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/ptt-superpower/43.png',
-      '/assets/projects/ptt-superpower/44.png',
-      '/assets/projects/ptt-superpower/45.png',
+      '/assets/projects/ptt-superpower/01.png',
+      '/assets/projects/ptt-superpower/02.jpg',
+      '/assets/projects/ptt-superpower/03.jpg',
+      '/assets/projects/ptt-superpower/04.jpg',
+      '/assets/projects/ptt-superpower/05.png',
     ],
   },
   {
@@ -466,7 +472,10 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบสื่อแคมเปญตลาดเติมสุข โดยใช้ภาพประกอบบรรยากาศตลาดและชุมชน เพื่อสื่อสารการสนับสนุนสินค้าจากชุมชนให้ดูอบอุ่นและเข้าถึงง่าย',
       },
     },
-    images: ['/assets/projects/ptt-talad-term-suk/63.png', '/assets/projects/ptt-talad-term-suk/64.png'],
+    images: [
+      '/assets/projects/ptt-talad-term-suk/01-2026.jpg',
+      '/assets/projects/ptt-talad-term-suk/02-2026.jpg',
+    ],
   },
   {
     id: 19,
@@ -475,7 +484,7 @@ const projectRecords: ProjectRecord[] = [
     visual: 'electric',
     copy: {
       en: {
-        title: 'Self-Serve Fuel',
+        title: 'Self-Serve',
         meta: 'Campaign · Service Communication',
         description:
           'A self-service fuel communication system, using clear savings messaging, service-point graphics, and the blueplus app callout to guide customers through the offer.',
@@ -488,11 +497,14 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/ptt-self-serve/36.png',
-      '/assets/projects/ptt-self-serve/37.png',
-      '/assets/projects/ptt-self-serve/38.png',
-      '/assets/projects/ptt-self-serve/39.png',
-      '/assets/projects/ptt-self-serve/40.png',
+      '/assets/projects/ptt-self-serve/01.png',
+      '/assets/projects/ptt-self-serve/02.jpg',
+      '/assets/projects/ptt-self-serve/03.jpg',
+      '/assets/projects/ptt-self-serve/04.jpg',
+      '/assets/projects/ptt-self-serve/05.jpg',
+      '/assets/projects/ptt-self-serve/06.jpg',
+      '/assets/projects/ptt-self-serve/07.jpg',
+      '/assets/projects/ptt-self-serve/08.png',
     ],
   },
   {
@@ -561,9 +573,10 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/ptt-friday-x2/70.png',
-      '/assets/projects/ptt-friday-x2/71.png',
-      '/assets/projects/ptt-friday-x2/72.png',
+      '/assets/projects/ptt-friday-x2/01-port2-23.png',
+      '/assets/projects/ptt-friday-x2/02-cover-facebook.jpg',
+      '/assets/projects/ptt-friday-x2/03-a-board.jpg',
+      '/assets/projects/ptt-friday-x2/04-srip-ads.jpg',
     ],
   },
   {
@@ -702,7 +715,12 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบสื่อประชาสัมพันธ์สำหรับงานอีเวนต์ ทั้งภาพเชิญร่วมงาน กำหนดการ และสื่อโปรโมตสำหรับงานแสดงนวัตกรรมด้านการพิมพ์ โดยผสานกราฟิกที่มีพลังเข้ากับข้อมูลที่อ่านง่าย เพื่อช่วยสื่อสารทั้งก่อนและระหว่างงาน',
       },
     },
-    images: ['/assets/projects/km-event/113.png', '/assets/projects/km-event/117.png'],
+    images: [
+      '/assets/projects/km-event/01-14000.jpg',
+      '/assets/projects/km-event/02-thanks-01.jpg',
+      '/assets/projects/km-event/03-thanks-02.jpg',
+      '/assets/projects/km-event/04-promotion.jpg',
+    ],
   },
   {
     id: 29,
@@ -724,9 +742,11 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/km-brochure/110.png',
-      '/assets/projects/km-brochure/111.png',
-      '/assets/projects/km-brochure/112.png',
+      '/assets/projects/km-brochure/01-khum-kha.jpg',
+      '/assets/projects/km-brochure/02-reduce-print-cost.jpg',
+      '/assets/projects/km-brochure/03-happy-new-year.jpg',
+      '/assets/projects/km-brochure/04-moo-deng-01.jpg',
+      '/assets/projects/km-brochure/05-moo-deng-02.jpg',
     ],
   },
   {
@@ -749,9 +769,9 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/km-social/107.png',
-      '/assets/projects/km-social/108.png',
-      '/assets/projects/km-social/109.png',
+      '/assets/projects/km-social/01-c750i-01.jpg',
+      '/assets/projects/km-social/02-c750i-02.jpg',
+      '/assets/projects/km-social/03-promotion.jpg',
     ],
   },
   {
@@ -773,7 +793,7 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบโล่รางวัลและชุดนำ\u2060เสนอสำหรับโครงการ Green Station โดยถ่ายทอดแนวคิดพลังงานสะอาด เศรษฐกิจหมุนเวียน และชุมชนสีเขียวผ่านรูปทรงของโล่และระบบภาพลักษณ์ที่ต่อเนื่องในเวอร์ชันปี 2025 และ 2026',
       },
     },
-    images: ['/assets/projects/green-station/52.png', '/assets/projects/green-station/53.png'],
+    images: ['/assets/projects/green-station/01.png', '/assets/projects/green-station/02.jpg'],
   },
   {
     id: 35,
@@ -892,7 +912,7 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบสื่อโปรโมชั่นสำหรับบัตร blueplus ใหม่ โดยเน้นสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon พร้อมสื่อสารการสมัครสมาชิกผ่านภาพบัตรและภาพสถานีบริการ',
       },
     },
-    images: ['/assets/projects/ptt-new-card-benefits/68.png'],
+    images: ['/assets/projects/ptt-new-card-benefits/01-car-stopper.jpg'],
   },
   {
     id: 41,
