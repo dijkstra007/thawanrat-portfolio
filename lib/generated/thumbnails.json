@@ -1,0 +1,618 @@
+{
+  "/assets/projects/aseel-thai-oud/1.png": [
+    {
+      "src": "/assets/thumbnails/f4883040b6eefd81-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/f4883040b6eefd81-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/f4883040b6eefd81-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/benja/1.png": [
+    {
+      "src": "/assets/thumbnails/d33d7be2955fa6b4-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/d33d7be2955fa6b4-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/d33d7be2955fa6b4-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/chailai/1.jpg": [
+    {
+      "src": "/assets/thumbnails/3931c98749319033-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/3931c98749319033-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/3931c98749319033-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/financial-infographic/port2-11.png": [
+    {
+      "src": "/assets/thumbnails/e8f2423b3092c4ec-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/e8f2423b3092c4ec-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/e8f2423b3092c4ec-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/fitauto/01-34.png": [
+    {
+      "src": "/assets/thumbnails/d47bcb0b155402ad-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/d47bcb0b155402ad-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/d47bcb0b155402ad-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/food-beverage/1.png": [
+    {
+      "src": "/assets/thumbnails/2536cdc53d2d9f92-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/2536cdc53d2d9f92-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/2536cdc53d2d9f92-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/green-station/01.png": [
+    {
+      "src": "/assets/thumbnails/e960eb7032864920-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/e960eb7032864920-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/e960eb7032864920-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/green-tea/1.png": [
+    {
+      "src": "/assets/thumbnails/eb3b86a9e5c87fd8-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/eb3b86a9e5c87fd8-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/eb3b86a9e5c87fd8-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/juicena/1.png": [
+    {
+      "src": "/assets/thumbnails/98ad280d60ee7bdc-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/98ad280d60ee7bdc-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/98ad280d60ee7bdc-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/km-brochure/01-khum-kha.jpg": [
+    {
+      "src": "/assets/thumbnails/d407d8e87d06cb24-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/d407d8e87d06cb24-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/d407d8e87d06cb24-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/km-event/01-14000.jpg": [
+    {
+      "src": "/assets/thumbnails/7e8f07ec18cd797c-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/7e8f07ec18cd797c-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/7e8f07ec18cd797c-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/km-social/01-c750i-01.jpg": [
+    {
+      "src": "/assets/thumbnails/1cc718da632ec04a-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/1cc718da632ec04a-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/1cc718da632ec04a-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/local-souvenir/1.png": [
+    {
+      "src": "/assets/thumbnails/71aae73aaae2a013-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/71aae73aaae2a013-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/71aae73aaae2a013-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/lussopack-2023/23.png": [
+    {
+      "src": "/assets/thumbnails/93a3f4823d68b2e3-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/93a3f4823d68b2e3-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/93a3f4823d68b2e3-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/lussopack-2024/26.png": [
+    {
+      "src": "/assets/thumbnails/b6dbe4ca6704b7b2-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/b6dbe4ca6704b7b2-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/b6dbe4ca6704b7b2-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/mango-smith/1.png": [
+    {
+      "src": "/assets/thumbnails/f5fefa3e6bf0fd73-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/f5fefa3e6bf0fd73-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/f5fefa3e6bf0fd73-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protech-backdrop/18.png": [
+    {
+      "src": "/assets/thumbnails/5c09488639eb3893-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/5c09488639eb3893-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/5c09488639eb3893-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protech-brochure/14.png": [
+    {
+      "src": "/assets/thumbnails/db62f45b6ca2064c-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/db62f45b6ca2064c-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/db62f45b6ca2064c-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protech-facebook-cover/01.jpg": [
+    {
+      "src": "/assets/thumbnails/52b6b34ad8d50f9e-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/52b6b34ad8d50f9e-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/52b6b34ad8d50f9e-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protech-machinery-brochure-en/01-cadica-page-01.jpg": [
+    {
+      "src": "/assets/thumbnails/5ec0b4934a7c9d80-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/5ec0b4934a7c9d80-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/5ec0b4934a7c9d80-993.webp",
+      "width": 993
+    }
+  ],
+  "/assets/projects/protech-machinery-brochure-th/01-cadica-page-01.jpg": [
+    {
+      "src": "/assets/thumbnails/3acce74b7d21533e-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/3acce74b7d21533e-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/3acce74b7d21533e-993.webp",
+      "width": 993
+    }
+  ],
+  "/assets/projects/protech-manager-formula/01.jpg": [
+    {
+      "src": "/assets/thumbnails/87b744b22795111b-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/87b744b22795111b-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/87b744b22795111b-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protech-recruitment/01.jpg": [
+    {
+      "src": "/assets/thumbnails/acbb634c36e6507b-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/acbb634c36e6507b-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/acbb634c36e6507b-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/protein-snake/1.png": [
+    {
+      "src": "/assets/thumbnails/a73e7a59bc733f26-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/a73e7a59bc733f26-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/a73e7a59bc733f26-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/prototype-label/port1-21.png": [
+    {
+      "src": "/assets/thumbnails/75a001679af6c76e-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/75a001679af6c76e-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/75a001679af6c76e-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/prototype-packaging/1.png": [
+    {
+      "src": "/assets/thumbnails/e18f8d7f328d7fc3-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/e18f8d7f328d7fc3-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/e18f8d7f328d7fc3-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-blueplus-sme/59.png": [
+    {
+      "src": "/assets/thumbnails/c73f07e0d6334418-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/c73f07e0d6334418-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/c73f07e0d6334418-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-coupon/73.png": [
+    {
+      "src": "/assets/thumbnails/b941250947c52451-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/b941250947c52451-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/b941250947c52451-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-football/65.png": [
+    {
+      "src": "/assets/thumbnails/42829c3fa284ba65-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/42829c3fa284ba65-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/42829c3fa284ba65-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-friday-x2/01-port2-23.png": [
+    {
+      "src": "/assets/thumbnails/41aabe94adb5eee1-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/41aabe94adb5eee1-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/41aabe94adb5eee1-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-green-travel/41.png": [
+    {
+      "src": "/assets/thumbnails/5298302961f2bb6b-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/5298302961f2bb6b-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/5298302961f2bb6b-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-mommy-bucket/60.png": [
+    {
+      "src": "/assets/thumbnails/4905f95defb18165-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/4905f95defb18165-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/4905f95defb18165-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-new-card-benefits/01-car-stopper.jpg": [
+    {
+      "src": "/assets/thumbnails/498945888e7fc6f5-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/498945888e7fc6f5-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/498945888e7fc6f5-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-new-card/56.png": [
+    {
+      "src": "/assets/thumbnails/e9d3d53807323f0c-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/e9d3d53807323f0c-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/e9d3d53807323f0c-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-new-year/74.png": [
+    {
+      "src": "/assets/thumbnails/c2465d4510a65fad-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/c2465d4510a65fad-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/c2465d4510a65fad-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-or-mobile-lab/29.png": [
+    {
+      "src": "/assets/thumbnails/d1103631c4fd44ba-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/d1103631c4fd44ba-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/d1103631c4fd44ba-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-points-x3/54.png": [
+    {
+      "src": "/assets/thumbnails/df756da894e5b931-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/df756da894e5b931-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/df756da894e5b931-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-self-serve/01.png": [
+    {
+      "src": "/assets/thumbnails/effff28b00a301b6-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/effff28b00a301b6-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/effff28b00a301b6-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-singha-amazon/01.png": [
+    {
+      "src": "/assets/thumbnails/b75afab06c82fac9-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/b75afab06c82fac9-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/b75afab06c82fac9-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-superpower/01.png": [
+    {
+      "src": "/assets/thumbnails/35b9ff29b45bb579-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/35b9ff29b45bb579-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/35b9ff29b45bb579-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-talad-term-suk/01-2026.jpg": [
+    {
+      "src": "/assets/thumbnails/4ba9e7eab7647b21-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/4ba9e7eab7647b21-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/4ba9e7eab7647b21-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/ptt-water/01.jpg": [
+    {
+      "src": "/assets/thumbnails/c0abc135ac0e1c47-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/c0abc135ac0e1c47-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/c0abc135ac0e1c47-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/social-media/port2-01.png": [
+    {
+      "src": "/assets/thumbnails/5778de559f301ff8-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/5778de559f301ff8-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/5778de559f301ff8-1040.webp",
+      "width": 1040
+    }
+  ],
+  "/assets/projects/spot-uv/1.png": [
+    {
+      "src": "/assets/thumbnails/4cce2d8c06421338-320.webp",
+      "width": 320
+    },
+    {
+      "src": "/assets/thumbnails/4cce2d8c06421338-640.webp",
+      "width": 640
+    },
+    {
+      "src": "/assets/thumbnails/4cce2d8c06421338-1040.webp",
+      "width": 1040
+    }
+  ]
+}

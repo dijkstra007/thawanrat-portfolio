@@ -1,6 +1,5 @@
-import { visualClass } from '@/components/visuals/visuals';
+import ProjectThumbnail from '@/components/visuals/ProjectThumbnail';
 import type { SiteCopy } from '@/content/site';
-import { assetPath } from '@/lib/assets';
 import type { Project } from '@/lib/types';
 import NoBreakText from '@/components/typography/NoBreakText';
 import styles from './Archive.module.css';
@@ -22,17 +21,18 @@ export default function Archive({ copy, projects, onOpenProject }: ArchiveProps)
         </div>
       </div>
       <div className={styles.grid}>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <button
             key={project.id}
             className={styles.card}
             type="button"
             onClick={() => onOpenProject(project)}
           >
-            <span
-              className={`${styles.visual} ${visualClass(project.visual)}`}
-              style={project.images?.[0] ? { backgroundImage: `url("${assetPath(project.images[0])}")` } : undefined}
-              aria-hidden="true"
+            <ProjectThumbnail
+              className={styles.visual}
+              src={project.images?.[0]}
+              visual={project.visual}
+              eager={index < 4}
             />
             <span className={styles.copy}>
               <strong><NoBreakText text={project.title} /></strong>

@@ -1,7 +1,6 @@
 import type { SiteCopy } from '@/content/site';
-import { assetPath } from '@/lib/assets';
+import ProjectThumbnail from '@/components/visuals/ProjectThumbnail';
 import type { Project } from '@/lib/types';
-import { visualClass } from '@/components/visuals/visuals';
 import NoBreakText from '@/components/typography/NoBreakText';
 import styles from './SelectedWork.module.css';
 
@@ -33,10 +32,10 @@ export default function SelectedWork({ copy, projects, onOpenProject, onViewAll 
             type="button"
             onClick={() => onOpenProject(project)}
           >
-            <span
-              className={`${styles.image} ${visualClass(project.visual)}`}
-              style={project.images?.[0] ? { backgroundImage: `url("${assetPath(project.images[0])}")` } : undefined}
-              aria-hidden="true"
+            <ProjectThumbnail
+              className={styles.image}
+              src={project.images?.[0]}
+              visual={project.visual}
             />
             <strong><NoBreakText text={project.title} /></strong>
             <small><NoBreakText text={project.meta} /></small>

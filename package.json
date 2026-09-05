@@ -6,6 +6,11 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "images:generate": "node scripts/generate-thumbnails.mjs",
+    "test:images": "npm run images:generate && node --test scripts/test-image-loading.mjs",
+    "predev": "npm run images:generate",
+    "prebuild": "npm run images:generate",
+    "prebuild:pages": "npm run images:generate",
     "dev": "vinext dev",
     "build": "vinext build",
     "build:pages": "next build",
@@ -29,7 +34,9 @@
     "@vitejs/plugin-rsc": "0.5.26",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
+    "jsdom": "^29.1.1",
     "react-server-dom-webpack": "19.2.6",
+    "sharp": "^0.35.4",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.3",
