@@ -241,7 +241,7 @@ export const site = {
         ],
         featured: [
           { label: 'Local Souvenir Packaging Design', id: 1 },
-          { label: 'Protein Snake packaging', id: 7 },
+          { label: 'Protein Snack packaging', id: 7 },
         ],
         awards: [
           { label: 'Social Media Content Design', id: 2 },

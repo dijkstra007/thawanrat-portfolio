@@ -183,7 +183,7 @@ const projectRecords: ProjectRecord[] = [
     visual: 'red',
     copy: {
       en: {
-        title: 'Protein Snake packaging',
+        title: 'Protein Snack packaging',
         meta: 'Packaging · Product Mockup',
         description:
           'A protein snack packaging concept with three flavor directions—banana, chocolate, and strawberry—shown through clean product mockups.',
