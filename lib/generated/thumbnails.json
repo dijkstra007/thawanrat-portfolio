@@ -27,17 +27,17 @@
       "width": 1040
     }
   ],
-  "/assets/projects/chailai/1.jpg": [
+  "/assets/projects/chailai/00-cover.png": [
     {
-      "src": "/assets/thumbnails/3931c98749319033-320.webp",
+      "src": "/assets/thumbnails/cee3ead67e41d66b-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/3931c98749319033-640.webp",
+      "src": "/assets/thumbnails/cee3ead67e41d66b-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/3931c98749319033-1040.webp",
+      "src": "/assets/thumbnails/cee3ead67e41d66b-1040.webp",
       "width": 1040
     }
   ],
@@ -83,17 +83,17 @@
       "width": 1040
     }
   ],
-  "/assets/projects/green-station/01.png": [
+  "/assets/projects/green-station/00-cover.png": [
     {
-      "src": "/assets/thumbnails/e960eb7032864920-320.webp",
+      "src": "/assets/thumbnails/e077e5f56c850d5b-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/e960eb7032864920-640.webp",
+      "src": "/assets/thumbnails/e077e5f56c850d5b-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/e960eb7032864920-1040.webp",
+      "src": "/assets/thumbnails/e077e5f56c850d5b-1040.webp",
       "width": 1040
     }
   ],
@@ -111,17 +111,17 @@
       "width": 1040
     }
   ],
-  "/assets/projects/juicena/1.png": [
+  "/assets/projects/juicena/00-cover.png": [
     {
-      "src": "/assets/thumbnails/98ad280d60ee7bdc-320.webp",
+      "src": "/assets/thumbnails/53475b7fdce10608-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/98ad280d60ee7bdc-640.webp",
+      "src": "/assets/thumbnails/53475b7fdce10608-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/98ad280d60ee7bdc-1040.webp",
+      "src": "/assets/thumbnails/53475b7fdce10608-1040.webp",
       "width": 1040
     }
   ],
@@ -223,74 +223,60 @@
       "width": 1040
     }
   ],
-  "/assets/projects/protech-backdrop/18.png": [
+  "/assets/projects/protech-backdrop/00-cover.png": [
     {
-      "src": "/assets/thumbnails/5c09488639eb3893-320.webp",
+      "src": "/assets/thumbnails/c2a4bd4ba99e4dbb-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/5c09488639eb3893-640.webp",
+      "src": "/assets/thumbnails/c2a4bd4ba99e4dbb-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/5c09488639eb3893-1040.webp",
+      "src": "/assets/thumbnails/c2a4bd4ba99e4dbb-1040.webp",
       "width": 1040
     }
   ],
-  "/assets/projects/protech-brochure/14.png": [
+  "/assets/projects/protech-brochure/00-cover.jpg": [
     {
-      "src": "/assets/thumbnails/db62f45b6ca2064c-320.webp",
+      "src": "/assets/thumbnails/cf62ea8b424de17c-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/db62f45b6ca2064c-640.webp",
+      "src": "/assets/thumbnails/cf62ea8b424de17c-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/db62f45b6ca2064c-1040.webp",
+      "src": "/assets/thumbnails/cf62ea8b424de17c-1040.webp",
       "width": 1040
     }
   ],
-  "/assets/projects/protech-facebook-cover/01.jpg": [
+  "/assets/projects/protech-facebook-cover/00-cover.png": [
     {
-      "src": "/assets/thumbnails/52b6b34ad8d50f9e-320.webp",
+      "src": "/assets/thumbnails/88a1fde58f25501c-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/52b6b34ad8d50f9e-640.webp",
+      "src": "/assets/thumbnails/88a1fde58f25501c-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/52b6b34ad8d50f9e-1040.webp",
+      "src": "/assets/thumbnails/88a1fde58f25501c-1040.webp",
       "width": 1040
     }
   ],
-  "/assets/projects/protech-machinery-brochure-en/01-cadica-page-01.jpg": [
+  "/assets/projects/protech-machinery-brochure/00-cover.jpg": [
     {
-      "src": "/assets/thumbnails/5ec0b4934a7c9d80-320.webp",
+      "src": "/assets/thumbnails/d5d095eb46d4949c-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/5ec0b4934a7c9d80-640.webp",
+      "src": "/assets/thumbnails/d5d095eb46d4949c-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/5ec0b4934a7c9d80-993.webp",
-      "width": 993
-    }
-  ],
-  "/assets/projects/protech-machinery-brochure-th/01-cadica-page-01.jpg": [
-    {
-      "src": "/assets/thumbnails/3acce74b7d21533e-320.webp",
-      "width": 320
-    },
-    {
-      "src": "/assets/thumbnails/3acce74b7d21533e-640.webp",
-      "width": 640
-    },
-    {
-      "src": "/assets/thumbnails/3acce74b7d21533e-993.webp",
-      "width": 993
+      "src": "/assets/thumbnails/d5d095eb46d4949c-1040.webp",
+      "width": 1040
     }
   ],
   "/assets/projects/protech-manager-formula/01.jpg": [
@@ -307,31 +293,31 @@
       "width": 1040
     }
   ],
-  "/assets/projects/protech-recruitment/01.jpg": [
+  "/assets/projects/protech-recruitment/00-cover.png": [
     {
-      "src": "/assets/thumbnails/acbb634c36e6507b-320.webp",
+      "src": "/assets/thumbnails/77777b2346aef2de-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/acbb634c36e6507b-640.webp",
+      "src": "/assets/thumbnails/77777b2346aef2de-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/acbb634c36e6507b-1040.webp",
+      "src": "/assets/thumbnails/77777b2346aef2de-1040.webp",
       "width": 1040
     }
   ],
-  "/assets/projects/protein-snake/1.png": [
+  "/assets/projects/protein-snake/00-cover.png": [
     {
-      "src": "/assets/thumbnails/a73e7a59bc733f26-320.webp",
+      "src": "/assets/thumbnails/8e3e75bfab84692c-320.webp",
       "width": 320
     },
     {
-      "src": "/assets/thumbnails/a73e7a59bc733f26-640.webp",
+      "src": "/assets/thumbnails/8e3e75bfab84692c-640.webp",
       "width": 640
     },
     {
-      "src": "/assets/thumbnails/a73e7a59bc733f26-1040.webp",
+      "src": "/assets/thumbnails/8e3e75bfab84692c-1040.webp",
       "width": 1040
     }
   ],

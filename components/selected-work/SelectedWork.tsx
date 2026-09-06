@@ -39,7 +39,7 @@ export default function SelectedWork({ copy, projects, onOpenProject, onViewAll 
               visual={project.visual}
             />
             <strong><NoBreakText text={project.title} /></strong>
-            <small><NoBreakText text={project.meta} /></small>
+            {project.meta ? <small><NoBreakText text={project.meta} /></small> : null}
           </Link>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import type { ProjectRecord } from '@/lib/types';
 
-export const featuredProjectIds = [1, 2, 4, 7];
+export const featuredProjectIds = [1, 31, 2, 13];
 
 const projectRecords: ProjectRecord[] = [
   {
@@ -11,14 +11,14 @@ const projectRecords: ProjectRecord[] = [
     visual: 'paper',
     copy: {
       en: {
-        title: 'Local Souvenir Packaging Design',
-        meta: 'Packaging · Local Branding',
+        title: 'Phop Pra',
+        meta: 'Branding · Packaging',
         description:
           'Developed a packaging design concept for local souvenirs from Prachuap Khiri Khan, inspired by the unique characteristics of local fruits. Different fruit forms, colors, and patterns were translated into distinctive packaging shapes and graphics, creating a cohesive collection while giving each product its own visual identity.',
       },
       th: {
-        title: 'การออกแบบบรรจุ\u2060ภัณฑ์ของฝากท้อง\u2060ถิ่น',
-        meta: 'บรรจุ\u2060ภัณฑ์ · อัตลักษณ์ท้อง\u2060ถิ่น',
+        title: 'พบประ',
+        meta: 'แบรนดิ้ง · บรรจุ\u2060ภัณฑ์',
         description:
           'ออกแบบบรรจุ\u2060ภัณฑ์ของฝากจากจังหวัดประจวบคีรีขันธ์ โดยนำเอกลักษณ์ของผล\u2060ไม้ท้อง\u2060ถิ่นมาเป็นแรง\u2060บันดาลใจในการออกแบบ ทั้งรูปทรง สี และลวดลาย เพื่อ\u2060สร้างความแตกต่างให้กับบรรจุ\u2060ภัณฑ์แต่ละผลิตภัณฑ์ ขณะเดียวกันยังคงความเป็น Collection เดียวกันและสะท้อนเอกลักษณ์ของท้อง\u2060ถิ่น',
       },
@@ -119,6 +119,7 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
+      '/assets/projects/chailai/00-cover.png',
       '/assets/projects/chailai/1.jpg',
       '/assets/projects/chailai/2.jpg',
       '/assets/projects/chailai/3.jpg',
@@ -203,7 +204,7 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/protein-snake/1.png',
+      '/assets/projects/protein-snake/00-cover.png',
       '/assets/projects/protein-snake/2.jpg',
     ],
   },
@@ -215,8 +216,8 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'Benja Logo Design',
-        meta: 'Brand Identity · Logo Design',
+        title: 'Benja',
+        meta: 'Branding',
         description:
           'A brand identity exploration for Benja, developing a clean Thai wordmark with a flowing wave motif and a calm, approachable visual character.',
       },
@@ -241,8 +242,8 @@ const projectRecords: ProjectRecord[] = [
     visual: 'ink',
     copy: {
       en: {
-        title: 'Aseel Thai Oud Logo Design',
-        meta: 'Brand Identity · Logo Design',
+        title: 'Aseel Thai Oud',
+        meta: 'Branding',
         description:
           'A refined identity exploration for Aseel Thai Oud, combining a clean wordmark with a leaf symbol to communicate a natural character and an elevated fragrance experience.',
       },
@@ -303,7 +304,7 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
-      '/assets/projects/juicena/1.png',
+      '/assets/projects/juicena/00-cover.png',
       '/assets/projects/juicena/2.png',
       '/assets/projects/juicena/3.png',
       '/assets/projects/juicena/4.png',
@@ -369,8 +370,8 @@ const projectRecords: ProjectRecord[] = [
     visual: 'sun',
     copy: {
       en: {
-        title: 'Mango Smith Brand Identity',
-        meta: 'Brand Identity · Logo Design',
+        title: 'Mango Smith',
+        meta: 'Branding',
         description:
           'A friendly brand identity for Mango Smith, using a warm orange wordmark and mango symbol to create a playful, approachable fruit-led character.',
       },
@@ -824,7 +825,11 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบโล่รางวัลและชุดนำ\u2060เสนอสำหรับโครงการ Green Station โดยถ่ายทอดแนวคิดพลังงานสะอาด เศรษฐกิจหมุนเวียน และชุมชนสีเขียวผ่านรูปทรงของโล่และระบบภาพลักษณ์ที่ต่อเนื่องในเวอร์ชันปี 2025 และ 2026',
       },
     },
-    images: ['/assets/projects/green-station/01.png', '/assets/projects/green-station/02.jpg'],
+    images: [
+      '/assets/projects/green-station/00-cover.png',
+      '/assets/projects/green-station/01.png',
+      '/assets/projects/green-station/02.jpg',
+    ],
   },
   {
     id: 35,
@@ -894,7 +899,10 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบ Backdrop สำหรับ Protech Transfer โดยจัดวางโลโก้ Protech ซ้ำเป็นจังหวะรอบข้อความหลักเกี่ยวกับบริการเครื่องจักร พร้อมใช้กรอบลายอุตสาหกรรมเพื่อสร้างภาพลักษณ์ที่ชัดเจน',
       },
     },
-    images: ['/assets/projects/protech-backdrop/18.png'],
+    images: [
+      '/assets/projects/protech-backdrop/00-cover.png',
+      '/assets/projects/protech-backdrop/18.png',
+    ],
   },
   {
     id: 38,
@@ -917,6 +925,7 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
+      '/assets/projects/protech-brochure/00-cover.jpg',
       '/assets/projects/protech-brochure/14.png',
       '/assets/projects/protech-brochure/15.png',
       '/assets/projects/protech-brochure/16.png',
@@ -975,6 +984,7 @@ const projectRecords: ProjectRecord[] = [
       },
     },
     images: [
+      '/assets/projects/protech-recruitment/00-cover.png',
       '/assets/projects/protech-recruitment/01.jpg',
       '/assets/projects/protech-recruitment/02.jpg',
       '/assets/projects/protech-recruitment/03.jpg',
@@ -1027,6 +1037,7 @@ const projectRecords: ProjectRecord[] = [
     },
     localizedImages: {
       en: [
+        '/assets/projects/protech-machinery-brochure/00-cover.jpg',
         '/assets/projects/protech-machinery-brochure-en/01-cadica-page-01.jpg',
         '/assets/projects/protech-machinery-brochure-en/01-cadica-page-02.jpg',
         '/assets/projects/protech-machinery-brochure-en/02-canova-page-01.jpg',
@@ -1063,6 +1074,7 @@ const projectRecords: ProjectRecord[] = [
         '/assets/projects/protech-machinery-brochure-en/17-vc-page-02.jpg',
       ],
       th: [
+        '/assets/projects/protech-machinery-brochure/00-cover.jpg',
         '/assets/projects/protech-machinery-brochure-th/01-cadica-page-01.jpg',
         '/assets/projects/protech-machinery-brochure-th/01-cadica-page-02.jpg',
         '/assets/projects/protech-machinery-brochure-th/02-canova-page-01.jpg',
@@ -1120,7 +1132,10 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบภาพปก Facebook สำหรับ Protech Transfer โดยรวมอัตลักษณ์แบรนด์ กลุ่มเครื่องจักร ประเภทบริการ และช่องทางติดต่อให้อยู่ในภาพ Header เดียวที่ชัดเจน',
       },
     },
-    images: ['/assets/projects/protech-facebook-cover/01.jpg'],
+    images: [
+      '/assets/projects/protech-facebook-cover/00-cover.png',
+      '/assets/projects/protech-facebook-cover/01.jpg',
+    ],
   },
   {
     id: 48,
@@ -1215,18 +1230,32 @@ const projectRecords: ProjectRecord[] = [
   },
 ];
 
-// Group projects by category, then keep closely related visual directions together.
-const projectOrder = [
-  // Packaging: product packs, prototypes/finishing, then print collateral.
-  1, 4, 6, 7, 11, 48, 49, 50, 29, 38, 47,
-  // Branding: logo and identity work.
-  8, 14, 9, 31,
-  // Digital: social content, then infographic and information design.
-  2, 30, 45, 3, 5, 46,
-  // Campaign: related visual campaigns, followed by corporate communications.
-  10, 17, 19, 22, 28, 39, 12, 13, 18, 15, 16, 20, 26, 35, 37, 41,
-  21, 23, 24, 25, 27, 36,
+// Keep the archive ordered by client/project group. Landscape covers sit before
+// the portrait or non-standard covers inside each group so the grid keeps a
+// steady visual rhythm without cropping the artwork.
+export const archiveProjectGroups = {
+  branding: [1, 8, 9, 14, 31],
+  packaging: [6, 7, 11, 48, 49, 50, 4],
+  lussopack: [13, 12],
+  protech: [37, 38, 45, 41, 46, 47],
+  konica: [28, 30, 29],
+  pttStation: [17, 19, 22, 16, 20, 26, 24, 25, 27, 36, 15, 39, 18, 35, 21, 23],
+  other: [2, 3, 5, 10],
+} as const;
+
+export type ArchiveGroupKey = keyof typeof archiveProjectGroups;
+
+export const archiveGroupOrder: ArchiveGroupKey[] = [
+  'branding',
+  'packaging',
+  'lussopack',
+  'protech',
+  'konica',
+  'pttStation',
+  'other',
 ];
+
+const projectOrder = archiveGroupOrder.flatMap((group) => archiveProjectGroups[group]);
 
 export const projects: ProjectRecord[] = projectOrder.map((id) => {
   const project = projectRecords.find((item) => item.id === id);

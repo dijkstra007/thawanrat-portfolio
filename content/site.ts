@@ -1,3 +1,4 @@
+import type { ArchiveGroupKey } from '@/content/projects';
 import type { CategoryFilter, Localized, ProjectCategory } from '@/lib/types';
 
 export type SiteCopy = {
@@ -72,6 +73,7 @@ export type SiteCopy = {
   archive: {
     eyebrow: string;
     heading: string;
+    groups: Record<ArchiveGroupKey, string>;
   };
   footer: {
     eyebrow: string;
@@ -195,6 +197,15 @@ export const site = {
       archive: {
         eyebrow: 'Selected work',
         heading: 'Work that speaks.',
+        groups: {
+          branding: 'Branding',
+          packaging: 'Packaging',
+          lussopack: 'Lussopack',
+          protech: 'Protech Transfer',
+          konica: 'Konica Minolta',
+          pttStation: 'PTT Station',
+          other: 'Other / Personal',
+        },
       },
       footer: {
         eyebrow: 'Contact',
@@ -240,15 +251,17 @@ export const site = {
           { label: 'Campaign', category: 'Campaign' },
         ],
         featured: [
-          { label: 'Local Souvenir Packaging Design', id: 1 },
-          { label: 'Protein Snacks packaging', id: 7 },
+          { label: 'Phop Pra', id: 1 },
+          { label: 'Green Station Award Design', id: 31 },
+          { label: 'Social Media Content Design', id: 2 },
+          { label: 'Lussopack — BKK GEMS 2024', id: 13 },
         ],
         awards: [
-          { label: 'Social Media Content Design', id: 2 },
-          { label: 'Financial Data & Infographic Design', id: 3 },
           { label: 'Chailai Packaging Design', id: 4 },
-          { label: 'Food & Beverage Graphic Design', id: 5 },
-          { label: 'Green Tea Packaging Design', id: 6 },
+          { label: 'Lussopack — BKK GEMS 2023', id: 12 },
+          { label: 'Protech Transfer — Machinery Brochure', id: 47 },
+          { label: 'Social Media Promotion', id: 30 },
+          { label: 'New Card Member Benefits', id: 39 },
         ],
       },
     },
@@ -328,6 +341,15 @@ export const site = {
       archive: {
         eyebrow: 'ผลงานทั้งหมด',
         heading: 'ผลงานที่บอกเล่าเรื่องราวได้',
+        groups: {
+          branding: 'แบรนดิ้ง',
+          packaging: 'บรรจุภัณฑ์',
+          lussopack: 'Lussopack',
+          protech: 'Protech Transfer',
+          konica: 'Konica Minolta',
+          pttStation: 'PTT Station',
+          other: 'งานอื่น ๆ / งานส่วนตัว',
+        },
       },
       footer: {
         eyebrow: 'ติดต่อ',
@@ -373,15 +395,17 @@ export const site = {
           { label: 'แคมเปญ', category: 'Campaign' },
         ],
         featured: [
-          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ของฝากท้อง\u2060ถิ่น', id: 1 },
-          { label: 'บรรจุ\u2060ภัณฑ์ Protein Snacks', id: 7 },
+          { label: 'พบประ', id: 1 },
+          { label: 'ออกแบบโล่รางวัล Green Station', id: 31 },
+          { label: 'การออกแบบคอนเทนต์สำหรับ Social Media', id: 2 },
+          { label: 'Lussopack — BKK GEMS 2024', id: 13 },
         ],
         awards: [
-          { label: 'การออกแบบคอนเทนต์สำหรับ Social Media', id: 2 },
-          { label: 'การออกแบบข้อมูลการเงินและอินโฟกราฟิก', id: 3 },
           { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ ChaiLai', id: 4 },
-          { label: 'การออกแบบกราฟิกสำหรับอาหารและเครื่องดื่ม', id: 5 },
-          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ชาเขียว', id: 6 },
+          { label: 'Lussopack — BKK GEMS 2023', id: 12 },
+          { label: 'Protech Transfer — โบรชัวร์เครื่องจักร', id: 47 },
+          { label: 'ออกแบบสื่อโปรโมชั่น Social Media', id: 30 },
+          { label: 'สิทธิพิเศษบัตรสมาชิกใหม่', id: 39 },
         ],
       },
     },

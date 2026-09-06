@@ -30,6 +30,7 @@ const { default: SelectedWork } = await import('../components/selected-work/Sele
 const { default: CaseStudy } = await import('../components/case-study/CaseStudy.tsx');
 const { filterProjects, getFeaturedProjects, getProjectById } = await import('../lib/projects.ts');
 const { site } = await import('../content/site.ts');
+const { galleryPath } = await import('../lib/assets.ts');
 const container = document.getElementById('test');
 const root = createRoot(container);
 const copy = site.copy.en;
@@ -90,31 +91,31 @@ test('portfolio image loading', async (t) => {
     await render(h(CaseStudy, props));
     assert.equal(container.querySelectorAll('img').length, 1);
     assert.equal(preloads.length, 0);
-    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${project.images[0]}`);
+    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[0])}`);
     await load(container.querySelector('img'));
     assert.equal(preloads.length, 1);
-    assert.equal(preloads[0].url, `/portfolio${project.images[1]}`);
+    assert.equal(preloads[0].url, `/portfolio${galleryPath(project.images[1])}`);
     await act(() => preloads[0].onload());
     assert.equal(preloads.length, 1, 'Completing lookahead must not preload the entire collection');
     assert.equal(container.querySelectorAll('img').length, 2);
     await click(copy.caseStudy.nextImageLabel);
     assert.equal(preloads.length, 2);
-    assert.equal(preloads[1].url, `/portfolio${project.images[2]}`);
+    assert.equal(preloads[1].url, `/portfolio${galleryPath(project.images[2])}`);
     await click(`${copy.caseStudy.showImagePrefix} 5`);
-    assert.ok(container.querySelector(`img[src="/portfolio${project.images[4]}"]`));
+    assert.ok(container.querySelector(`img[src="/portfolio${galleryPath(project.images[4])}"]`));
     assert.equal(preloads.length, 2, 'Jump target must load before its next image');
-    await load(container.querySelector(`img[src="/portfolio${project.images[4]}"]`));
-    assert.equal(preloads.at(-1).url, `/portfolio${project.images[5]}`);
+    await load(container.querySelector(`img[src="/portfolio${galleryPath(project.images[4])}"]`));
+    assert.equal(preloads.at(-1).url, `/portfolio${galleryPath(project.images[5])}`);
   });
 
-  await t.test('zoom, fullscreen, keyboard navigation and swipe retain original image sources', async () => {
+  await t.test('zoom, fullscreen, keyboard navigation and swipe retain optimized image sources', async () => {
     await click(copy.caseStudy.zoomInLabel);
     assert.ok(container.textContent.includes('125%'));
     await click(copy.caseStudy.openViewerLabel);
     const viewer = container.querySelector('[role="dialog"]');
-    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${project.images[4]}`);
+    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[4])}`);
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'ArrowRight' })));
-    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${project.images[5]}`);
+    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[5])}`);
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: '+' })));
     assert.ok(viewer.textContent.includes('125%'));
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: '0' })));
@@ -129,7 +130,7 @@ test('portfolio image loading', async (t) => {
     await pointer('pointerdown', 200);
     await pointer('pointermove', 100);
     await pointer('pointerup', 100);
-    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${project.images[6]}`);
+    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[6])}`);
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape' })));
     assert.equal(container.querySelector('[role="dialog"]').getAttribute('aria-label'), project.title);
   });
@@ -141,7 +142,7 @@ test('portfolio image loading', async (t) => {
     await act(() => container.querySelector('img').dispatchEvent(new dom.window.Event('error')));
     assert.equal(preloads.length, 0);
     await click(copy.caseStudy.nextImageLabel);
-    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${project.images[1]}`);
+    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[1])}`);
     await load(container.querySelector('img'));
     assert.equal(preloads.length, 1);
   });

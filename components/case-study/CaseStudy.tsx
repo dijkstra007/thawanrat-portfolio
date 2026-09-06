@@ -8,15 +8,19 @@ import type {
 } from 'react';
 import { visualClass } from '@/components/visuals/visuals';
 import type { SiteCopy } from '@/content/site';
-import { assetPath } from '@/lib/assets';
+import { assetPath, galleryPath } from '@/lib/assets';
 import { hasPreviousProject } from '@/lib/projects';
 import type { Locale, Project } from '@/lib/types';
 import NoBreakText from '@/components/typography/NoBreakText';
 import styles from './CaseStudy.module.css';
 
 const MIN_ZOOM = 1;
-const MAX_ZOOM = 4;
-const ZOOM_STEP = .25;
+// On a phone, a 3,184px-wide artwork is usually fitted to roughly 390px.
+// 800% brings that image close to its native pixel scale for reading details.
+const MAX_ZOOM = 8;
+const FINE_ZOOM_STEP = .25;
+const DETAIL_ZOOM_THRESHOLD = 2;
+const DETAIL_ZOOM_STEP = 1;
 const SWIPE_THRESHOLD = 40;
 const EMPTY_IMAGES: string[] = [];
 
@@ -68,6 +72,12 @@ function clamp(value: number, min: number, max: number) {
 
 function clampZoom(value: number) {
   return clamp(value, MIN_ZOOM, MAX_ZOOM);
+}
+
+function getButtonZoomStep(scale: number, direction: 1 | -1) {
+  const useDetailStep = (direction === 1 && scale >= DETAIL_ZOOM_THRESHOLD)
+    || (direction === -1 && scale > DETAIL_ZOOM_THRESHOLD);
+  return useDetailStep ? DETAIL_ZOOM_STEP : FINE_ZOOM_STEP;
 }
 
 function getDistance(first: Point, second: Point) {
@@ -194,7 +204,7 @@ function ZoomableImage({
 
       event.preventDefault();
       setZoomState((state) => {
-        const nextScale = clampZoom(state.scale + direction * ZOOM_STEP);
+        const nextScale = clampZoom(state.scale + direction * getButtonZoomStep(state.scale, direction));
         const nextState = getZoomAtPoint(state, nextScale, { x: 0, y: 0 });
         const viewport = viewportRef.current;
         return viewport
@@ -243,7 +253,7 @@ function ZoomableImage({
   };
 
   const updateZoom = (direction: 1 | -1) => {
-    const nextScale = clampZoom(zoomState.scale + direction * ZOOM_STEP);
+    const nextScale = clampZoom(zoomState.scale + direction * getButtonZoomStep(zoomState.scale, direction));
     setSafeZoomState(getZoomAtPoint(zoomState, nextScale, { x: 0, y: 0 }));
   };
 
@@ -378,7 +388,7 @@ function ZoomableImage({
         <img
           ref={imageRef}
           className={styles.zoomImage}
-          src={assetPath(src)}
+          src={assetPath(galleryPath(src))}
           alt={alt}
           draggable="false"
           decoding="async"
@@ -484,7 +494,7 @@ export default function CaseStudy({
     // Only the active image can trigger a one-image lookahead; no preload cascade.
     const preload = new Image();
     preload.onload = () => markImageLoaded(nextImage);
-    preload.src = assetPath(nextImage);
+    preload.src = assetPath(galleryPath(nextImage));
     return () => { preload.onload = null; };
   }, [currentImageLoaded, nextImage, markImageLoaded]);
 

@@ -5,6 +5,10 @@ import { visualClass } from './visuals';
 import styles from './ProjectThumbnail.module.css';
 
 const thumbnails: Record<string, { src: string; width: number }[]> = thumbnailManifest;
+const fullBleedCovers = new Set([
+  '/assets/projects/protech-brochure/00-cover.jpg',
+  '/assets/projects/protech-machinery-brochure/00-cover.jpg',
+]);
 // Match the shell widths, column counts, and gaps used by both galleries.
 const sizes = '(max-width: 552px) calc(100vw - 32px), (max-width: 620px) 520px, (max-width: 800px) calc((100vw - 54px) / 2), (max-width: 900px) 373px, (max-width: 1260px) calc((100vw - 128px) / 4), 283px';
 
@@ -25,7 +29,7 @@ export default function ProjectThumbnail({ src, visual, className, eager = false
         // Static responsive assets work on both Sites and GitHub Pages.
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          className={styles.image}
+          className={`${styles.image}${fullBleedCovers.has(src) ? ` ${styles.fullBleed}` : ''}`}
           src={assetPath(defaultSource?.src ?? src)}
           srcSet={variants?.map((variant) => `${assetPath(variant.src)} ${variant.width}w`).join(', ')}
           sizes={sizes}

@@ -14,6 +14,23 @@
   letter-spacing: var(--heading-tracking);
 }
 
+.groups {
+  display: grid;
+  gap: 88px;
+}
+
+.group {
+  min-width: 0;
+}
+
+.groupHeading {
+  margin: 0 0 28px;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -81,9 +98,11 @@
 
 @media (max-width: 900px) {
   .section { padding-top: 82px; padding-bottom: 82px; }
+  .groups { gap: 68px; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 38px 14px; }
 }
 
 @media (max-width: 620px) {
+  .groups { gap: 56px; }
   .grid { grid-template-columns: 1fr; gap: 40px; }
 }
