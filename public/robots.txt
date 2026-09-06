@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dijkstra007.github.io/thawanrat-portfolio/sitemap.xml

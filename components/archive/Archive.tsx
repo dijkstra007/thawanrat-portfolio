@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ProjectThumbnail from '@/components/visuals/ProjectThumbnail';
 import type { SiteCopy } from '@/content/site';
 import type { Project } from '@/lib/types';
@@ -22,11 +23,11 @@ export default function Archive({ copy, projects, onOpenProject }: ArchiveProps)
       </div>
       <div className={styles.grid}>
         {projects.map((project, index) => (
-          <button
+          <Link
             key={project.id}
             className={styles.card}
-            type="button"
-            onClick={() => onOpenProject(project)}
+            href={`/work/${project.slug}`}
+            onNavigate={(event) => { event.preventDefault(); onOpenProject(project); }}
           >
             <ProjectThumbnail
               className={styles.visual}
@@ -38,7 +39,7 @@ export default function Archive({ copy, projects, onOpenProject }: ArchiveProps)
               <strong><NoBreakText text={project.title} /></strong>
               <small><NoBreakText text={project.meta} /></small>
             </span>
-          </button>
+          </Link>
         ))}
       </div>
     </section>

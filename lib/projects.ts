@@ -1,6 +1,11 @@
 import { featuredProjectIds, projects } from '@/content/projects';
 import type { CategoryFilter, Locale, Project, ProjectRecord } from '@/lib/types';
 
+export function getProjectBySlug(slug: string, locale: Locale = 'en') {
+  const project = projects.find((item) => item.slug === slug);
+  return project ? localizeProject(project, locale) : undefined;
+}
+
 function localizeProject(project: ProjectRecord, locale: Locale): Project {
   const { copy, categoryLabel, localizedImages, ...details } = project;
   return {

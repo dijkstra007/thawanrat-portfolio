@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { SiteCopy } from '@/content/site';
 import ProjectThumbnail from '@/components/visuals/ProjectThumbnail';
 import type { Project } from '@/lib/types';
@@ -20,17 +21,17 @@ export default function SelectedWork({ copy, projects, onOpenProject, onViewAll 
           <p className="eyebrow">{copy.eyebrow}</p>
           <h2>{copy.heading[0]}<br />{copy.heading[1]}</h2>
         </div>
-        <button className="button outline" type="button" onClick={onViewAll}>
+        <Link className="button outline"  href="/work" onNavigate={(event) => { event.preventDefault(); onViewAll(); }}>
           {copy.viewAll} <span>→</span>
-        </button>
+        </Link>
       </div>
       <div className={styles.grid}>
         {projects.map((project) => (
-          <button
+          <Link
             key={project.id}
             className={styles.card}
-            type="button"
-            onClick={() => onOpenProject(project)}
+            href={`/work/${project.slug}`}
+            onNavigate={(event) => { event.preventDefault(); onOpenProject(project); }}
           >
             <ProjectThumbnail
               className={styles.image}
@@ -39,7 +40,7 @@ export default function SelectedWork({ copy, projects, onOpenProject, onViewAll 
             />
             <strong><NoBreakText text={project.title} /></strong>
             <small><NoBreakText text={project.meta} /></small>
-          </button>
+          </Link>
         ))}
       </div>
     </section>

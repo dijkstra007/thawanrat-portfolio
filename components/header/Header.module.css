@@ -178,7 +178,7 @@
   font-size: 10px;
 }
 
-.menu button {
+.menu :is(button, a) {
   border: 0;
   padding: 4px 0;
   background: transparent;
@@ -188,13 +188,13 @@
   font-size: 10px;
 }
 
-.grid > div:first-child button {
+.grid > div:first-child :is(button, a) {
   color: #111;
   font-size: 17px;
   letter-spacing: -.035em;
 }
 
-.menu button:hover {
+.menu :is(button, a):hover {
   color: var(--blue);
 }
 

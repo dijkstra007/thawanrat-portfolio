@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import type { CSSProperties } from 'react';
 import About from '@/components/about/About';
 import Archive from '@/components/archive/Archive';
@@ -16,7 +17,7 @@ import { experience } from '@/content/experience';
 import { expertise } from '@/content/expertise';
 import { site } from '@/content/site';
 import { assetPath } from '@/lib/assets';
-import { adjacentProject, filterProjects, getFeaturedProjects, getProjectById } from '@/lib/projects';
+import { adjacentProject, filterProjects, getFeaturedProjects, getProjectBySlug } from '@/lib/projects';
 import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
 
@@ -78,52 +79,61 @@ function setLocaleSnapshot(nextLocale: Locale) {
   localeListeners.forEach((listener) => listener());
 }
 
-export default function PortfolioApp() {
+type PortfolioProps = { view?: 'home' | 'work'; slug?: string };
+
+export default function PortfolioApp(props: PortfolioProps) {
+  return <Suspense fallback={<PortfolioView {...props} />}><PortfolioRoute {...props} /></Suspense>;
+}
+
+function PortfolioRoute(props: PortfolioProps) {
+  const searchParams = useSearchParams();
+  return <PortfolioView {...props} category={searchParams.get('category')} />;
+}
+
+function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { category?: string | null }) {
+  const router = useRouter();
   const locale = useSyncExternalStore(subscribeToLocale, getLocaleSnapshot, getServerLocale);
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
-  const [archiveVisible, setArchiveVisible] = useState(false);
-  const [filter, setFilter] = useState<CategoryFilter>('All');
-  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
+  const archiveVisible = view === 'work' || Boolean(slug);
+  const filter: CategoryFilter = category === 'Packaging' || category === 'Campaign' || category === 'Branding' || category === 'Digital' ? category : 'All';
 
   const copy = site.copy[locale];
-  const activeProject = activeProjectId === null
-    ? null
-    : getProjectById(activeProjectId, locale);
+  const activeProject = useMemo(() => slug ? getProjectBySlug(slug, locale) : null, [slug, locale]);
   const selectedProjects = useMemo(() => getFeaturedProjects(locale), [locale]);
   const archivedProjects = useMemo(() => filterProjects(filter, locale), [filter, locale]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dataset.locale = locale;
-    document.title = copy.metadata.title;
+    document.title = activeProject ? `${activeProject.title} — Thawanrat T.` : archiveVisible ? `Work — Thawanrat T.` : copy.metadata.title;
 
     const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute('content', copy.metadata.description);
+    description?.setAttribute('content', activeProject?.description ?? copy.metadata.description);
 
-  }, [copy.metadata.description, copy.metadata.title, locale]);
+  }, [activeProject, archiveVisible, copy.metadata.description, copy.metadata.title, locale]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        if (activeProjectId !== null) {
-          setActiveProjectId(null);
+        if (slug) {
+          router.push('/work');
           return;
         }
         setWorkMenuOpen(false);
         setMobileNavOpen(false);
         setMobileWorkOpen(false);
-        setArchiveVisible(false);
+
       }
     };
     window.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = activeProjectId !== null || mobileNavOpen ? 'hidden' : '';
+    document.body.style.overflow = Boolean(slug) || mobileNavOpen ? 'hidden' : '';
     return () => {
       window.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
     };
-  }, [activeProjectId, mobileNavOpen]);
+  }, [slug, mobileNavOpen, router]);
 
   const closeMenus = () => {
     setWorkMenuOpen(false);
@@ -138,29 +148,23 @@ export default function PortfolioApp() {
   };
 
   const goHome = () => {
-    setArchiveVisible(false);
-    setFilter('All');
+    router.push('/');
     closeMenus();
   };
 
   const revealArchive = (category: CategoryFilter = 'All') => {
-    setFilter(category);
-    setArchiveVisible(true);
-    setActiveProjectId(null);
     closeMenus();
-    window.setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 50);
+    router.push(category === 'All' ? '/work' : `/work?category=${category}`);
   };
 
   const openProject = (project: Project) => {
-    setActiveProjectId(project.id);
+    router.push(`/work/${project.slug}`);
     closeMenus();
   };
 
   const showAdjacent = (offset: number) => {
     if (!activeProject) return;
-    setActiveProjectId(adjacentProject(activeProject, offset, locale).id);
+    openProject(adjacentProject(activeProject, offset, locale));
   };
 
   const portfolioStyle = {
@@ -233,7 +237,7 @@ export default function PortfolioApp() {
           navigation={copy.navigation}
           locale={locale}
           project={activeProject}
-          onClose={() => setActiveProjectId(null)}
+          onClose={() => router.push('/work')}
           onAdjacent={showAdjacent}
           onChangeLocale={changeLocale}
         />

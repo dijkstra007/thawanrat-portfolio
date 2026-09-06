@@ -5,6 +5,7 @@ export const featuredProjectIds = [1, 2, 4, 7];
 const projectRecords: ProjectRecord[] = [
   {
     id: 1,
+    slug: 'local-souvenir-packaging-design',
     category: 'Packaging',
     year: '—',
     visual: 'paper',
@@ -36,6 +37,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 2,
+    slug: 'social-media-content-design',
     category: 'Digital',
     year: '—',
     visual: 'electric',
@@ -68,6 +70,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 3,
+    slug: 'financial-data-infographic-design',
     category: 'Digital',
     year: '—',
     visual: 'slate',
@@ -97,6 +100,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 4,
+    slug: 'chailai-packaging-design',
     category: 'Packaging',
     year: '—',
     visual: 'peach',
@@ -123,6 +127,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 5,
+    slug: 'food-beverage-graphic-design',
     category: 'Digital',
     year: '—',
     visual: 'paper',
@@ -150,6 +155,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 6,
+    slug: 'green-tea-packaging-design',
     category: 'Packaging',
     year: '—',
     visual: 'lime',
@@ -178,6 +184,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 7,
+    slug: 'protein-snacks-packaging',
     category: 'Packaging',
     year: '—',
     visual: 'red',
@@ -202,6 +209,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 8,
+    slug: 'benja-logo-design',
     category: 'Branding',
     year: '—',
     visual: 'blue',
@@ -227,6 +235,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 9,
+    slug: 'aseel-thai-oud-logo-design',
     category: 'Branding',
     year: '—',
     visual: 'ink',
@@ -253,6 +262,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 10,
+    slug: 'fit-auto-promotional-campaign',
     category: 'Campaign',
     year: '—',
     visual: 'electric',
@@ -274,6 +284,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 11,
+    slug: 'juicena-label-design',
     category: 'Packaging',
     year: '—',
     visual: 'peach',
@@ -300,6 +311,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 12,
+    slug: 'lussopack-bkk-gems-2023',
     category: 'Campaign',
     year: '2023',
     visual: 'paper',
@@ -325,6 +337,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 13,
+    slug: 'lussopack-bkk-gems-2024',
     category: 'Campaign',
     year: '2024',
     visual: 'paper',
@@ -350,6 +363,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 14,
+    slug: 'mango-smith-brand-identity',
     category: 'Branding',
     year: '—',
     visual: 'sun',
@@ -375,6 +389,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 15,
+    slug: 'free-drinking-water',
     category: 'Campaign',
     year: '—',
     visual: 'blue',
@@ -401,6 +416,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 16,
+    slug: 'singha-cafe-amazon',
     category: 'Campaign',
     year: '—',
     visual: 'blue',
@@ -428,6 +444,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 17,
+    slug: 'singha-super-power',
     category: 'Campaign',
     year: '—',
     visual: 'electric',
@@ -455,6 +472,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 18,
+    slug: 'talad-term-suk',
     category: 'Campaign',
     year: '—',
     visual: 'paper',
@@ -479,6 +497,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 19,
+    slug: 'self-serve',
     category: 'Campaign',
     year: '—',
     visual: 'electric',
@@ -509,6 +528,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 20,
+    slug: 'world-cup',
     category: 'Campaign',
     year: '—',
     visual: 'blue',
@@ -534,6 +554,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 21,
+    slug: 'points-x3',
     category: 'Campaign',
     year: '—',
     visual: 'sun',
@@ -555,6 +576,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 22,
+    slug: 'friday-x2',
     category: 'Campaign',
     year: '—',
     visual: 'electric',
@@ -581,6 +603,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 23,
+    slug: 'fuel-coupons',
     category: 'Campaign',
     year: '—',
     visual: 'violet',
@@ -602,6 +625,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 24,
+    slug: 'green-travel',
     category: 'Campaign',
     year: '—',
     visual: 'lime',
@@ -623,6 +647,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 25,
+    slug: 'mommy-bucket',
     category: 'Campaign',
     year: '—',
     visual: 'peach',
@@ -648,6 +673,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 26,
+    slug: 'new-member-card',
     category: 'Campaign',
     year: '—',
     visual: 'blue',
@@ -673,6 +699,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 27,
+    slug: 'or-mobile-lab',
     category: 'Campaign',
     year: '—',
     visual: 'slate',
@@ -698,6 +725,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 28,
+    slug: 'event-communication',
     category: 'Campaign',
     year: '2024–2025',
     visual: 'electric',
@@ -724,6 +752,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 29,
+    slug: 'brochure-promotion-design',
     category: 'Packaging',
     year: '2024–2025',
     visual: 'blue',
@@ -751,6 +780,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 30,
+    slug: 'social-media-promotion',
     category: 'Digital',
     year: '2024',
     visual: 'electric',
@@ -776,6 +806,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 31,
+    slug: 'green-station-award-design',
     category: 'Branding',
     year: '2025–2026',
     visual: 'lime',
@@ -797,6 +828,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 35,
+    slug: 'blueplus-sme-brochure',
     category: 'Campaign',
     year: '—',
     visual: 'blue',
@@ -818,6 +850,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 36,
+    slug: 'new-year-promotion',
     category: 'Campaign',
     year: '2025–2026',
     visual: 'slate',
@@ -843,6 +876,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 37,
+    slug: 'protech-transfer-event-backdrop',
     category: 'Campaign',
     year: '—',
     visual: 'paper',
@@ -864,6 +898,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 38,
+    slug: 'protech-transfer-machinery-posters',
     category: 'Packaging',
     year: '—',
     visual: 'blue',
@@ -895,6 +930,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 39,
+    slug: 'new-card-member-benefits',
     category: 'Campaign',
     year: '—',
     visual: 'electric',
@@ -916,6 +952,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 41,
+    slug: 'protech-transfer-recruitment-communication',
     category: 'Campaign',
     categoryLabel: {
       en: 'Recruitment Communication',
@@ -945,6 +982,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 46,
+    slug: 'protech-transfer-infographic-corporate-communication',
     category: 'Digital',
     year: '—',
     visual: 'paper',
@@ -969,6 +1007,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 47,
+    slug: 'protech-transfer-machinery-brochure',
     category: 'Packaging',
     year: '2025',
     visual: 'blue',
@@ -1063,6 +1102,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 45,
+    slug: 'protech-transfer-facebook-cover-design',
     category: 'Digital',
     year: '—',
     visual: 'blue',
@@ -1084,6 +1124,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 48,
+    slug: 'prototype-label-design',
     category: 'Packaging',
     year: '—',
     visual: 'blue',
@@ -1109,6 +1150,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 49,
+    slug: 'prototype-packaging-design',
     category: 'Packaging',
     year: '—',
     visual: 'paper',
@@ -1148,6 +1190,7 @@ const projectRecords: ProjectRecord[] = [
   },
   {
     id: 50,
+    slug: 'spot-uv-finishing',
     category: 'Packaging',
     year: '—',
     visual: 'ink',

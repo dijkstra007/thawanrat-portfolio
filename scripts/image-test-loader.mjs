@@ -6,6 +6,7 @@ import ts from 'typescript';
 const rootDirectory = fileURLToPath(new URL('../', import.meta.url));
 
 export function resolve(specifier, context, nextResolve) {
+  if (specifier === 'next/link') return nextResolve('next/link.js', context);
   if (specifier.startsWith('@/') || (specifier.startsWith('.') && /\.[jt]sx?$/.test(context.parentURL ?? ''))) {
     const base = specifier.startsWith('@/')
       ? pathToFileURL(path.join(rootDirectory, specifier.slice(2))).href

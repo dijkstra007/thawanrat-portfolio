@@ -22,6 +22,7 @@ export type ProjectVisual =
 
 export type Project = {
   id: number;
+  slug: string;
   title: string;
   category: ProjectCategory;
   categoryLabel?: string;

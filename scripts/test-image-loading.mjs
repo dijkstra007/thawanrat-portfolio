@@ -13,6 +13,7 @@ register('./image-test-loader.mjs', import.meta.url);
 
 const dom = new JSDOM('<!doctype html><html><body><div id="test"></div></body></html>', { url: 'http://localhost/', pretendToBeVisual: true });
 globalThis.window = dom.window;
+globalThis.self = dom.window;
 globalThis.document = dom.window.document;
 globalThis.HTMLElement = dom.window.HTMLElement;
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;

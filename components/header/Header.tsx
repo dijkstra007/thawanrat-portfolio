@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { site } from '@/content/site';
 import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
@@ -65,7 +66,7 @@ export default function Header({
       onMouseLeave={() => workMenuOpen && onCloseMenus()}
     >
       <div className={`shell ${styles.inner}`}>
-        <a className={styles.wordmark} href="#top" aria-label={copy.wordmarkAria} onClick={onGoHome}>
+        <Link className={styles.wordmark} href="/" aria-label={copy.wordmarkAria} onNavigate={(event) => { event.preventDefault(); onGoHome(); }}>
           <img
             className={styles.logo}
             src={assetPath(site.assets.logo)}
@@ -74,7 +75,7 @@ export default function Header({
             height={104}
             decoding="async"
           />
-        </a>
+        </Link>
 
         <nav
           className={`${styles.nav}${mobileNavOpen ? ` ${styles.navOpen}` : ''}`}
@@ -94,42 +95,39 @@ export default function Header({
               <div className={styles.mobileSubmenuGroup}>
                 <p className={styles.mobileSubmenuLabel}>{copy.workMenu.typesLabel}</p>
                 {copy.workMenu.types.map((item) => (
-                  <button
+                  <Link
                     key={item.label}
                     className={styles.mobileSubmenuLink}
-                    type="button"
-                    onClick={() => onRevealArchive(item.category)}
+                    href={item.category === 'All' ? '/work' : `/work?category=${item.category}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 ))}
               </div>
 
               <div className={styles.mobileSubmenuGroup}>
                 <p className={styles.mobileSubmenuLabel}>{copy.workMenu.featuredLabel}</p>
                 {copy.workMenu.featured.map((item) => (
-                  <button
+                  <Link
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
-                    type="button"
-                    onClick={() => onOpenProject(getProjectById(item.id, locale))}
+                    href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 ))}
               </div>
 
               <div className={styles.mobileSubmenuGroup}>
                 <p className={styles.mobileSubmenuLabel}>{copy.workMenu.awardsLabel}</p>
                 {copy.workMenu.awards.map((item) => (
-                  <button
+                  <Link
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
-                    type="button"
-                    onClick={() => onOpenProject(getProjectById(item.id, locale))}
+                    href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -157,25 +155,25 @@ export default function Header({
                     <div>
                       <p className={styles.label}>{copy.workMenu.typesLabel}</p>
                       {copy.workMenu.types.map((item) => (
-                        <button key={item.label} onClick={() => onRevealArchive(item.category)}>
+                        <Link key={item.label} href={item.category === 'All' ? '/work' : `/work?category=${item.category}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}>
                           {item.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                     <div>
                       <p className={styles.label}>{copy.workMenu.featuredLabel}</p>
                       {copy.workMenu.featured.map((item) => (
-                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id, locale))}>
+                        <Link key={item.id} href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
                           {item.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                     <div>
                       <p className={styles.label}>{copy.workMenu.awardsLabel}</p>
                       {copy.workMenu.awards.map((item) => (
-                        <button key={item.id} onClick={() => onOpenProject(getProjectById(item.id, locale))}>
+                        <Link key={item.id} href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
                           {item.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   </div>
