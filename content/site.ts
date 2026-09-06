@@ -203,7 +203,7 @@ export const site = {
         email: 'fah.thawanrat001@gmail.com',
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',
-        fastwork: 'https://fastwork.co/user/ffahworks',
+        fastwork: 'https://fastwork.co/byob/WaCznCMB23?openExternalBrowser=1&source=byob',
         linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9/',
       },
       caseStudy: {
@@ -336,7 +336,7 @@ export const site = {
         email: 'fah.thawanrat001@gmail.com',
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',
-        fastwork: 'https://fastwork.co/user/ffahworks',
+        fastwork: 'https://fastwork.co/byob/WaCznCMB23?openExternalBrowser=1&source=byob',
         linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9/',
       },
       caseStudy: {
