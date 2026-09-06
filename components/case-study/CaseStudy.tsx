@@ -45,6 +45,7 @@ type Gesture =
     };
 
 type ZoomableImageProps = {
+  onImageLoad?: () => void;
   src: string;
   alt: string;
   copy: SiteCopy['caseStudy'];
@@ -128,6 +129,7 @@ function getZoomAtPoint(
 }
 
 function ZoomableImage({
+  onImageLoad,
   src,
   alt,
   copy,
@@ -344,7 +346,7 @@ function ZoomableImage({
 
     gestureRef.current = null;
     setIsDragging(false);
-    if (!gesture || !start || !pointer || gesture.kind !== 'swipe' || gesture.moved || !onSwipe) return;
+    if (!gesture || !start || !pointer || gesture.kind !== 'swipe' || !onSwipe) return;
 
     const distance = pointer.x - start.x;
     if (Math.abs(distance) < SWIPE_THRESHOLD) return;
@@ -379,7 +381,11 @@ function ZoomableImage({
           src={assetPath(src)}
           alt={alt}
           draggable="false"
-          onLoad={measureImage}
+          decoding="async"
+          onLoad={() => {
+            measureImage();
+            onImageLoad?.();
+          }}
           style={{
             transform: `translate3d(${zoomState.offset.x}px, ${zoomState.offset.y}px, 0) scale(${zoomState.scale})`,
           }}
@@ -466,6 +472,21 @@ export default function CaseStudy({
     : -1;
   const imageIndex = activeImageIndex >= 0 ? activeImageIndex : 0;
   const currentImage = images[imageIndex] ?? null;
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(() => new Set());
+  const markImageLoaded = useCallback((path: string) => {
+    setLoadedImages((loaded) => loaded.has(path) ? loaded : new Set([...loaded, path]));
+  }, []);
+  const currentImageLoaded = currentImage !== null && loadedImages.has(currentImage);
+  const nextImage = images.length > 1 ? images[(imageIndex + 1) % images.length] : null;
+
+  useEffect(() => {
+    if (!currentImageLoaded || !nextImage) return;
+    // Only the active image can trigger a one-image lookahead; no preload cascade.
+    const preload = new Image();
+    preload.onload = () => markImageLoaded(nextImage);
+    preload.src = assetPath(nextImage);
+    return () => { preload.onload = null; };
+  }, [currentImageLoaded, nextImage, markImageLoaded]);
 
   useEffect(() => {
     if (viewerOpen) {
@@ -673,7 +694,7 @@ export default function CaseStudy({
         <div className={styles.content}>
           <div className={styles.media}>
             <div
-              className={`${styles.hero} ${visualClass(project.visual)}`}
+              className={`${styles.hero}${images.length === 0 ? ` ${visualClass(project.visual)}` : ''}`}
             >
               {images.length > 0 ? (
                 <div
@@ -683,19 +704,20 @@ export default function CaseStudy({
                 >
                   {images.map((image, index) => (
                     <div
-                      key={`${project.id}-${locale}-${imageIndex}-${image}-${index}`}
+                      key={`${project.id}-${locale}-${image}-${index}`}
                       className={styles.slide}
                     >
-                      <ZoomableImage
+                      {(index === imageIndex || loadedImages.has(image)) && <ZoomableImage
                         key={`${project.id}-${locale}-${imageIndex}-${image}-${index}`}
                         src={image}
+                        onImageLoad={() => markImageLoaded(image)}
                         alt={imageAlt(index)}
                         copy={copy}
                         showControls={index === imageIndex}
                         showViewerButton={index === imageIndex}
                         onOpenViewer={openViewer}
                         onSwipe={index === imageIndex ? moveImage : undefined}
-                      />
+                      />}
                     </div>
                   ))}
                 </div>

@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Noto_Sans_Thai, Poppins } from 'next/font/google';
 import './globals.css';
 
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
   weight: ['300', '400', '600', '700'],
+});
+
+const notoSansThai = Noto_Sans_Thai({
+  variable: '--font-noto-sans-thai',
+  subsets: ['thai', 'latin'],
+  weight: ['300', '400', '600', '700'],
+  display: 'swap',
 });
 
 const siteOrigin = (process.env.SITE_ORIGIN ?? 'http://localhost:3000').replace(/\/$/, '');
@@ -47,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>
+      <body className={`${poppins.variable} ${notoSansThai.variable} antialiased`}>
         {children}
       </body>
     </html>
