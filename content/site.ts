@@ -204,7 +204,7 @@ export const site = {
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',
         fastwork: 'https://fastwork.co/byob/WaCznCMB23?openExternalBrowser=1&source=byob',
-        linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9/',
+        linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
       },
       caseStudy: {
         eyebrow: 'Selected work',
@@ -337,7 +337,7 @@ export const site = {
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',
         fastwork: 'https://fastwork.co/byob/WaCznCMB23?openExternalBrowser=1&source=byob',
-        linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9/',
+        linkedin: 'https://www.linkedin.com/in/thawanrat-thaptit-2a7a672b9?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
       },
       caseStudy: {
         eyebrow: 'ผลงานเด่น',
