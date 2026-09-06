@@ -183,13 +183,13 @@ const projectRecords: ProjectRecord[] = [
     visual: 'red',
     copy: {
       en: {
-        title: 'Protein Snack packaging',
+        title: 'Protein Snacks packaging',
         meta: 'Packaging · Product Mockup',
         description:
           'A protein snack packaging concept with three flavor directions—banana, chocolate, and strawberry—shown through clean product mockups.',
       },
       th: {
-        title: 'บรรจุ\u2060ภัณฑ์ Protein Snake',
+        title: 'บรรจุ\u2060ภัณฑ์ Protein Snacks',
         meta: 'บรรจุ\u2060ภัณฑ์ · ภาพจำลองผลิตภัณฑ์',
         description:
           'คอนเซ็ปต์บรรจุ\u2060ภัณฑ์ขนมโปรตีนที่นำ\u2060เสนอ 3 รสชาติ ได้แก่ กล้วย ช็อกโกแลต และสตรอว์เบอร์รี ผ่านภาพจำลองผลิตภัณฑ์ที่ดูสะอาดและชัดเจน',

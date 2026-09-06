@@ -241,7 +241,7 @@ export const site = {
         ],
         featured: [
           { label: 'Local Souvenir Packaging Design', id: 1 },
-          { label: 'Protein Snack packaging', id: 7 },
+          { label: 'Protein Snacks packaging', id: 7 },
         ],
         awards: [
           { label: 'Social Media Content Design', id: 2 },
@@ -374,7 +374,7 @@ export const site = {
         ],
         featured: [
           { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ของฝากท้อง\u2060ถิ่น', id: 1 },
-          { label: 'บรรจุ\u2060ภัณฑ์ Protein Snake', id: 7 },
+          { label: 'บรรจุ\u2060ภัณฑ์ Protein Snacks', id: 7 },
         ],
         awards: [
           { label: 'การออกแบบคอนเทนต์สำหรับ Social Media', id: 2 },
