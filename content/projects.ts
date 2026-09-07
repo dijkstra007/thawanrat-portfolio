@@ -217,12 +217,12 @@ const projectRecords: ProjectRecord[] = [
     copy: {
       en: {
         title: 'Benja',
-        meta: 'Branding',
+        meta: 'Brand Identity · Logo Design',
         description:
           'A brand identity exploration for Benja, developing a clean Thai wordmark with a flowing wave motif and a calm, approachable visual character.',
       },
       th: {
-        title: 'การออกแบบโลโก้เบญจ',
+        title: 'เบญจ',
         meta: 'อัตลักษณ์แบรนด์ · ออกแบบโลโก้',
         description:
           'การทดลองพัฒนาอัตลักษณ์แบรนด์เบญจ โดยออกแบบโลโก้ตัวอักษรไทยให้\u00a0เรียบ\u2060ง่ายและมีจังหวะของเส้นคลื่น เพื่อ\u2060สร้างภาพลักษณ์ที่สงบ เป็นมิตร และจดจำได้',
@@ -243,12 +243,12 @@ const projectRecords: ProjectRecord[] = [
     copy: {
       en: {
         title: 'Aseel Thai Oud',
-        meta: 'Branding',
+        meta: 'Brand Identity · Logo Design',
         description:
           'A refined identity exploration for Aseel Thai Oud, combining a clean wordmark with a leaf symbol to communicate a natural character and an elevated fragrance experience.',
       },
       th: {
-        title: 'การออกแบบโลโก้ Aseel Thai Oud',
+        title: 'Aseel Thai Oud',
         meta: 'อัตลักษณ์แบรนด์ · ออกแบบโลโก้',
         description:
           'การทดลองพัฒนาอัตลักษณ์แบรนด์ Aseel Thai Oud โดยผสานโลโก้ตัวอักษรที่เรียบสะอาดเข้ากับสัญลักษณ์ใบไม้ เพื่อสื่อถึงความเป็นธรรมชาติและประสบการณ์กลิ่นหอมที่มีระดับ',
@@ -375,12 +375,12 @@ const projectRecords: ProjectRecord[] = [
     copy: {
       en: {
         title: 'Mango Smith',
-        meta: 'Branding',
+        meta: 'Brand Identity · Logo Design',
         description:
           'A friendly brand identity for Mango Smith, using a warm orange wordmark and mango symbol to create a playful, approachable fruit-led character.',
       },
       th: {
-        title: 'อัตลักษณ์แบรนด์ Mango Smith',
+        title: 'Mango Smith',
         meta: 'อัตลักษณ์แบรนด์ · ออกแบบโลโก้',
         description:
           'ออกแบบอัตลักษณ์แบรนด์ Mango Smith ให้มีความเป็นมิตรและเข้าถึงง่าย โดยใช้โลโก้ตัวอักษรโทนสีส้มอบอุ่นร่วมกับสัญลักษณ์มะม่วง เพื่อ\u2060สร้างคาแรกเตอร์ที่สนุกและจดจำได้',
