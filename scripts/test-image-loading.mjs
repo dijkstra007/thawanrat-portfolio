@@ -29,8 +29,13 @@ const { default: Archive } = await import('../components/archive/Archive.tsx');
 const { default: SelectedWork } = await import('../components/selected-work/SelectedWork.tsx');
 const { default: CaseStudy } = await import('../components/case-study/CaseStudy.tsx');
 const { filterProjects, getFeaturedProjects, getProjectById } = await import('../lib/projects.ts');
+const { projects } = await import('../content/projects.ts');
 const { site } = await import('../content/site.ts');
 const { galleryPath } = await import('../lib/assets.ts');
+const detailImages = [...new Set(projects.flatMap((project) => [
+  ...(project.images ?? []),
+  ...Object.values(project.localizedImages ?? {}).flat(),
+]).filter(Boolean))];
 const container = document.getElementById('test');
 const root = createRoot(container);
 const copy = site.copy.en;
@@ -70,6 +75,29 @@ test('portfolio image loading', async (t) => {
     assert.ok(largestPreviews / originals <= 0.15, 'Largest previews must save at least 85%');
   });
 
+  await t.test('every detail image uses a full-resolution WebP without losing its readable dimensions', async () => {
+    const manifest = JSON.parse(await readFile(path.join(rootDirectory, 'lib/generated/gallery.json'), 'utf8'));
+    let originals = 0;
+    let optimized = 0;
+    for (const source of detailImages) {
+      const optimizedSource = manifest[source];
+      assert.match(optimizedSource, /^\/assets\/gallery\/.+\.webp$/i, `Missing WebP detail image: ${source}`);
+      const originalPath = path.join(rootDirectory, 'public', source);
+      const optimizedPath = path.join(rootDirectory, 'public', optimizedSource);
+      const originalMetadata = await sharp(originalPath).metadata();
+      const optimizedMetadata = await sharp(optimizedPath).metadata();
+      const isQuarterTurn = [5, 6, 7, 8].includes(originalMetadata.orientation ?? 0);
+      const originalWidth = isQuarterTurn ? originalMetadata.height : originalMetadata.width;
+      const originalHeight = isQuarterTurn ? originalMetadata.width : originalMetadata.height;
+      assert.equal(optimizedMetadata.format, 'webp');
+      assert.equal(optimizedMetadata.width, originalWidth, `Width changed: ${source}`);
+      assert.equal(optimizedMetadata.height, originalHeight, `Height changed: ${source}`);
+      originals += (await stat(originalPath)).size;
+      optimized += (await stat(optimizedPath)).size;
+    }
+    assert.ok(optimized / originals <= 0.4, 'Full-resolution WebP detail images must save at least 60%');
+  });
+
   await t.test('gallery prioritizes four covers and keeps all other thumbnails lazy with base paths', async () => {
     await render(h(Archive, { copy: copy.archive, projects: filterProjects('All'), onOpenProject: noop }));
     const images = [...container.querySelectorAll('img')];
@@ -87,7 +115,7 @@ test('portfolio image loading', async (t) => {
 
   const project = getProjectById(1);
   const props = { copy: copy.caseStudy, navigation: copy.navigation, locale: 'en', project, onClose: noop, onAdjacent: noop, onChangeLocale: noop };
-  await t.test('viewer loads only active original, then one next image without a preload cascade', async () => {
+  await t.test('viewer loads only active full-resolution WebP, then one next image without a preload cascade', async () => {
     await render(h(CaseStudy, props));
     assert.equal(container.querySelectorAll('img').length, 1);
     assert.equal(preloads.length, 0);

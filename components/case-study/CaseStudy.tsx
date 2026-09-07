@@ -391,6 +391,8 @@ function ZoomableImage({
           src={assetPath(galleryPath(src))}
           alt={alt}
           draggable="false"
+          loading={showControls ? 'eager' : 'lazy'}
+          fetchPriority={showControls ? 'high' : 'auto'}
           decoding="async"
           onLoad={() => {
             measureImage();

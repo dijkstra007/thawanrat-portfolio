@@ -12,10 +12,6 @@ const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 });
 const { projects } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`);
-// Keep the first pass focused on the four projects shown on the home page.
-// Their gallery images retain their source dimensions, while the format is
-// converted to WebP to make the detail viewer lighter without softening zoom.
-const optimizedGalleryProjectIds = new Set([1, 31, 2, 13]);
 const covers = [...new Set(projects.flatMap((project) => [
   project.images?.[0],
   ...Object.values(project.localizedImages ?? {}).map((images) => images[0]),
@@ -65,13 +61,13 @@ for (const [width, bytes] of Object.entries(totals)) {
   console.log(`${width}px: ${(bytes / 1e6).toFixed(2)} MB; ${(100 * (1 - bytes / originalBytes)).toFixed(1)}% smaller.`);
 }
 
-const galleryImages = [...new Set(projects
-  .filter((project) => optimizedGalleryProjectIds.has(project.id))
-  .flatMap((project) => [
-    ...(project.images ?? []),
-    ...Object.values(project.localizedImages ?? {}).flat(),
-  ])
-  .filter(Boolean))].sort();
+// Detail images keep their original pixel dimensions so zooming can reveal
+// small type and fine artwork details. WebP reduces transfer size while the
+// full-resolution source prevents the viewer from becoming soft when zoomed.
+const galleryImages = [...new Set(projects.flatMap((project) => [
+  ...(project.images ?? []),
+  ...Object.values(project.localizedImages ?? {}).flat(),
+]).filter(Boolean))].sort();
 const galleryDirectory = path.join(root, 'public/assets/gallery');
 const galleryManifest = {};
 let galleryOriginalBytes = 0;
@@ -81,7 +77,7 @@ await mkdir(galleryDirectory, { recursive: true });
 for (const image of galleryImages) {
   const input = await readFile(path.join(root, 'public', image));
   galleryOriginalBytes += input.length;
-  const hash = createHash('sha256').update(input).update('webp-q90-v1').digest('hex').slice(0, 16);
+  const hash = createHash('sha256').update(input).update('webp-q95-v2').digest('hex').slice(0, 16);
   const filename = `${hash}.webp`;
   const output = path.join(galleryDirectory, filename);
   let bytes;
@@ -90,7 +86,7 @@ for (const image of galleryImages) {
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
     const result = await sharp(input).rotate()
-      .webp({ quality: 90, alphaQuality: 100 })
+      .webp({ quality: 95, alphaQuality: 100 })
       .toFile(output);
     bytes = result.size;
   }
