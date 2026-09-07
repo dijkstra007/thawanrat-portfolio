@@ -79,6 +79,7 @@ export type SiteCopy = {
     eyebrow: string;
     heading: [string, string];
     note: [string, string];
+    copyright: string;
     email: string;
     phoneDisplay: string;
     phoneHref: string;
@@ -211,6 +212,8 @@ export const site = {
         eyebrow: 'Contact',
         heading: ['Let’s create', 'something great.'],
         note: ['I’m currently open to new opportunities.', 'Feel free to reach out.'],
+        copyright:
+          '© 2026 Thawanrat T. Portfolio. Some works were created during employment or commissioned engagements and are presented for portfolio purposes only.',
         email: 'fah.thawanrat001@gmail.com',
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',
@@ -355,6 +358,8 @@ export const site = {
         eyebrow: 'ติดต่อ',
         heading: ['มาสร้าง', 'สิ่งดี ๆ ด้วยกัน'],
         note: ['เปิดรับโอกาสใหม่ ๆ อยู่เสมอ', 'ติดต่อพูดคุยกันได้เลย'],
+        copyright:
+          '© 2026 Thawanrat T. Portfolio. ผลงานบางส่วนจัดทำขึ้นระหว่างการปฏิบัติงานหรือการว่าจ้าง และนำมาแสดงเพื่อประกอบ Portfolio เท่านั้น',
         email: 'fah.thawanrat001@gmail.com',
         phoneDisplay: '080-082-3850',
         phoneHref: '+66800823850',

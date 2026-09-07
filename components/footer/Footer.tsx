@@ -37,6 +37,7 @@ export default function Footer({ copy }: FooterProps) {
           </div>
         </div>
       </div>
+      <p className={styles.copyright}>{copy.copyright}</p>
     </footer>
   );
 }
