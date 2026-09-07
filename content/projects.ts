@@ -281,7 +281,11 @@ const projectRecords: ProjectRecord[] = [
           'ออกแบบชุดกราฟิกสำหรับโปรโมชั่น FIT\u00a0Auto โดยใช้สีที่โดด\u2060เด่น ข้อความข้อเสนอที่อ่านง่าย และภาพสินค้า เพื่อให้ผู้ชมเข้าใจโปรโมชั่นได้อย่างรวดเร็ว',
       },
     },
-    images: ['/assets/projects/fitauto/01-34.png', '/assets/projects/fitauto/02-port1-38.png'],
+    images: [
+      '/assets/projects/fitauto/00-cover.png',
+      '/assets/projects/fitauto/01-34.png',
+      '/assets/projects/fitauto/02-port1-38.png',
+    ],
   },
   {
     id: 11,
