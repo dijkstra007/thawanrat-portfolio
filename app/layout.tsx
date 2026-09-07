@@ -17,6 +17,7 @@ const notoSansThai = Noto_Sans_Thai({
 
 const siteOrigin = (process.env.SITE_ORIGIN ?? 'http://localhost:3000').replace(/\/$/, '');
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const socialPreviewImage = `${siteOrigin}/og.png?v=20260907`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${siteOrigin}/og.png`,
+        url: socialPreviewImage,
         width: 1200,
         height: 630,
         alt: 'Thawanrat T. graphic design portfolio',
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Thawanrat T. — Graphic Designer',
     description: 'Packaging Design · Brand Identity · Visual Communication',
-    images: [`${siteOrigin}/og.png`],
+    images: [socialPreviewImage],
   },
 };
 
