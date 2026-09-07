@@ -680,22 +680,23 @@ const projectRecords: ProjectRecord[] = [
     visual: 'blue',
     copy: {
       en: {
-        title: 'New Member Card',
-        meta: 'Campaign · Membership Communication',
+        title: 'New Member Card & Benefits',
+        meta: 'Campaign · Membership Communication · Promotion',
         description:
-          'A membership card launch graphic, combining the new blueplus card, a fuel-station scene, and a direct membership sign-up message.',
+          'A blueplus membership card campaign combining the new card launch with fuel and Café Amazon benefits, using clear membership messaging and station imagery.',
       },
       th: {
-        title: 'บัตรสมาชิกใหม่',
-        meta: 'แคมเปญ · สื่อสารสมาชิก',
+        title: 'บัตรสมาชิกใหม่และสิทธิพิเศษ',
+        meta: 'แคมเปญ · สื่อสารสมาชิก · โปรโมชั่น',
         description:
-          'ออกแบบสื่อประชาสัมพันธ์บัตรสมาชิกใหม่ โดยนำภาพบัตร blueplus ฉากสถานีบริการ และข้อความเชิญชวนสมัครสมาชิกมาจัดวางให้โดด\u2060เด่น',
+          'ออกแบบสื่อแคมเปญบัตรสมาชิก blueplus โดยรวมการเปิดตัวบัตรสมาชิกใหม่เข้ากับการสื่อสารสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon ผ่านภาพบัตร ภาพสถานีบริการ และข้อความชวนสมัครสมาชิกที่เข้าใจง่าย',
       },
     },
     images: [
       '/assets/projects/ptt-new-card/56.png',
       '/assets/projects/ptt-new-card/57.png',
       '/assets/projects/ptt-new-card/58.png',
+      '/assets/projects/ptt-new-card-benefits/01-car-stopper.jpg',
     ],
   },
   {
@@ -936,28 +937,6 @@ const projectRecords: ProjectRecord[] = [
       '/assets/projects/protech-why/01.jpg',
       '/assets/projects/protech-why/02.jpg',
     ],
-  },
-  {
-    id: 39,
-    slug: 'new-card-member-benefits',
-    category: 'Campaign',
-    year: '—',
-    visual: 'electric',
-    copy: {
-      en: {
-        title: 'New Card Member Benefits',
-        meta: 'Campaign · Membership Communication · Promotion',
-        description:
-          'Created a promotional graphic for a new blueplus card, highlighting fuel and Café Amazon discounts with the card, a clear membership message, and station imagery.',
-      },
-      th: {
-        title: 'สิทธิพิเศษบัตรสมาชิกใหม่',
-        meta: 'แคมเปญ · สื่อสารสมาชิก · โปรโมชั่น',
-        description:
-          'ออกแบบสื่อโปรโมชั่นสำหรับบัตร blueplus ใหม่ โดยเน้นสิทธิพิเศษส่วนลดน้ำมันและ Café Amazon พร้อมสื่อสารการสมัครสมาชิกผ่านภาพบัตรและภาพสถานีบริการ',
-      },
-    },
-    images: ['/assets/projects/ptt-new-card-benefits/01-car-stopper.jpg'],
   },
   {
     id: 41,
@@ -1234,12 +1213,12 @@ const projectRecords: ProjectRecord[] = [
 // the portrait or non-standard covers inside each group so the grid keeps a
 // steady visual rhythm without cropping the artwork.
 export const archiveProjectGroups = {
-  branding: [1, 8, 9, 14, 31],
+  branding: [1, 8, 9, 14],
   packaging: [6, 7, 11, 48, 49, 50, 4],
   lussopack: [13, 12],
   protech: [37, 38, 45, 41, 46, 47],
   konica: [28, 30, 29],
-  pttStation: [17, 19, 22, 16, 20, 26, 24, 25, 27, 36, 15, 39, 18, 35, 21, 23],
+  pttStation: [31, 22, 17, 19, 27, 26],
   other: [2, 3, 5, 10],
 } as const;
 
