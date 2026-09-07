@@ -46,3 +46,12 @@ export function hasPreviousProject(current: Project) {
   const index = projects.findIndex((project) => project.id === current.id);
   return index > 0;
 }
+
+export function projectImageAlt(project: Project, locale: Locale, index = 0) {
+  const discipline = {
+    en: { Packaging: 'packaging design', Branding: 'brand identity design', Campaign: 'campaign graphics', Digital: 'digital graphic design' },
+    th: { Packaging: 'งานออกแบบบรรจุภัณฑ์', Branding: 'งานออกแบบอัตลักษณ์แบรนด์', Campaign: 'กราฟิกแคมเปญ', Digital: 'งานออกแบบกราฟิกดิจิทัล' },
+  }[locale][project.category];
+  const title = project.title.replace(/\u2060/g, '');
+  return locale === 'th' ? `${title} — ${discipline} มุมมองที่ ${index + 1}` : `${title} — ${discipline}, view ${index + 1}`;
+}

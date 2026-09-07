@@ -6,7 +6,7 @@
 
 .heading { margin-bottom: 42px; }
 
-.heading h2 {
+.heading h1 {
   margin: 0;
   font-size: var(--heading-size);
   line-height: var(--heading-line);

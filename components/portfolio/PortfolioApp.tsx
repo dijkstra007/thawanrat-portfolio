@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import About from '@/components/about/About';
 import Archive from '@/components/archive/Archive';
@@ -16,83 +16,26 @@ import SelectedWork from '@/components/selected-work/SelectedWork';
 import { experience } from '@/content/experience';
 import { expertise } from '@/content/expertise';
 import { site } from '@/content/site';
+import { localePath } from '@/lib/routes';
 import { assetPath } from '@/lib/assets';
 import { adjacentProject, filterProjects, getFeaturedProjects, getProjectBySlug } from '@/lib/projects';
 import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
 
-const languageStorageKey = 'thawanrat-portfolio-language';
-let fallbackLocale: Locale = 'en';
-const localeListeners = new Set<() => void>();
+type PortfolioProps = { view?: 'home' | 'work'; slug?: string; locale?: Locale };
 
-function isLocale(value: string | null): value is Locale {
-  return value === 'en' || value === 'th';
-}
-
-function getLocaleSnapshot(): Locale {
-  if (typeof window === 'undefined') return 'en';
-
-  try {
-    const storedLocale = window.localStorage.getItem(languageStorageKey);
-    if (isLocale(storedLocale)) {
-      fallbackLocale = storedLocale;
-      return storedLocale;
-    }
-    fallbackLocale = 'en';
-    return fallbackLocale;
-  } catch {
-    return fallbackLocale;
-  }
-}
-
-function subscribeToLocale(listener: () => void) {
-  localeListeners.add(listener);
-
-  if (typeof window !== 'undefined') {
-    const onStorage = (event: StorageEvent) => {
-      if (event.key === languageStorageKey) listener();
-    };
-    window.addEventListener('storage', onStorage);
-
-    return () => {
-      localeListeners.delete(listener);
-      window.removeEventListener('storage', onStorage);
-    };
-  }
-
-  return () => {
-    localeListeners.delete(listener);
-  };
-}
-
-function getServerLocale(): Locale {
-  return 'en';
-}
-
-function setLocaleSnapshot(nextLocale: Locale) {
-  fallbackLocale = nextLocale;
-  try {
-    window.localStorage.setItem(languageStorageKey, nextLocale);
-  } catch {
-    // Keep the language switch usable when browser storage is unavailable.
-  }
-  localeListeners.forEach((listener) => listener());
-}
-
-type PortfolioProps = { view?: 'home' | 'work'; slug?: string };
-
-export default function PortfolioApp(props: PortfolioProps) {
-  return <Suspense fallback={<PortfolioView {...props} />}><PortfolioRoute {...props} /></Suspense>;
-}
-
-function PortfolioRoute(props: PortfolioProps) {
+// Only the optional category filter waits for search params. Page content and
+// language are always present in the static HTML, outside Suspense fallbacks.
+function CategoryFromUrl({ onChange }: { onChange: (category: string | null) => void }) {
   const searchParams = useSearchParams();
-  return <PortfolioView {...props} category={searchParams.get('category')} />;
+  const category = searchParams.get('category');
+  useEffect(() => { onChange(category); }, [category, onChange]);
+  return null;
 }
 
-function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { category?: string | null }) {
+export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: PortfolioProps) {
   const router = useRouter();
-  const locale = useSyncExternalStore(subscribeToLocale, getLocaleSnapshot, getServerLocale);
+  const [category, setCategory] = useState<string | null>(null);
   const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
@@ -105,20 +48,10 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
   const archivedProjects = useMemo(() => filterProjects(filter, locale), [filter, locale]);
 
   useEffect(() => {
-    document.documentElement.lang = locale;
-    document.documentElement.dataset.locale = locale;
-    document.title = activeProject ? `${activeProject.title} — Thawanrat T.` : archiveVisible ? `Work — Thawanrat T.` : copy.metadata.title;
-
-    const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute('content', activeProject?.description ?? copy.metadata.description);
-
-  }, [activeProject, archiveVisible, copy.metadata.description, copy.metadata.title, locale]);
-
-  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (slug) {
-          router.push('/work');
+          router.push(localePath(locale, '/work'));
           return;
         }
         setWorkMenuOpen(false);
@@ -133,7 +66,7 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
       window.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
     };
-  }, [slug, mobileNavOpen, router]);
+  }, [slug, mobileNavOpen, router, locale]);
 
   const closeMenus = () => {
     setWorkMenuOpen(false);
@@ -143,22 +76,24 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
 
   const changeLocale = (nextLocale: Locale) => {
     if (nextLocale === locale) return;
-    setLocaleSnapshot(nextLocale);
+    const path = slug ? `/work/${slug}` : view === 'work' ? '/work' : '/';
+    const query = view === 'work' && !slug && filter !== 'All' ? `?category=${filter}` : '';
+    router.push(`${localePath(nextLocale, path)}${query}`);
     closeMenus();
   };
 
   const goHome = () => {
-    router.push('/');
+    router.push(localePath(locale));
     closeMenus();
   };
 
   const revealArchive = (category: CategoryFilter = 'All') => {
     closeMenus();
-    router.push(category === 'All' ? '/work' : `/work?category=${category}`);
+    router.push(`${localePath(locale, '/work')}${category === 'All' ? '' : `?category=${category}`}`);
   };
 
   const openProject = (project: Project) => {
-    router.push(`/work/${project.slug}`);
+    router.push(localePath(locale, `/work/${project.slug}`));
     closeMenus();
   };
 
@@ -177,6 +112,7 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
     <Header
       copy={copy}
       locale={locale}
+      pagePath={slug ? `/work/${slug}` : view === 'work' ? '/work' : '/'}
       overlay={!archiveVisible}
       compact={archiveVisible}
       workMenuOpen={workMenuOpen}
@@ -204,19 +140,21 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
 
   return (
     <main className={`${styles.root}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`} style={portfolioStyle}>
-      {header}
+      <Suspense fallback={null}><CategoryFromUrl onChange={setCategory} /></Suspense>
+      {!activeProject && header}
 
-      <div
+      {!activeProject && <div
         className={styles.body}
         aria-hidden={Boolean(activeProject)}
         onClick={() => workMenuOpen && setWorkMenuOpen(false)}
       >
         {archiveVisible ? (
-          <Archive copy={copy.archive} projects={archivedProjects} onOpenProject={openProject} />
+          <Archive locale={locale} copy={copy.archive} projects={archivedProjects} onOpenProject={openProject} />
         ) : (
           <>
             <Hero copy={copy} />
             <SelectedWork
+              locale={locale}
               copy={copy.selectedWork}
               projects={selectedProjects}
               onOpenProject={openProject}
@@ -228,7 +166,7 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
             <Education copy={copy.education} />
           </>
         )}
-      </div>
+      </div>}
 
       {!activeProject && <Footer copy={copy.footer} />}
       {activeProject && (
@@ -237,7 +175,7 @@ function PortfolioView({ view = 'home', slug, category }: PortfolioProps & { cat
           navigation={copy.navigation}
           locale={locale}
           project={activeProject}
-          onClose={() => router.push('/work')}
+          onClose={() => router.push(localePath(locale, '/work'))}
           onAdjacent={showAdjacent}
           onChangeLocale={changeLocale}
         />

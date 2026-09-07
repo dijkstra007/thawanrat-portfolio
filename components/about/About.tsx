@@ -24,7 +24,7 @@ export default function About({ copy }: AboutProps) {
         </div>
         <div className={styles.copy}>
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.heading[0]}<br />{copy.heading[1]}</h2>
+          <h2>{copy.heading[0]}{' '}<br />{copy.heading[1]}</h2>
           <p>{copy.body}</p>
           <div className={styles.stats}>
             <p><strong>{copy.yearsValue}</strong><span>{copy.yearsLabel}</span></p>

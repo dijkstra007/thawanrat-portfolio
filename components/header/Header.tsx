@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { localePath } from '@/lib/routes';
 import { site } from '@/content/site';
 import type { SiteCopy } from '@/content/site';
 import { assetPath } from '@/lib/assets';
@@ -9,6 +10,7 @@ import styles from './Header.module.css';
 type HeaderProps = {
   copy: SiteCopy;
   locale: Locale;
+  pagePath: string;
   overlay?: boolean;
   compact?: boolean;
   workMenuOpen: boolean;
@@ -28,6 +30,7 @@ type HeaderProps = {
 export default function Header({
   copy,
   locale,
+  pagePath,
   overlay = false,
   compact = false,
   workMenuOpen,
@@ -66,11 +69,11 @@ export default function Header({
       onMouseLeave={() => workMenuOpen && onCloseMenus()}
     >
       <div className={`shell ${styles.inner}`}>
-        <Link className={styles.wordmark} href="/" aria-label={copy.wordmarkAria} onNavigate={(event) => { event.preventDefault(); onGoHome(); }}>
+        <Link className={styles.wordmark} href={localePath(locale)} aria-label={copy.wordmarkAria} onNavigate={(event) => { event.preventDefault(); onGoHome(); }}>
           <img
             className={styles.logo}
             src={assetPath(site.assets.logo)}
-            alt=""
+            alt={locale === 'th' ? 'โลโก้ Fahworks ผลงานออกแบบของ Thawanrat T.' : 'Fahworks — Thawanrat T. design portfolio logo'}
             width={560}
             height={104}
             decoding="async"
@@ -98,7 +101,7 @@ export default function Header({
                   <Link
                     key={item.label}
                     className={styles.mobileSubmenuLink}
-                    href={item.category === 'All' ? '/work' : `/work?category=${item.category}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}
+                    href={`${localePath(locale, '/work')}${item.category === 'All' ? '' : `?category=${item.category}`}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}
                   >
                     {item.label}
                   </Link>
@@ -111,7 +114,7 @@ export default function Header({
                   <Link
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
-                    href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
+                    href={localePath(locale, `/work/${getProjectById(item.id, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
                   >
                     {item.label}
                   </Link>
@@ -124,7 +127,7 @@ export default function Header({
                   <Link
                     key={item.id}
                     className={`${styles.mobileSubmenuLink} ${styles.secondary}`}
-                    href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
+                    href={localePath(locale, `/work/${getProjectById(item.id, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}
                   >
                     {item.label}
                   </Link>
@@ -137,15 +140,15 @@ export default function Header({
                 className={styles.workArea}
                 onMouseEnter={openWorkMenu}
               >
-                <button
+                <Link
                   className={styles.link}
-                  type="button"
+                  href={localePath(locale, '/work')}
                   aria-expanded={mobileNavOpen ? mobileWorkOpen : workMenuOpen}
                   onFocus={openWorkMenu}
-                  onClick={handleWorkClick}
+                  onNavigate={(event) => { event.preventDefault(); handleWorkClick(); }}
                 >
                   {copy.navigation.work}
-                </button>
+                </Link>
 
                 <div
                   className={`${styles.menu}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`}
@@ -155,7 +158,7 @@ export default function Header({
                     <div>
                       <p className={styles.label}>{copy.workMenu.typesLabel}</p>
                       {copy.workMenu.types.map((item) => (
-                        <Link key={item.label} href={item.category === 'All' ? '/work' : `/work?category=${item.category}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}>
+                        <Link key={item.label} href={`${localePath(locale, '/work')}${item.category === 'All' ? '' : `?category=${item.category}`}`} onNavigate={(event) => { event.preventDefault(); onRevealArchive(item.category); }}>
                           {item.label}
                         </Link>
                       ))}
@@ -163,7 +166,7 @@ export default function Header({
                     <div>
                       <p className={styles.label}>{copy.workMenu.featuredLabel}</p>
                       {copy.workMenu.featured.map((item) => (
-                        <Link key={item.id} href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
+                        <Link key={item.id} href={localePath(locale, `/work/${getProjectById(item.id, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
                           {item.label}
                         </Link>
                       ))}
@@ -171,7 +174,7 @@ export default function Header({
                     <div>
                       <p className={styles.label}>{copy.workMenu.awardsLabel}</p>
                       {copy.workMenu.awards.map((item) => (
-                        <Link key={item.id} href={`/work/${getProjectById(item.id, locale).slug}`} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
+                        <Link key={item.id} href={localePath(locale, `/work/${getProjectById(item.id, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); onOpenProject(getProjectById(item.id, locale)); }}>
                           {item.label}
                         </Link>
                       ))}
@@ -181,43 +184,45 @@ export default function Header({
               </div>
               {!compact && (
                 <>
-                  <a className={styles.link} href="#about" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.about}</a>
-                  <a className={styles.link} href="#experience" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.experience}</a>
-                  <a className={styles.link} href="#skills" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.skills}</a>
+                  <a className={styles.link} href={`${localePath(locale)}#about`} onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.about}</a>
+                  <a className={styles.link} href={`${localePath(locale)}#experience`} onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.experience}</a>
+                  <a className={styles.link} href={`${localePath(locale)}#skills`} onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.skills}</a>
                 </>
               )}
-              <a className={styles.link} href="#contact" onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.contact}</a>
+              <a className={styles.link} href={`${localePath(locale, pagePath)}#contact`} onMouseEnter={closeWorkMenuOnMouseEnter} onClick={onCloseMenus}>{copy.navigation.contact}</a>
             </>
           )}
         </nav>
 
         <div className={styles.actions}>
           <div className={styles.language} role="group" aria-label={copy.navigation.languageLabel}>
-            <button
+            <Link
               className={[
                 styles.languageOption,
                 locale === 'en' ? styles.languageActive : '',
               ].filter(Boolean).join(' ')}
-              type="button"
+              href={localePath('en', pagePath)}
+              hrefLang="en"
               aria-label={copy.navigation.switchToEnglish}
-              aria-pressed={locale === 'en'}
-              onClick={() => onChangeLocale('en')}
+              aria-current={locale === 'en' ? 'page' : undefined}
+              onNavigate={(event) => { event.preventDefault(); onChangeLocale('en'); }}
             >
               EN
-            </button>
+            </Link>
             <span className={styles.languageDivider} aria-hidden="true">/</span>
-            <button
+            <Link
               className={[
                 styles.languageOption,
                 locale === 'th' ? styles.languageActive : '',
               ].filter(Boolean).join(' ')}
-              type="button"
+              href={localePath('th', pagePath)}
+              hrefLang="th"
               aria-label={copy.navigation.switchToThai}
-              aria-pressed={locale === 'th'}
-              onClick={() => onChangeLocale('th')}
+              aria-current={locale === 'th' ? 'page' : undefined}
+              onNavigate={(event) => { event.preventDefault(); onChangeLocale('th'); }}
             >
               TH
-            </button>
+            </Link>
           </div>
 
         <button

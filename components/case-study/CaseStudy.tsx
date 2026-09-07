@@ -1,5 +1,9 @@
 'use client';
 
+import Link from 'next/link';
+import { localePath } from '@/lib/routes';
+import { adjacentProject, projectImageAlt } from '@/lib/projects';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type {
   KeyboardEvent as ReactKeyboardEvent,
@@ -579,7 +583,7 @@ export default function CaseStudy({
     return () => document.removeEventListener('keydown', handleViewerShortcut);
   }, [moveImage, viewerOpen]);
 
-  const imageAlt = (index: number) => project.title + ' — ' + copy.imageLabel + ' ' + (index + 1);
+  const imageAlt = (index: number) => projectImageAlt(project, locale, index);
 
   const renderViewer = () => {
     if (!viewerOpen || !currentImage) return null;
@@ -675,33 +679,35 @@ export default function CaseStudy({
       <div className={styles.study} aria-hidden={viewerOpen}>
         <div className={styles.topActions}>
           <div className={styles.language} role="group" aria-label={navigation.languageLabel}>
-            <button
+            <Link
               className={`${styles.languageOption}${locale === 'en' ? ` ${styles.languageActive}` : ''}`}
-              type="button"
+              href={localePath('en', `/work/${project.slug}`)}
+              hrefLang="en"
               aria-label={navigation.switchToEnglish}
-              aria-pressed={locale === 'en'}
-              onClick={() => onChangeLocale('en')}
+              aria-current={locale === 'en' ? 'page' : undefined}
+              onNavigate={(event) => { event.preventDefault(); onChangeLocale('en'); }}
             >
               EN
-            </button>
+            </Link>
             <span className={styles.languageDivider} aria-hidden="true">/</span>
-            <button
+            <Link
               className={`${styles.languageOption}${locale === 'th' ? ` ${styles.languageActive}` : ''}`}
-              type="button"
+              href={localePath('th', `/work/${project.slug}`)}
+              hrefLang="th"
               aria-label={navigation.switchToThai}
-              aria-pressed={locale === 'th'}
-              onClick={() => onChangeLocale('th')}
+              aria-current={locale === 'th' ? 'page' : undefined}
+              onNavigate={(event) => { event.preventDefault(); onChangeLocale('th'); }}
             >
               TH
-            </button>
+            </Link>
           </div>
-          <button className={styles.close} type="button" onClick={onClose} aria-label={copy.closeLabel}>
+          <Link className={styles.close} href={localePath(locale, '/work')} onNavigate={(event) => { event.preventDefault(); onClose(); }} aria-label={copy.closeLabel}>
             <span aria-hidden="true">×</span>
-          </button>
+          </Link>
         </div>
         <div className={styles.heading}>
           <p className="eyebrow">{project.categoryLabel ?? copy.categoryLabels[project.category]}</p>
-          <h2><NoBreakText text={project.title} /></h2>
+          <h1><NoBreakText text={project.title} /></h1>
         </div>
         <div className={styles.content}>
           <div className={styles.media}>
@@ -776,13 +782,13 @@ export default function CaseStudy({
             <p><NoBreakText text={project.description} /></p>
             <div className={`${styles.pager}${showBack ? '' : ` ${styles.single}`}`}>
               {showBack ? (
-                <button type="button" onClick={() => moveToAdjacentProject(-1)}>
+                <Link href={localePath(locale, `/work/${adjacentProject(project, -1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(-1); }}>
                   <span aria-hidden="true">‹‹</span> {copy.backLabel}
-                </button>
+                </Link>
               ) : null}
-            <button type="button" onClick={() => moveToAdjacentProject(1)}>
+            <Link href={localePath(locale, `/work/${adjacentProject(project, 1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(1); }}>
                 {copy.nextLabel} <span aria-hidden="true">››</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

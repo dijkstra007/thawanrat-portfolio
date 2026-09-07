@@ -125,9 +125,9 @@ export const site = {
   copy: {
     en: {
       metadata: {
-        title: 'Thawanrat T. — Graphic Designer',
+        title: 'Thawanrat T. | Packaging & Brand Identity Designer (Bangkok)',
         description:
-          'Portfolio of Thawanrat T., a graphic designer specializing in packaging design and brand identity.',
+          'Bangkok-based designer Thawanrat T. creates packaging, brand identities, and production-ready artwork for print and digital media. Explore selected work and get in touch.',
       },
       wordmarkAria: 'Fahworks home',
       navigation: {
@@ -270,9 +270,8 @@ export const site = {
     },
     th: {
       metadata: {
-        title: 'Thawanrat T. — นักออกแบบกราฟิก',
-        description:
-          'ผลงานของ Thawanrat T. นักออกแบบกราฟิกที่เชี่ยวชาญด้านการออกแบบบรรจุ\u2060ภัณฑ์และอัตลักษณ์แบรนด์',
+        title: 'Thawanrat T. | นักออกแบบบรรจุภัณฑ์และอัตลักษณ์แบรนด์ กรุงเทพฯ',
+        description: 'Thawanrat T. นักออกแบบในกรุงเทพฯ ประเทศไทย รับออกแบบบรรจุภัณฑ์ อัตลักษณ์แบรนด์ และอาร์ตเวิร์กพร้อมผลิตสำหรับสื่อสิ่งพิมพ์และดิจิทัล พร้อมผลงานและช่องทางติดต่อ',
       },
       wordmarkAria: 'หน้าแรกของ Fahworks',
       navigation: {

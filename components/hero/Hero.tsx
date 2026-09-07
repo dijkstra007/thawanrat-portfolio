@@ -50,7 +50,7 @@ export default function Hero({ copy }: HeroProps) {
           <img
             className={styles.awardIcon}
             src={assetPath(site.assets.thaiStarMark)}
-            alt=""
+            alt={`${hero.awardName} — ${hero.awardDetail}`}
             width={120}
             height={90}
             decoding="async"

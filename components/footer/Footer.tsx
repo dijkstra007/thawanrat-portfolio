@@ -12,7 +12,7 @@ export default function Footer({ copy }: FooterProps) {
       <div className={`shell ${styles.grid}`}>
         <div>
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.heading[0]}<br />{copy.heading[1]}</h2>
+          <h2>{copy.heading[0]}{' '}<br />{copy.heading[1]}</h2>
           <p className={styles.note}>{copy.note[0]}<br />{copy.note[1]}</p>
         </div>
         <div className={styles.links}>

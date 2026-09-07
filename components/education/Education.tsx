@@ -12,7 +12,7 @@ export default function Education({ copy }: EducationProps) {
       <div className={`shell ${styles.split}`}>
         <div>
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.heading[0]}<br />{copy.heading[1]}</h2>
+          <h2>{copy.heading[0]}{' '}<br />{copy.heading[1]}</h2>
         </div>
         <div className={styles.details}>
           <article>

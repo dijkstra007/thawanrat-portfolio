@@ -38,8 +38,11 @@ jobs:
         run: npm run build:pages
         env:
           GITHUB_PAGES: 'true'
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-          SITE_ORIGIN: ${{ steps.pages.outputs.base_url }}
+          NEXT_PUBLIC_BASE_PATH: ''
+          SITE_ORIGIN: 'https://fahworks.com'
+
+      - name: Verify exported SEO and localized routes
+        run: npm run test:routes
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
@@ -56,3 +59,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Check out deployed source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js for live verification
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+          cache: npm
+
+      - name: Install verification dependencies
+        run: npm ci
+
+      - name: Verify live localized SEO
+        run: npm run verify:live
