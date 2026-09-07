@@ -16,7 +16,8 @@
     "build:pages": "next build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "test:routes": "node --test scripts/test-routes.mjs"
+    "test:routes": "node --test scripts/test-routes.mjs",
+    "verify:live": "node scripts/verify-live-seo.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

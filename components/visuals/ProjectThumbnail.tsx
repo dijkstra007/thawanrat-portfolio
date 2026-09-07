@@ -14,17 +14,18 @@ const sizes = '(max-width: 552px) calc(100vw - 32px), (max-width: 620px) 520px, 
 
 type ProjectThumbnailProps = {
   src?: string;
+  alt: string;
   visual: ProjectVisual;
   className: string;
   eager?: boolean;
 };
 
-export default function ProjectThumbnail({ src, visual, className, eager = false }: ProjectThumbnailProps) {
+export default function ProjectThumbnail({ src, alt, visual, className, eager = false }: ProjectThumbnailProps) {
   const variants = src ? thumbnails[src] : undefined;
   const defaultSource = variants?.find((variant) => variant.width >= 640) ?? variants?.at(-1);
 
   return (
-    <span className={`${className}${src ? '' : ` ${visualClass(visual)}`}`} aria-hidden="true">
+    <span className={`${className}${src ? '' : ` ${visualClass(visual)}`}`}>
       {src && (
         // Static responsive assets work on both Sites and GitHub Pages.
         // eslint-disable-next-line @next/next/no-img-element
@@ -33,7 +34,7 @@ export default function ProjectThumbnail({ src, visual, className, eager = false
           src={assetPath(defaultSource?.src ?? src)}
           srcSet={variants?.map((variant) => `${assetPath(variant.src)} ${variant.width}w`).join(', ')}
           sizes={sizes}
-          alt=""
+          alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
         />

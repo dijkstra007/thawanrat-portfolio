@@ -99,7 +99,7 @@ test('portfolio image loading', async (t) => {
   });
 
   await t.test('gallery prioritizes four covers and keeps all other thumbnails lazy with base paths', async () => {
-    await render(h(Archive, { copy: copy.archive, projects: filterProjects('All'), onOpenProject: noop }));
+    await render(h(Archive, { locale: 'en', copy: copy.archive, projects: filterProjects('All'), onOpenProject: noop }));
     const images = [...container.querySelectorAll('img')];
     assert.equal(images.filter((img) => img.getAttribute('loading') === 'eager').length, 4);
     assert.equal(images.filter((img) => img.getAttribute('loading') === 'lazy').length, images.length - 4);
@@ -109,7 +109,7 @@ test('portfolio image loading', async (t) => {
       assert.equal(image.getAttribute('decoding'), 'async');
       assert.ok(image.getAttribute('sizes').includes('620px'));
     }
-    await render(h(SelectedWork, { copy: copy.selectedWork, projects: getFeaturedProjects(), onOpenProject: noop, onViewAll: noop }));
+    await render(h(SelectedWork, { locale: 'en', copy: copy.selectedWork, projects: getFeaturedProjects(), onOpenProject: noop, onViewAll: noop }));
     assert.ok([...container.querySelectorAll('img')].every((img) => img.getAttribute('loading') === 'lazy'));
   });
 
