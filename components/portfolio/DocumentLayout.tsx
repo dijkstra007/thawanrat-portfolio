@@ -28,7 +28,9 @@ export default function DocumentLayout({
     <html lang={locale} data-locale={locale}>
       <body className={`${poppins.variable} ${notoSansThai.variable} antialiased`}>
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
 }
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';

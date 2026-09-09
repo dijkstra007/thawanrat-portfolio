@@ -48,3 +48,36 @@ The deployment workflow runs this check automatically with a bounded retry for
 Pages propagation. A failed live check does not roll back a completed deployment.
 
 Owner action: submit `https://fahworks.com/sitemap.xml` in Google Search Console.
+
+## Google Analytics 4
+
+The **Fahworks Portfolio** property contains the **Fahworks Website** web stream
+for `https://www.fahworks.com/`, with Measurement ID `G-GV1LS2F6M0`.
+Reporting uses Thailand time and Thai baht, with enhanced measurement enabled.
+The public Measurement ID is configured as the repository Actions variable
+`NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+
+To replace the analytics property:
+
+1. Open [Google Analytics](https://analytics.google.com/) and create an account
+   and a property named **Thawanrat Portfolio** (or use an existing property).
+2. Add a **Web** data stream for
+   `https://www.fahworks.com/` and copy its `G-…`
+   Measurement ID. Leave enhanced measurement enabled for standard interactions.
+3. In the GitHub repository, open **Settings → Secrets and variables → Actions →
+   Variables**, then add `NEXT_PUBLIC_GA_MEASUREMENT_ID` with that ID.
+   This is a public tag identifier, not an API key or password.
+4. Deploy the updated `main` branch, or run **Deploy portfolio to GitHub Pages**
+   manually if the code is already on `main`. The ID is embedded at build time,
+   so changing the variable requires a new deployment.
+5. Visit the live site and check **Reports → Realtime** in Google Analytics.
+
+For a local production build, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local`.
+Development mode never loads the tag. Missing or malformed IDs disable it.
+Remove the variable and redeploy to disable analytics on the live site.
+
+The shared document layout loads the tag on both English and Thai pages.
+Enhanced measurement tracks page views and supported interactions.
+No custom interaction events are configured.
+
+See [Google's setup guide](https://support.google.com/analytics/answer/9304153).
