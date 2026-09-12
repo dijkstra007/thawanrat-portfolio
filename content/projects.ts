@@ -1222,7 +1222,7 @@ export const archiveProjectGroups = {
   lussopack: [13, 12],
   protech: [37, 38, 45, 41, 46, 47],
   konica: [28, 30, 29],
-  pttStation: [31, 22, 17, 19, 27, 26],
+  pttStation: [22, 17, 19, 27, 26],
   other: [2, 3, 5, 10],
 } as const;
 
