@@ -255,7 +255,7 @@ export const site = {
         ],
         featured: [
           { label: 'Phop Pra', id: 1 },
-          { label: 'Green Station Award Design', id: 31 },
+          { label: 'Chailai Packaging Design', id: 4 },
           { label: 'Social Media Content Design', id: 2 },
           { label: 'Lussopack — BKK GEMS 2024', id: 13 },
         ],
@@ -400,7 +400,7 @@ export const site = {
         ],
         featured: [
           { label: 'พบประ', id: 1 },
-          { label: 'ออกแบบโล่รางวัล Green Station', id: 31 },
+          { label: 'การออกแบบบรรจุ\u2060ภัณฑ์ ChaiLai', id: 4 },
           { label: 'การออกแบบคอนเทนต์สำหรับ Social Media', id: 2 },
           { label: 'Lussopack — BKK GEMS 2024', id: 13 },
         ],

@@ -1,6 +1,6 @@
 import type { ProjectRecord } from '@/lib/types';
 
-export const featuredProjectIds = [1, 31, 2, 13];
+export const featuredProjectIds = [1, 4, 2, 13];
 
 const projectRecords: ProjectRecord[] = [
   {
