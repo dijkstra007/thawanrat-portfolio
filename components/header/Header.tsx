@@ -12,8 +12,6 @@ type HeaderProps = {
   localeSuffix: string;
   activeSection: 'work' | 'services' | 'resume';
   mobileNavOpen: boolean;
-  onGoHome: () => void;
-  onGoSection: (section: 'work' | 'services' | 'contact') => void;
   onOpenResume: () => void;
   onCloseMenus: () => void;
   onToggleMobileNav: () => void;
@@ -21,21 +19,21 @@ type HeaderProps = {
 };
 
 export default function Header({ locale, pagePath, localeSuffix, activeSection, mobileNavOpen,
-  onGoHome, onGoSection, onOpenResume, onCloseMenus, onToggleMobileNav, onChangeLocale,
+  onOpenResume, onCloseMenus, onToggleMobileNav, onChangeLocale,
 }: HeaderProps) {
   const copy = portfolioCopy[locale].navigation;
   return (
     <header className={`shell ${styles.header}`}>
-      <Link className={styles.wordmark} href={`${localePath(locale)}#top`} aria-label={site.copy[locale].wordmarkAria}
-        onNavigate={(event) => { event.preventDefault(); onGoHome(); }}>
+      <a className={styles.wordmark} href={`${localePath(locale)}#top`} aria-label={site.copy[locale].wordmarkAria}
+        onClick={onCloseMenus}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={assetPath(site.assets.logo)} alt={locale === 'th' ? 'โลโก้ Fahworks' : 'Fahworks logo'} width={560} height={104} />
-      </Link>
+      </a>
       <nav id="main-navigation" className={`${styles.nav}${mobileNavOpen ? ` ${styles.open}` : ''}`} aria-label={copy.menuLabel}>
-        <Link href={`${localePath(locale)}#work`} aria-current={activeSection === 'work' ? 'page' : undefined}
-          onNavigate={(event) => { event.preventDefault(); onGoSection('work'); }}>{copy.work}</Link>
-        <Link href={`${localePath(locale)}#services`} aria-current={activeSection === 'services' ? 'location' : undefined}
-          onNavigate={(event) => { event.preventDefault(); onGoSection('services'); }}>{copy.services}</Link>
+        <a href={`${localePath(locale)}#work`} aria-current={activeSection === 'work' ? 'page' : undefined}
+          onClick={onCloseMenus}>{copy.work}</a>
+        <a href={`${localePath(locale)}#services`} aria-current={activeSection === 'services' ? 'location' : undefined}
+          onClick={onCloseMenus}>{copy.services}</a>
         <Link href={localePath(locale, '/resume')} aria-current={activeSection === 'resume' ? 'page' : undefined}
           onNavigate={(event) => { event.preventDefault(); onOpenResume(); }}>{copy.resume}</Link>
       </nav>
@@ -49,8 +47,8 @@ export default function Header({ locale, pagePath, localeSuffix, activeSection, 
             aria-current={locale === 'th' ? 'true' : undefined}
             onNavigate={(event) => { event.preventDefault(); onChangeLocale('th'); }}>TH</Link>
         </div>
-        <Link className={`button primary ${styles.contact}`} href={`${localePath(locale)}#contact`}
-          onNavigate={(event) => { event.preventDefault(); onGoSection('contact'); }}>{copy.talk}</Link>
+        <a className={`button primary ${styles.contact}`} href={`${localePath(locale)}#contact`}
+          onClick={onCloseMenus}>{copy.talk}</a>
         <button className={styles.toggle} type="button" aria-label={mobileNavOpen ? copy.closeMenu : copy.openMenu}
           aria-expanded={mobileNavOpen} aria-controls="main-navigation" onClick={onToggleMobileNav}
           onKeyDown={(event) => { if (event.key === 'Escape') onCloseMenus(); }}>

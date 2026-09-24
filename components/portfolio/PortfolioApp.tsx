@@ -75,18 +75,6 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
     router.push(`${localePath(nextLocale, pagePath)}${localeSuffix}`);
     closeMenus();
   };
-  const goHome = () => {
-    setHomeHash('#top');
-    if (view === 'home') document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-    router.push(`${localePath(locale)}#top`);
-    closeMenus();
-  };
-  const goSection = (section: 'work' | 'services' | 'contact') => {
-    setHomeHash(`#${section}`);
-    if (view === 'home') document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
-    router.push(`${localePath(locale)}#${section}`, { scroll: view !== 'home' });
-    closeMenus();
-  };
   const revealArchive = (nextCategory: CategoryFilter = 'All') => {
     closeMenus();
     setCategory(nextCategory);
@@ -106,7 +94,7 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
       <Suspense fallback={null}><CategoryFromUrl onChange={setCategory} /></Suspense>
       {!activeProject && <>
         <Header locale={locale} pagePath={pagePath} localeSuffix={localeSuffix} activeSection={activeSection}
-          mobileNavOpen={mobileNavOpen} onGoHome={goHome} onGoSection={goSection}
+          mobileNavOpen={mobileNavOpen}
           onOpenResume={() => { closeMenus(); router.push(localePath(locale, '/resume')); }}
           onCloseMenus={closeMenus} onToggleMobileNav={() => setMobileNavOpen((open) => !open)} onChangeLocale={changeLocale} />
         {view === 'resume' ? <Resume locale={locale} /> : view === 'work' ? (
