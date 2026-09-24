@@ -1,4 +1,5 @@
-.header { min-height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 22px; border-bottom: 1px solid #eeeef0; position: relative; z-index: 10; background: #fff; }
+.header { position: sticky; top: 0; z-index: 50; background: #fff; }
+.inner { min-height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 22px; border-bottom: 1px solid #eeeef0; position: relative; }
 .wordmark { display: block; padding-block: 6px; flex-shrink: 0; }
 .wordmark img { width: 139px; height: auto; }
 .nav { display: flex; align-items: center; gap: 26px; }
@@ -16,17 +17,17 @@
 .cross i:first-child { transform: translateY(3.75px) rotate(45deg); }
 .cross i:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 @media (max-width: 760px) {
-  .header { gap: 15px; }
+  .inner { gap: 15px; }
   .nav { gap: 16px; }
   .actions { gap: 12px; }
   .wordmark img { width: 116px; }
   .contact { display: none; }
 }
 @media (max-width: 560px) {
-  .header { gap: 8px; }
+  .inner { gap: 8px; }
   .wordmark img { width: 122px; }
   .toggle { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
-  .nav { display: none; position: absolute; left: -18px; right: -18px; top: 64px; background: #fff; padding: 15px 24px; border-bottom: 1px solid var(--line); box-shadow: 0 10px 15px #00000008; }
+  .nav { display: none; position: absolute; left: -18px; right: -18px; top: 100%; max-height: calc(100dvh - var(--header-height)); overflow-y: auto; overscroll-behavior: contain; background: #fff; padding: 15px 24px; border-bottom: 1px solid var(--line); box-shadow: 0 10px 15px #00000008; }
   .open { display: flex; flex-direction: column; align-items: stretch; gap: 3px; }
   .nav a { min-height: 44px; font-size: 14px; }
   .language a { display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 28px; }
