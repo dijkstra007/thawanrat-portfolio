@@ -1,6 +1,6 @@
 import type { ProjectRecord } from '@/lib/types';
 
-export const featuredProjectIds = [1, 4, 2, 13];
+export const featuredProjectIds = [14, 4, 47, 2, 13, 30];
 
 const projectRecords: ProjectRecord[] = [
   {
@@ -1001,7 +1001,7 @@ const projectRecords: ProjectRecord[] = [
   {
     id: 47,
     slug: 'protech-transfer-machinery-brochure',
-    category: 'Packaging',
+    category: 'Campaign',
     year: '2025',
     visual: 'blue',
     copy: {

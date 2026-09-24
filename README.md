@@ -11,8 +11,8 @@ The `main` branch deploys to GitHub Pages through GitHub Actions.
 
 ## Localized routes and SEO
 
-English uses `/`, `/work/`, and `/work/[slug]/`. Thai uses `/th/`,
-`/th/work/`, and `/th/work/[slug]/`. Both languages share the existing slugs
+English uses `/`, `/resume/`, `/work/`, and `/work/[slug]/`. Thai uses `/th/`,
+`/th/resume/`, `/th/work/`, and `/th/work/[slug]/`. Both languages share the existing slugs
 in `content/projects.ts`; keep them unchanged when editing project copy.
 Only these two locale trees are exported. Unknown locales and slugs return 404.
 GitHub Pages may redirect `/th` to the exported directory URL `/th/`, which returns 200.
@@ -20,7 +20,8 @@ GitHub Pages may redirect `/th` to the exported directory URL `/th/`, which retu
 Language links navigate to the same page in the other language. The URL is the
 source of truth; browser storage cannot override it. Category filters remain
 available at `/work/?category=Packaging` and `/th/work/?category=Packaging`.
-Filtered views canonicalize to their locale’s unfiltered work index.
+Homepage filters use the same category query and retain the selected category when switching language.
+Filtered views canonicalize to their locale’s unfiltered home or work index.
 
 Separate root layouts render the correct HTML language. Shared SEO helpers emit
 page-specific titles, descriptions, self-canonicals, EN/TH/x-default alternates,
@@ -81,3 +82,11 @@ Enhanced measurement tracks page views and supported interactions.
 No custom interaction events are configured.
 
 See [Google's setup guide](https://support.google.com/analytics/answer/9304153).
+
+## Design assets
+
+The site uses locally hosted LINE Seed Sans and LINE Seed Sans TH in regular and
+bold weights. Copyright and SIL OFL text are included in `public/fonts/line-seed/`.
+The homepage still life is an illustrative mockup based on selected work; its
+bilingual caption distinguishes it from the original artwork in project galleries.
+Personal history, education, and skills live on the dedicated Resume pages.

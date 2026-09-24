@@ -10,7 +10,7 @@ const fullBleedCovers = new Set([
   '/assets/projects/protech-machinery-brochure/00-cover.jpg',
 ]);
 // Match the shell widths, column counts, and gaps used by both galleries.
-const sizes = '(max-width: 552px) calc(100vw - 32px), (max-width: 620px) 520px, (max-width: 800px) calc((100vw - 54px) / 2), (max-width: 900px) 373px, (max-width: 1260px) calc((100vw - 128px) / 4), 283px';
+const sizes = '(max-width: 560px) calc(100vw - 36px), (max-width: 760px) calc((100vw - 61px) / 2), (max-width: 1228px) calc((100vw - 112px) / 2), 558px';
 
 type ProjectThumbnailProps = {
   src?: string;

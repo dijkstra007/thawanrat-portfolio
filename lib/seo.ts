@@ -41,6 +41,18 @@ export function workMetadata(locale: Locale) {
       : 'Explore Thawanrat T.’s design work: ThaiStar award-winning Phop Pra packaging, brand identities, brochures, and campaigns for PTT Station and Protech Transfer.');
 }
 
+export function resumeMetadata(locale: Locale) {
+  return pageMetadata(locale, '/resume',
+    locale === 'th' ? 'เรซูเม่และประสบการณ์งานออกแบบกราฟิก | Thawanrat T.' : 'Graphic Designer Resume & Experience | Thawanrat T.',
+    locale === 'th'
+      ? 'ประวัติและประสบการณ์ของ ธวันรัตน์ (ฟ้า) กราฟิกดีไซเนอร์ในกรุงเทพฯ พร้อมข้อมูลการศึกษา ทักษะ เครื่องมือออกแบบ และช่องทางติดต่อสำหรับร่วมงาน'
+      : 'Meet Thawanrat T. (Fah), a Bangkok-based graphic designer with 3+ years of experience. Explore her experience, education, design tools, and contact details.');
+}
+
+export function resumeJsonLd(locale: Locale) {
+  return { ...personJsonLd(locale), url: pageUrl(locale, '/resume') };
+}
+
 export function projectMetadata(project: Project, locale: Locale) {
   const discipline = {
     en: { Packaging: 'Packaging Design', Branding: 'Brand Design', Campaign: 'Campaign Design', Digital: 'Digital Design' },
@@ -52,7 +64,7 @@ export function projectMetadata(project: Project, locale: Locale) {
 export function personJsonLd(locale: Locale) {
   return {
     '@context': 'https://schema.org', '@type': 'Person', name: 'Thawanrat T.',
-    jobTitle: locale === 'th' ? 'นักออกแบบบรรจุภัณฑ์และอัตลักษณ์แบรนด์' : 'Packaging & Brand Identity Designer',
+    jobTitle: locale === 'th' ? 'นักออกแบบกราฟิก' : 'Graphic Designer',
     url: pageUrl(locale), inLanguage: locale,
     sameAs: [site.copy[locale].footer.linkedin, site.copy[locale].footer.fastwork],
     knowsAbout: locale === 'th' ? ['การออกแบบบรรจุภัณฑ์', 'อัตลักษณ์แบรนด์', 'การออกแบบกราฟิก'] : ['Packaging design', 'Brand identity', 'Graphic design'],

@@ -28,7 +28,7 @@ async function verify() {
   }
   const titles = new Set();
   const descriptions = new Set();
-  for (const path of ['/', '/work/', project]) {
+  for (const path of ['/', '/work/', '/resume/', project]) {
     for (const locale of ['en', 'th']) {
       const localized = locale === 'th' ? '/th' + path : path;
       assert.ok(urls.includes(origin + localized));

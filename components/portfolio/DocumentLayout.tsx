@@ -1,36 +1,39 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_Thai, Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import '@/app/globals.css';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
-  subsets: ['latin'],
-  weight: ['300', '400', '600', '700'],
-});
-
-const notoSansThai = Noto_Sans_Thai({
-  variable: '--font-noto-sans-thai',
-  subsets: ['thai', 'latin'],
-  weight: ['300', '400', '600', '700'],
+const lineSeedSans = localFont({
+  variable: '--font-line-seed',
+  src: [
+    { path: '../../public/fonts/line-seed/EN-LINESeedSans_W_Rg.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/line-seed/EN-LINESeedSans_W_Bd.woff2', weight: '700', style: 'normal' },
+  ],
   display: 'swap',
+  adjustFontFallback: false,
+});
+const lineSeedSansThai = localFont({
+  variable: '--font-line-seed-th',
+  src: [
+    { path: '../../public/fonts/line-seed/TH-LINESeedSansTH_W_Rg.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/line-seed/TH-LINESeedSansTH_W_Bd.woff2', weight: '700', style: 'normal' },
+  ],
+  display: 'swap',
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = { icons: { icon: '/favicon.png' } };
 
-export default function DocumentLayout({
-  children,
-  locale,
-}: Readonly<{
+export default function DocumentLayout({ children, locale }: Readonly<{
   children: React.ReactNode;
   locale: 'en' | 'th';
 }>) {
   return (
     <html lang={locale} data-locale={locale}>
-      <body className={`${poppins.variable} ${notoSansThai.variable} antialiased`}>
+      <body className={`${lineSeedSans.variable} ${lineSeedSansThai.variable} antialiased`}>
         {children}
         <GoogleAnalytics />
       </body>
     </html>
   );
 }
-import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';

@@ -8,7 +8,7 @@ register('./image-test-loader.mjs', import.meta.url);
 const { projects, featuredProjectIds } = await import('../content/projects.ts');
 const { getProjectBySlug } = await import('../lib/projects.ts');
 const origin = 'https://fahworks.com';
-const paths = ['/', '/work/', ...projects.map(({ slug }) => `/work/${slug}/`)];
+const paths = ['/', '/work/', '/resume/', ...projects.map(({ slug }) => `/work/${slug}/`)];
 const pathFor = (locale, path) => locale === 'th' ? `/th${path}` : path;
 const readPage = async (path) => new JSDOM(await readFile(new URL(`../out${path}index.html`, import.meta.url), 'utf8')).window.document;
 
@@ -85,11 +85,11 @@ test('every exported EN/TH page has complete, self-referencing SEO before JavaSc
       }
       const structured = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) => JSON.parse(script.textContent));
       if (path !== '/work/') {
-        const data = structured.find((item) => item['@type'] === (path === '/' ? 'Person' : 'CreativeWork'));
+        const data = structured.find((item) => item['@type'] === (path === '/' || path === '/resume/' ? 'Person' : 'CreativeWork'));
         assert.ok(data, localized);
         assert.equal(data.url, canonical);
         assert.equal(data.inLanguage, locale);
-        if (path === '/') {
+        if (path === '/' || path === '/resume/') {
           assert.equal(data.sameAs.length, 2);
           assert.ok(data.knowsAbout.length >= 2);
         } else {
@@ -114,7 +114,29 @@ test('home and work index expose crawlable localized project links and spaced he
       if (featuredProjectIds.includes(project.id)) assert.ok(home.querySelector(`a[href="${href}"]`), href);
     }
     const headings = [...home.querySelectorAll('h2')].map((heading) => heading.textContent.replace(/\s+/g, ' ').trim());
-    if (locale === 'en') for (const expected of ['Work that speaks.', 'Designing with purpose, from concept to production.', 'My professional journey.', 'Communication Design.', 'Let’s create something great.']) assert.ok(headings.includes(expected), expected);
+    if (locale === 'en') for (const expected of ['Different briefs. Same love for design.', 'Big picture. Small details. All covered.', 'Good work starts with a conversation.', 'Your next idea. Let’s make it happen.']) assert.ok(headings.includes(expected), expected);
+  }
+});
+
+test('dedicated resume pages retain facts while homepage focuses on work and contact', async () => {
+  for (const locale of ['en', 'th']) {
+    const home = await readPage(pathFor(locale, '/'));
+    const resume = await readPage(pathFor(locale, '/resume/'));
+    assert.ok(home.querySelector(`a[href="${pathFor(locale, '/resume/')}"]`));
+    for (const company of ['Happy Nest Space', 'Konica Minolta Business Solutions', 'L&3B Company Limited', 'Online Asset Co., Ltd']) {
+      assert.ok(resume.body.textContent.includes(company), company);
+      assert.ok(!home.body.textContent.includes(company), company);
+    }
+    assert.ok(resume.querySelector('a[href^="https://drive.google.com/file/"]'));
+    assert.ok(home.querySelector('a[href="https://lin.ee/7CHOSkJ"]'));
+    assert.ok(home.getElementById('services'));
+    assert.ok(home.getElementById('work'));
+    assert.ok(home.getElementById('contact'));
+    for (const document of [home, resume]) {
+      assert.ok(document.querySelector('footer'));
+      assert.equal(document.querySelectorAll('footer a').length, 0);
+      document.defaultView.close();
+    }
   }
 });
 

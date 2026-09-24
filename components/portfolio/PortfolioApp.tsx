@@ -2,30 +2,26 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useMemo, useState } from 'react';
-import type { CSSProperties } from 'react';
-import About from '@/components/about/About';
 import Archive from '@/components/archive/Archive';
 import CaseStudy from '@/components/case-study/CaseStudy';
-import Education from '@/components/education/Education';
-import Experience from '@/components/experience/Experience';
-import Expertise from '@/components/expertise/Expertise';
+import Contact from '@/components/contact/Contact';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
+import Process from '@/components/process/Process';
+import Resume from '@/components/resume/Resume';
 import SelectedWork from '@/components/selected-work/SelectedWork';
-import { experience } from '@/content/experience';
-import { expertise } from '@/content/expertise';
+import Services from '@/components/services/Services';
+import { portfolioCopy } from '@/content/portfolio';
 import { site } from '@/content/site';
 import { localePath } from '@/lib/routes';
-import { assetPath } from '@/lib/assets';
 import { adjacentProject, filterProjects, getFeaturedProjects, getProjectBySlug } from '@/lib/projects';
 import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
 
-type PortfolioProps = { view?: 'home' | 'work'; slug?: string; locale?: Locale };
+type PortfolioProps = { view?: 'home' | 'work' | 'resume'; slug?: string; locale?: Locale };
 
-// Only the optional category filter waits for search params. Page content and
-// language are always present in the static HTML, outside Suspense fallbacks.
+// Keep static page content outside the optional query filter's Suspense boundary.
 function CategoryFromUrl({ onChange }: { onChange: (category: string | null) => void }) {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
@@ -36,150 +32,104 @@ function CategoryFromUrl({ onChange }: { onChange: (category: string | null) => 
 export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: PortfolioProps) {
   const router = useRouter();
   const [category, setCategory] = useState<string | null>(null);
-  const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
-  const archiveVisible = view === 'work' || Boolean(slug);
+  const [homeHash, setHomeHash] = useState('');
   const filter: CategoryFilter = category === 'Packaging' || category === 'Campaign' || category === 'Branding' || category === 'Digital' ? category : 'All';
-
   const copy = site.copy[locale];
+  const design = portfolioCopy[locale];
   const activeProject = useMemo(() => slug ? getProjectBySlug(slug, locale) : null, [slug, locale]);
   const selectedProjects = useMemo(() => getFeaturedProjects(locale), [locale]);
   const archivedProjects = useMemo(() => filterProjects(filter, locale), [filter, locale]);
+  const pagePath = slug ? `/work/${slug}` : view === 'work' ? '/work' : view === 'resume' ? '/resume' : '/';
+  const activeSection = view === 'resume' ? 'resume' : view === 'home' && homeHash === '#services' ? 'services' : 'work';
+  const localeSuffix = `${view !== 'resume' && !slug && filter !== 'All' ? `?category=${filter}` : ''}${view === 'home' ? homeHash : ''}`;
 
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
+    const readHash = () => setHomeHash(window.location.hash);
+    const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        if (slug) {
-          router.push(localePath(locale, '/work'));
-          return;
-        }
-        setWorkMenuOpen(false);
+        // The gallery owns Escape while its image viewer is open.
+        if (slug && !document.querySelector('[data-image-viewer]')) router.push(localePath(locale, '/work'));
         setMobileNavOpen(false);
-        setMobileWorkOpen(false);
-
       }
     };
-    window.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = Boolean(slug) || mobileNavOpen ? 'hidden' : '';
+    const closeOutside = (event: PointerEvent) => {
+      if (event.target instanceof Element && !event.target.closest('header')) setMobileNavOpen(false);
+    };
+    readHash();
+    window.addEventListener('hashchange', readHash);
+    window.addEventListener('keydown', closeOnEscape);
+    document.addEventListener('pointerdown', closeOutside);
+    document.body.style.overflow = slug ? 'hidden' : '';
     return () => {
-      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('hashchange', readHash);
+      window.removeEventListener('keydown', closeOnEscape);
+      document.removeEventListener('pointerdown', closeOutside);
       document.body.style.overflow = '';
     };
-  }, [slug, mobileNavOpen, router, locale]);
+  }, [slug, router, locale]);
 
-  const closeMenus = () => {
-    setWorkMenuOpen(false);
-    setMobileNavOpen(false);
-    setMobileWorkOpen(false);
-  };
-
+  const closeMenus = () => setMobileNavOpen(false);
   const changeLocale = (nextLocale: Locale) => {
     if (nextLocale === locale) return;
-    const path = slug ? `/work/${slug}` : view === 'work' ? '/work' : '/';
-    const query = view === 'work' && !slug && filter !== 'All' ? `?category=${filter}` : '';
-    router.push(`${localePath(nextLocale, path)}${query}`);
+    router.push(`${localePath(nextLocale, pagePath)}${localeSuffix}`);
     closeMenus();
   };
-
   const goHome = () => {
-    router.push(localePath(locale));
+    setHomeHash('#top');
+    if (view === 'home') document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+    router.push(`${localePath(locale)}#top`);
     closeMenus();
   };
-
-  const revealArchive = (category: CategoryFilter = 'All') => {
+  const goSection = (section: 'work' | 'services' | 'contact') => {
+    setHomeHash(`#${section}`);
+    if (view === 'home') document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    router.push(`${localePath(locale)}#${section}`, { scroll: view !== 'home' });
     closeMenus();
-    router.push(`${localePath(locale, '/work')}${category === 'All' ? '' : `?category=${category}`}`);
   };
-
+  const revealArchive = (nextCategory: CategoryFilter = 'All') => {
+    closeMenus();
+    setCategory(nextCategory);
+    router.push(`${localePath(locale, '/work')}${nextCategory === 'All' ? '' : `?category=${nextCategory}`}`, { scroll: view !== 'work' });
+  };
   const openProject = (project: Project) => {
     router.push(localePath(locale, `/work/${project.slug}`));
     closeMenus();
   };
-
   const showAdjacent = (offset: number) => {
-    if (!activeProject) return;
-    openProject(adjacentProject(activeProject, offset, locale));
+    if (activeProject) openProject(adjacentProject(activeProject, offset, locale));
   };
-
-  const portfolioStyle = {
-    '--hero-image': `url("${assetPath(site.assets.heroImage)}")`,
-    '--fah-mark': `url("${assetPath(site.assets.fahMark)}")`,
-    '--thaistar-mark': `url("${assetPath(site.assets.thaiStarMark)}")`,
-  } as CSSProperties;
-
-  const header = (
-    <Header
-      copy={copy}
-      locale={locale}
-      pagePath={slug ? `/work/${slug}` : view === 'work' ? '/work' : '/'}
-      overlay={!archiveVisible}
-      compact={archiveVisible}
-      workMenuOpen={workMenuOpen}
-      mobileNavOpen={mobileNavOpen}
-      mobileWorkOpen={mobileWorkOpen}
-      onGoHome={goHome}
-      onCloseMenus={closeMenus}
-      onOpenWorkMenu={() => {
-        setWorkMenuOpen(true);
-        setMobileNavOpen(false);
-        setMobileWorkOpen(false);
-      }}
-      onOpenMobileWork={() => setMobileWorkOpen(true)}
-      onCloseMobileWork={() => setMobileWorkOpen(false)}
-      onToggleMobileNav={() => {
-        setMobileNavOpen((open) => !open);
-        setWorkMenuOpen(false);
-        setMobileWorkOpen(false);
-      }}
-      onRevealArchive={revealArchive}
-      onOpenProject={openProject}
-      onChangeLocale={changeLocale}
-    />
-  );
+  const filters = { filterOptions: design.filters, filterLabel: design.filterLabel };
 
   return (
-    <main className={`${styles.root}${workMenuOpen ? ` ${styles.menuOpen}` : ''}`} style={portfolioStyle}>
+    <main className={styles.root}>
       <Suspense fallback={null}><CategoryFromUrl onChange={setCategory} /></Suspense>
-      {!activeProject && header}
-
-      {!activeProject && <div
-        className={styles.body}
-        aria-hidden={Boolean(activeProject)}
-        onClick={() => workMenuOpen && setWorkMenuOpen(false)}
-      >
-        {archiveVisible ? (
-          <Archive locale={locale} copy={copy.archive} projects={archivedProjects} onOpenProject={openProject} />
-        ) : (
-          <>
-            <Hero copy={copy} />
-            <SelectedWork
-              locale={locale}
-              copy={copy.selectedWork}
-              projects={selectedProjects}
-              onOpenProject={openProject}
-              onViewAll={() => revealArchive('All')}
-            />
-            <About copy={copy.about} />
-            <Experience copy={copy.experience} items={experience[locale]} />
-            <Expertise copy={copy.expertise} groups={expertise[locale]} />
-            <Education copy={copy.education} />
-          </>
-        )}
-      </div>}
-
-      {!activeProject && <Footer copy={copy.footer} />}
-      {activeProject && (
-        <CaseStudy
-          copy={copy.caseStudy}
-          navigation={copy.navigation}
-          locale={locale}
-          project={activeProject}
-          onClose={() => router.push(localePath(locale, '/work'))}
-          onAdjacent={showAdjacent}
-          onChangeLocale={changeLocale}
-        />
-      )}
+      {!activeProject && <>
+        <Header locale={locale} pagePath={pagePath} localeSuffix={localeSuffix} activeSection={activeSection}
+          mobileNavOpen={mobileNavOpen} onGoHome={goHome} onGoSection={goSection}
+          onOpenResume={() => { closeMenus(); router.push(localePath(locale, '/resume')); }}
+          onCloseMenus={closeMenus} onToggleMobileNav={() => setMobileNavOpen((open) => !open)} onChangeLocale={changeLocale} />
+        {view === 'resume' ? <Resume locale={locale} /> : view === 'work' ? (
+          <Archive locale={locale} copy={copy.archive} projects={archivedProjects} onOpenProject={openProject}
+            filter={filter} onFilterChange={revealArchive} {...filters} />
+        ) : <>
+          <Hero locale={locale} />
+          <SelectedWork locale={locale} copy={design.selectedWork} description={design.workDescription}
+            projects={selectedProjects} onOpenProject={openProject} onViewAll={() => revealArchive()}
+            filter={filter} onFilterChange={(nextFilter) => {
+              setCategory(nextFilter);
+              setHomeHash('#work');
+              router.replace(`${localePath(locale)}${nextFilter === 'All' ? '' : `?category=${nextFilter}`}#work`, { scroll: false });
+            }} {...filters} />
+          <Services locale={locale} onRevealArchive={revealArchive} />
+          <Process locale={locale} />
+        </>}
+        {view !== 'resume' && <Contact locale={locale} />}
+        <Footer locale={locale} />
+      </>}
+      {activeProject && <CaseStudy key={activeProject.id} copy={{ ...copy.caseStudy, closeLabel: locale === 'th' ? 'กลับไปดูผลงาน' : 'Back to work' }} contactLabel={locale === 'th' ? 'มีโปรเจกต์ที่อยากทำ?' : 'Have a project in mind?'} navigation={copy.navigation} locale={locale}
+        project={activeProject} onClose={() => router.push(localePath(locale, '/work'))}
+        onAdjacent={showAdjacent} onChangeLocale={changeLocale} />}
     </main>
   );
 }

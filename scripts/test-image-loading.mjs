@@ -107,7 +107,7 @@ test('portfolio image loading', async (t) => {
       assert.match(image.getAttribute('src'), /^\/portfolio\/assets\/thumbnails\/.+\.webp$/);
       assert.ok(image.getAttribute('srcset').split(', ').every((src) => src.startsWith('/portfolio/assets/thumbnails/')));
       assert.equal(image.getAttribute('decoding'), 'async');
-      assert.ok(image.getAttribute('sizes').includes('620px'));
+      assert.ok(image.getAttribute('sizes').includes('560px'));
     }
     await render(h(SelectedWork, { locale: 'en', copy: copy.selectedWork, projects: getFeaturedProjects(), onOpenProject: noop, onViewAll: noop }));
     assert.ok([...container.querySelectorAll('img')].every((img) => img.getAttribute('loading') === 'lazy'));

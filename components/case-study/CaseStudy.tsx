@@ -444,6 +444,7 @@ function ZoomableImage({
           {showViewerButton ? (
             <button
               className={`${styles.zoomControl} ${styles.viewerTrigger}`}
+              data-open-image-viewer
               type="button"
               onClick={onOpenViewer}
               aria-label={copy.openViewerLabel}
@@ -465,6 +466,7 @@ type CaseStudyProps = {
   onClose: () => void;
   onAdjacent: (offset: number) => void;
   onChangeLocale: (locale: Locale) => void;
+  contactLabel?: string;
 };
 
 export default function CaseStudy({
@@ -475,11 +477,13 @@ export default function CaseStudy({
   onClose,
   onAdjacent,
   onChangeLocale,
+  contactLabel,
 }: CaseStudyProps) {
   const showBack = hasPreviousProject(project);
   const images = project.images ?? EMPTY_IMAGES;
   const [activeImage, setActiveImage] = useState<{ projectId: number; path: string } | null>(null);
   const [viewerOpen, setViewerOpen] = useState(false);
+  const studyRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<HTMLDivElement>(null);
   const viewerCloseRef = useRef<HTMLButtonElement>(null);
   const lastFocusedElement = useRef<HTMLElement | null>(null);
@@ -510,7 +514,13 @@ export default function CaseStudy({
       return;
     }
 
-    lastFocusedElement.current?.focus();
+    const previousFocus = lastFocusedElement.current;
+    if (!previousFocus) return;
+    // Changing images remounts the original trigger while the viewer is open.
+    const focusTarget = previousFocus.isConnected
+      ? previousFocus
+      : studyRef.current?.querySelector<HTMLButtonElement>('[data-open-image-viewer]');
+    focusTarget?.focus();
     lastFocusedElement.current = null;
   }, [viewerOpen]);
 
@@ -592,6 +602,7 @@ export default function CaseStudy({
       <div
         ref={viewerRef}
         className={styles.viewer}
+        data-image-viewer
         role="dialog"
         aria-modal="true"
         aria-label={project.title + ' — ' + copy.imageLabel + ' ' + (imageIndex + 1)}
@@ -676,8 +687,11 @@ export default function CaseStudy({
       aria-modal={viewerOpen ? undefined : true}
       aria-label={viewerOpen ? undefined : project.title}
     >
-      <div className={styles.study} aria-hidden={viewerOpen}>
+      <div ref={studyRef} className={styles.study} aria-hidden={viewerOpen}>
         <div className={styles.topActions}>
+          <Link className={styles.close} href={localePath(locale, '/work')} onNavigate={(event) => { event.preventDefault(); onClose(); }} aria-label={copy.closeLabel}>
+            {copy.closeLabel}
+          </Link>
           <div className={styles.language} role="group" aria-label={navigation.languageLabel}>
             <Link
               className={`${styles.languageOption}${locale === 'en' ? ` ${styles.languageActive}` : ''}`}
@@ -701,13 +715,11 @@ export default function CaseStudy({
               TH
             </Link>
           </div>
-          <Link className={styles.close} href={localePath(locale, '/work')} onNavigate={(event) => { event.preventDefault(); onClose(); }} aria-label={copy.closeLabel}>
-            <span aria-hidden="true">×</span>
-          </Link>
         </div>
         <div className={styles.heading}>
           <p className="eyebrow">{project.categoryLabel ?? copy.categoryLabels[project.category]}</p>
           <h1><NoBreakText text={project.title} /></h1>
+          <p className={styles.description}><NoBreakText text={project.description} /></p>
         </div>
         <div className={styles.content}>
           <div className={styles.media}>
@@ -779,15 +791,15 @@ export default function CaseStudy({
             ) : null}
           </div>
           <div className={styles.details}>
-            <p><NoBreakText text={project.description} /></p>
-            <div className={`${styles.pager}${showBack ? '' : ` ${styles.single}`}`}>
+            {contactLabel ? <Link className="button primary" href={`${localePath(locale)}#contact`}>{contactLabel}</Link> : null}
+            <div className={styles.pager}>
               {showBack ? (
                 <Link href={localePath(locale, `/work/${adjacentProject(project, -1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(-1); }}>
-                  <span aria-hidden="true">‹‹</span> {copy.backLabel}
+                  {copy.backLabel}
                 </Link>
               ) : null}
             <Link href={localePath(locale, `/work/${adjacentProject(project, 1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(1); }}>
-                {copy.nextLabel} <span aria-hidden="true">››</span>
+                {copy.nextLabel}
               </Link>
             </div>
           </div>

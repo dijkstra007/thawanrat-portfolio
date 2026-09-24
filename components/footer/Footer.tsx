@@ -1,43 +1,19 @@
-import type { SiteCopy } from '@/content/site';
+import { homepageCopy } from '@/content/homepage';
+import { site } from '@/content/site';
+import { assetPath } from '@/lib/assets';
+import type { Locale } from '@/lib/types';
 import styles from './Footer.module.css';
 
-type FooterProps = {
-  copy: SiteCopy['footer'];
-};
-
-export default function Footer({ copy }: FooterProps) {
-
+export default function Footer({ locale }: { locale: Locale }) {
   return (
-    <footer className={styles.footer} id="contact">
-      <div className={`shell ${styles.grid}`}>
-        <div>
-          <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.heading[0]}{' '}<br />{copy.heading[1]}</h2>
-          <p className={styles.note}>{copy.note[0]}<br />{copy.note[1]}</p>
-        </div>
-        <div className={styles.links}>
-          <a href={`mailto:${copy.email}`}>
-            <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <path d="m3 7 9 6 9-6" />
-            </svg>
-            {copy.email}
-          </a>
-          <a href={`tel:${copy.phoneHref}`}>
-            <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="7" y="2" width="10" height="20" rx="2" />
-              <path d="M11 18h2" />
-            </svg>
-            {copy.phoneDisplay}
-          </a>
-          <div>
-            <a href={copy.fastwork} target="_blank" rel="noreferrer">Fastwork</a>
-            <span> · </span>
-            <a href={copy.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+    <footer className={styles.band}>
+      <div className={`shell ${styles.footer}`}>
+        <img className={styles.logo} src={assetPath(site.assets.logo)} alt={locale === 'th' ? 'โลโก้ Fahworks' : 'Fahworks'} width={88} height={16} loading="lazy" />
+        <div className={styles.meta}>
+          <p className={styles.copyright}>© 2026 Fahworks.</p>
+          <p className={styles.notice}>{homepageCopy[locale].notice}</p>
         </div>
       </div>
-      <p className={styles.copyright}>{copy.copyright}</p>
     </footer>
   );
 }

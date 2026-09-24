@@ -1,0 +1,20 @@
+.section { padding: 78px 0; }
+.section h2 { font-size: clamp(30px, 4.3vw, 49px); font-weight: 700; letter-spacing: -.055em; line-height: 1.1; margin: 14px 0 0; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 38px; align-items: stretch; }
+.step { min-width: 0; padding: 22px 20px; border: 1px solid #e5e5eb; border-radius: 20px; background: #fafafb; }
+.step h3 { font-size: 15px; font-weight: 700; letter-spacing: -.02em; line-height: 1.4; min-height: 2.8em; margin: 0 0 10px; }
+.step p { font-size: 11px; color: #6b6b73; line-height: 1.8; margin: 0; }
+:global(html[lang='th']) .section h2 { letter-spacing: -.04em; line-height: 1.25; }
+@media (max-width: 760px) {
+  .section { padding: 58px 0; }
+  .steps { gap: 12px; }
+  .step { padding: 20px 16px; }
+}
+@media (max-width: 560px) {
+  .section { padding: 48px 0; }
+  .section h2 { font-size: 34px; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .step { padding: 20px 18px; }
+  .step p { font-size: 12px; }
+}
+@media (max-width: 400px) { .steps { grid-template-columns: 1fr; } }

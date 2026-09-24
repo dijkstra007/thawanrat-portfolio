@@ -1,67 +1,28 @@
-import { site } from '@/content/site';
-import type { SiteCopy } from '@/content/site';
+import { homepageCopy } from '@/content/homepage';
 import { assetPath } from '@/lib/assets';
+import type { Locale } from '@/lib/types';
 import styles from './Hero.module.css';
 
-type HeroProps = {
-  copy: SiteCopy;
-};
-
-export default function Hero({ copy }: HeroProps) {
-  const { hero } = copy;
-
+export default function Hero({ locale }: { locale: Locale }) {
+  const { hero, disciplines } = homepageCopy[locale];
   return (
-    <section className={styles.hero} id="top">
-      <div className={styles.stage}>
-        <div className={styles.image} aria-hidden="true" />
-        <div className={`shell ${styles.copyShell}`}>
-          <div className={styles.copy}>
-            <h1 className={styles.title}>
-              {hero.name}
-              <span className={styles.fahMark} aria-hidden="true" />
-            </h1>
-            <p className={styles.role}>{hero.role}</p>
-            <p className={styles.specialty}>{hero.specialty}</p>
-            <p className={styles.intro}>{hero.intro}</p>
-            <div className={styles.actions}>
-              <a className="button primary" href="#work">{hero.workCta}</a>
-              <a
-                className="button text-button"
-                href={hero.resumeHref}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {hero.resumeCta}
-                <svg className={styles.downloadIcon} viewBox="0 0 16 14" aria-hidden="true">
-                  <path
-                    d="M8 1v8M4.5 6.5 8 10l3.5-3.5M2 13h12"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
+    <>
+      <section className={styles.hero} id="top" aria-labelledby="hero-title">
+        <div className={`shell ${styles.copy}`}>
+          <p className={styles.eyebrow}>{hero.label}</p>
+          <h1 className={styles.title} id="hero-title">{hero.title[0]}{' '}<br />{hero.title[1]}<span>.</span></h1>
+          <p className={styles.intro}>{hero.intro[0]}{' '}<br />{hero.intro[1]}</p>
+          <div className={styles.actions}>
+            <a className={`button ${styles.work}`} href="#work">{hero.work}</a>
+            <a className={`button ${styles.contact}`} href="#contact">{hero.contact}</a>
           </div>
         </div>
-        <aside className={styles.award} aria-label={hero.awardAria}>
-          <img
-            className={styles.awardIcon}
-            src={assetPath(site.assets.thaiStarMark)}
-            alt={`${hero.awardName} — ${hero.awardDetail}`}
-            width={120}
-            height={90}
-            decoding="async"
-          />
-          <p>
-            <strong>{hero.awardTitle}</strong><br />
-            {hero.awardName}<br />
-            <small>{hero.awardDetail}</small>
-          </p>
-        </aside>
-      </div>
-    </section>
+        <figure className={styles.art}>
+          <img className={styles.scene} src={assetPath('/images/fahworks-hero-still-life.jpg')} alt={hero.alt} width={1280} height={853} fetchPriority="high" loading="eager" draggable={false} />
+          <figcaption>{hero.caption}</figcaption>
+        </figure>
+      </section>
+      <div className={`shell ${styles.disciplines}`}>{disciplines.map((discipline) => <span key={discipline}>{discipline}</span>)}</div>
+    </>
   );
 }

@@ -8,8 +8,10 @@ import {
 import type { SiteCopy } from '@/content/site';
 import { localePath } from '@/lib/routes';
 import { projectImageAlt } from '@/lib/projects';
-import type { Locale, Project } from '@/lib/types';
+import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import NoBreakText from '@/components/typography/NoBreakText';
+import WorkFilters from '@/components/selected-work/WorkFilters';
+import type { WorkFilterOption } from '@/components/selected-work/WorkFilters';
 import styles from './Archive.module.css';
 
 type ArchiveProps = {
@@ -17,9 +19,16 @@ type ArchiveProps = {
   copy: SiteCopy['archive'];
   projects: Project[];
   onOpenProject: (project: Project) => void;
+  filter?: CategoryFilter;
+  filterOptions?: WorkFilterOption[];
+  filterLabel?: string;
+  onFilterChange?: (category: CategoryFilter) => void;
 };
 
-export default function Archive({ locale, copy, projects, onOpenProject }: ArchiveProps) {
+export default function Archive({
+  locale, copy, projects, onOpenProject,
+  filter = 'All', filterOptions = [], filterLabel = '', onFilterChange,
+}: ArchiveProps) {
   const groupedProjects = archiveGroupOrder.flatMap((groupKey: ArchiveGroupKey) => {
     const groupProjectIds = new Set<number>(archiveProjectGroups[groupKey]);
     const groupItems = projects.filter((project) => groupProjectIds.has(project.id));
@@ -36,10 +45,13 @@ export default function Archive({ locale, copy, projects, onOpenProject }: Archi
           <h1>{copy.heading}</h1>
         </div>
       </div>
-      <div className={styles.groups}>
+      {onFilterChange && filterOptions.length > 0 ? (
+        <WorkFilters value={filter} options={filterOptions} label={filterLabel} onChange={onFilterChange} />
+      ) : null}
+      <div className={styles.groups} aria-live="polite">
         {groupedProjects.map(({ key, items }) => (
           <div key={key} className={styles.group}>
-            <h3 className={styles.groupHeading}>{copy.groups[key]}</h3>
+            <h2 className={styles.groupHeading}>{copy.groups[key]}</h2>
             <div className={styles.grid}>
               {items.map((project) => (
                 <Link
@@ -51,7 +63,7 @@ export default function Archive({ locale, copy, projects, onOpenProject }: Archi
                   <ProjectThumbnail
                     className={styles.visual}
                     src={project.images?.[0]}
-              alt={projectImageAlt(project, locale)}
+                    alt={projectImageAlt(project, locale)}
                     visual={project.visual}
                     eager={eagerProjectIds.has(project.id)}
                   />
