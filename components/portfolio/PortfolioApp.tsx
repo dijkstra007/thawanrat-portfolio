@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import Archive from '@/components/archive/Archive';
+import BackToTop from '@/components/back-to-top/BackToTop';
 import CaseStudy from '@/components/case-study/CaseStudy';
 import Contact from '@/components/contact/Contact';
 import Footer from '@/components/footer/Footer';
@@ -114,6 +115,7 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
         </>}
         {view !== 'resume' && <Contact locale={locale} />}
         <Footer locale={locale} />
+        <BackToTop label={design.backToTop} onActivate={closeMenus} />
       </>}
       {activeProject && <CaseStudy key={activeProject.id} copy={{ ...copy.caseStudy, closeLabel: locale === 'th' ? 'กลับไปดูผลงาน' : 'Back to work' }} contactLabel={locale === 'th' ? 'มีโปรเจกต์ที่อยากทำ?' : 'Have a project in mind?'} navigation={copy.navigation} locale={locale}
         project={activeProject} onClose={() => router.push(localePath(locale, '/work'))}

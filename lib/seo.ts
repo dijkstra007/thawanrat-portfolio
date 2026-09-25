@@ -45,7 +45,7 @@ export function resumeMetadata(locale: Locale) {
   return pageMetadata(locale, '/resume',
     locale === 'th' ? 'เรซูเม่และประสบการณ์งานออกแบบกราฟิก | Thawanrat T.' : 'Graphic Designer Resume & Experience | Thawanrat T.',
     locale === 'th'
-      ? 'ประวัติและประสบการณ์ของ ธวันรัตน์ (ฟ้า) กราฟิกดีไซเนอร์ในกรุงเทพฯ พร้อมข้อมูลการศึกษา ทักษะ เครื่องมือออกแบบ และช่องทางติดต่อสำหรับร่วมงาน'
+      ? 'ประวัติและประสบการณ์ของ ธวัลรัตน์ (ฟ้า) กราฟิกดีไซเนอร์ในกรุงเทพฯ พร้อมข้อมูลการศึกษา ทักษะ เครื่องมือออกแบบ และช่องทางติดต่อสำหรับร่วมงาน'
       : 'Meet Thawanrat T. (Fah), a Bangkok-based graphic designer with 3+ years of experience. Explore her experience, education, design tools, and contact details.');
 }
 

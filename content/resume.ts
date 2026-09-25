@@ -59,7 +59,7 @@ const copy: Localized<ResumeCopy> = {
     pageLabel: 'เรซูเม่',
     backHome: 'กลับหน้าแรก',
     eyebrow: 'เรซูเม่ / คนเบื้องหลังงานออกแบบ',
-    name: 'ธวันรัตน์',
+    name: 'ธวัลรัตน์',
     nickname: 'เรียกฟ้าก็ได้ค่ะ',
     role: 'นักออกแบบกราฟิก',
     summary:
@@ -67,7 +67,7 @@ const copy: Localized<ResumeCopy> = {
     originalResume: 'เปิดเรซูเม่ต้นฉบับ',
     exploreWork: 'ดูผลงาน',
     location: 'กรุงเทพฯ ประเทศไทย',
-    portraitAlt: 'ธวันรัตน์ (ฟ้า)',
+    portraitAlt: 'ธวัลรัตน์ (ฟ้า)',
     experienceHeading: 'ประสบการณ์',
     educationHeading: 'การศึกษา',
     recognitionHeading: 'รางวัล',

@@ -268,14 +268,12 @@
 .tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 7px 16px;
 }
 
 .tools span {
-  padding: 6px 9px;
-  border-radius: 7px;
-  background: #fff;
   font-size: 11px;
+  line-height: 1.85;
 }
 
 .end {
@@ -347,22 +345,21 @@
   }
 
   .photo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    max-width: 100%;
+    grid-row: 1;
+    width: calc(100% + 36px);
+    margin-inline: -18px;
   }
 
   .photo img {
-    width: 104px;
-    border-radius: 18px;
+    width: 100%;
+    aspect-ratio: 1.9;
+    object-position: center 42%;
+    border-radius: 0;
   }
 
   .photoNote {
-    max-width: 155px;
-    padding: 0;
+    padding: 15px 18px 0;
     line-height: 1.9;
-    text-align: left;
   }
 
   .contact {
