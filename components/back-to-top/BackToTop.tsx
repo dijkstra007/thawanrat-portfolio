@@ -8,27 +8,39 @@ type BackToTopProps = {
   onActivate?: () => void;
 };
 
-function subscribeToScroll(onScroll: () => void) {
-  window.addEventListener('scroll', onScroll, { passive: true });
-  return () => window.removeEventListener('scroll', onScroll);
+function subscribeToPosition(onChange: () => void) {
+  window.addEventListener('scroll', onChange, { passive: true });
+  window.addEventListener('resize', onChange);
+  const observer = new ResizeObserver(onChange);
+  observer.observe(document.body);
+  const footer = document.querySelector('footer');
+  if (footer) observer.observe(footer);
+  return () => {
+    window.removeEventListener('scroll', onChange);
+    window.removeEventListener('resize', onChange);
+    observer.disconnect();
+  };
 }
 
-function isPastTop() {
-  return window.scrollY > 400;
+function getFooterOverlap() {
+  if (window.scrollY <= 400) return -1;
+  const footer = document.querySelector('footer');
+  return footer ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top) : 0;
 }
 
 function getServerSnapshot() {
-  return false;
+  return -1;
 }
 
 export default function BackToTop({ label, onActivate }: BackToTopProps) {
-  const visible = useSyncExternalStore(subscribeToScroll, isPastTop, getServerSnapshot);
+  const footerOverlap = useSyncExternalStore(subscribeToPosition, getFooterOverlap, getServerSnapshot);
 
-  if (!visible) return null;
+  if (footerOverlap < 0) return null;
 
   return (
     <button
       className={styles.button}
+      style={{ bottom: `calc(max(18px, env(safe-area-inset-bottom)) + ${footerOverlap}px)` }}
       type="button"
       aria-label={label}
       title={label}
