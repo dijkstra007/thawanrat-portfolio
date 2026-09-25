@@ -1,6 +1,6 @@
 .button {
   position: fixed;
-  left: max(18px, env(safe-area-inset-left));
+  right: max(18px, env(safe-area-inset-right));
   bottom: max(18px, env(safe-area-inset-bottom));
   z-index: 40;
   display: grid;
