@@ -721,7 +721,7 @@ export default function CaseStudy({
             </div>
           </section>
 
-          {images.length > 1 && <section aria-label={pageCopy.gallery}>
+          {images.length > 1 && <section aria-label={pageCopy.gallery} className={project.slug === 'friday-x2' ? styles.compactGallery : undefined}>
             <div className={styles.gallery}>
               {images.slice(1).map((image, index) => (
                 <div key={image} className={index === 0 && (images.length - 1) % 2 === 1 ? styles.wideArtwork : undefined}>

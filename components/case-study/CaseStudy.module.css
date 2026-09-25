@@ -24,6 +24,7 @@
 .story p { color: var(--muted); font-size: 13px; line-height: 1.85; }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .wideArtwork { grid-column: 1 / -1; }
+.compactGallery { max-width: 920px; margin-inline: auto; }
 .galleryCaption { margin-top: 12px; font-size: 11px; color: var(--muted); }
 .projectContact { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-block: 1px solid var(--line); padding: 28px 8px; margin-top: 30px; }
 .projectContact h2 { font-size: clamp(23px, 2.8vw, 34px); letter-spacing: -.035em; line-height: 1.2; }
