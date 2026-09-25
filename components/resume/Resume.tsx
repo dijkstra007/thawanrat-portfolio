@@ -120,9 +120,7 @@ export default function Resume({ locale }: ResumeProps) {
           </section>
           <section className={styles.sideSection} aria-labelledby="resume-tools">
             <h2 className={`eyebrow ${styles.sideHeading}`} id="resume-tools">{copy.toolsHeading}</h2>
-            <div className={styles.tools}>
-              {resume.designTools.map((tool) => <span key={tool}>{tool}</span>)}
-            </div>
+            <p className={styles.tools}>{resume.designTools.join(' · ')}</p>
           </section>
           <section className={styles.sideSection} aria-labelledby="resume-productivity">
             <h2 className={`eyebrow ${styles.sideHeading}`} id="resume-productivity">{copy.productivityHeading}</h2>

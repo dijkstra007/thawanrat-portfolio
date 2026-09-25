@@ -266,12 +266,6 @@
 }
 
 .tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px 16px;
-}
-
-.tools span {
   font-size: 11px;
   line-height: 1.85;
 }
@@ -385,7 +379,7 @@
   .expertiseGroup h3 { font-size: 15px; }
   .expertiseGroup p,
   .sideDetail,
-  .tools span { font-size: 12px; }
+  .tools { font-size: 12px; }
 
   .end {
     flex-direction: column;
