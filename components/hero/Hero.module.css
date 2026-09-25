@@ -10,7 +10,13 @@
 .actions .contact { color: var(--blue); background: transparent; box-shadow: none; }
 /* Cap the overlap at 27% of the former 1280px width as the artwork expands. */
 .art { position: relative; z-index: 1; margin: max(-27%, -345.6px) 0 0; }
-.scene { display: block; width: 100%; height: auto; }
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 clamp(48px, 8vw, 140px));
+  mask-image: linear-gradient(to bottom, transparent, #000 clamp(48px, 8vw, 140px));
+}
 .art figcaption { position: absolute; right: 44px; bottom: 14px; color: #77736d; font-size: 10px; text-align: right; line-height: 1.5; }
 .disciplines { padding: 21px 0; display: flex; justify-content: center; gap: 23px; flex-wrap: wrap; border-bottom: 1px solid #ececf0; color: #6b6b73; font-size: 11px; }
 .disciplines span + span::before { content: '+'; color: var(--blue); margin-right: 23px; }
