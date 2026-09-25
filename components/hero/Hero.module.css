@@ -1,4 +1,4 @@
-.hero { position: relative; isolation: isolate; background: #fff; padding: 0; text-align: center; overflow: clip; }
+.hero { position: relative; isolation: isolate; background: linear-gradient(180deg, #fff 0, #fdf9f5 90px, #fcf6f1 200px, #faf2ed 380px); padding: 0; text-align: center; overflow: clip; }
 .copy { position: relative; z-index: 2; padding-top: 35px; }
 .eyebrow { margin: 0; color: var(--blue); font-size: 10px; font-weight: 700; line-height: 1.5; letter-spacing: .18em; }
 .title { max-width: 790px; margin: 17px auto 18px; font-size: clamp(44px, 6.5vw, 76px); font-weight: 700; line-height: 1.04; letter-spacing: -.055em; }
@@ -8,8 +8,8 @@
 .actions a { min-height: 44px; padding: 12px 24px; border-radius: 13px; font-size: 13px; }
 .actions .work { color: #fff; background: var(--blue); }
 .actions .contact { color: var(--blue); background: transparent; box-shadow: none; }
-/* Cap the overlap at 27% of the former 1280px width as the artwork expands. */
-.art { position: relative; z-index: 1; margin: max(-27%, -345.6px) 0 0; }
+/* Place the live headline and actions in the artwork's open upper area. */
+.art { position: relative; z-index: 1; margin: max(-18%, -230.4px) 0 0; }
 .scene {
   display: block;
   width: 100%;
@@ -23,6 +23,8 @@
 :global(html[lang='th']) .title { font-size: clamp(42px, 5.9vw, 70px); line-height: 1.18; letter-spacing: -.035em; }
 @media (max-width: 760px) {
   .copy { padding-top: 32px; }
+  /* Keep the tall side products below the buttons on narrower screens. */
+  .art { margin-top: -10%; }
   .art figcaption { right: 22px; font-size: 9px; bottom: 10px; }
   .disciplines { gap: 15px; }
   .disciplines span + span::before { margin-right: 15px; }
@@ -35,7 +37,6 @@
   .intro { font-size: 12px; line-height: 1.8; max-width: 330px; }
   .actions { gap: 5px; margin-top: 18px; }
   .actions a { font-size: 11px; padding: 12px 17px; border-radius: 11px; }
-  .art { margin-top: -18%; }
   .art figcaption { position: static; padding: 7px 18px 9px; background: #fff; font-size: 9px; }
   .disciplines { padding: 17px 6px; font-size: 11px; gap: 6px 13px; }
   .disciplines span + span::before { display: none; }

@@ -17,7 +17,7 @@ export const homepageCopy: Localized<HomepageCopy> = {
       intro: ['Digital, print, and packaging design.', 'Open to team opportunities and freelance projects.'],
       work: 'View work', contact: 'Get in touch',
       caption: 'Illustrative mockup based on selected work.',
-      alt: 'An illustrative still life featuring ChaiLai packaging, a Protech brochure, a Mango Smith brand card, and blue Fahworks print boards',
+      alt: 'A studio mockup of a ChaiLai box, a Nali Tea bag and cup, four Phop Pra snack packages, a Green Station award, Vitamin C serum packaging, a Protech poster, and a chocolate protein bar carton',
     },
     disciplines: ['Brand identity', 'Packaging', 'Print & event', 'Social & digital'],
     services: {
@@ -51,7 +51,7 @@ export const homepageCopy: Localized<HomepageCopy> = {
       label: 'FAHWORKS / งานออกแบบกราฟิก', title: ['จากไอเดีย', 'สู่งานออกแบบ'],
       intro: ['ออกแบบสื่อออนไลน์ สิ่งพิมพ์ และแพ็กเกจจิ้ง', 'พร้อมร่วมงานกับทีมและรับงานฟรีแลนซ์'],
       work: 'ดูผลงาน', contact: 'ติดต่อจ้างงาน', caption: 'ภาพจำลองจากผลงานที่เลือกมา',
-      alt: 'ภาพจำลองบรรจุภัณฑ์ ChaiLai โบรชัวร์ Protech การ์ดแบรนด์ Mango Smith และสื่อสิ่งพิมพ์ Fahworks สีน้ำเงิน',
+      alt: 'ภาพจำลองกล่อง ChaiLai ถุงและแก้ว Nali Tea บรรจุภัณฑ์ขนมพบประ 4 แบบ โล่ Green Station บรรจุภัณฑ์เซรั่มวิตามินซี โปสเตอร์ Protech และกล่องโปรตีนบาร์ช็อกโกแลต',
     },
     disciplines: ['แบรนดิ้ง', 'บรรจุภัณฑ์', 'สิ่งพิมพ์และอีเวนต์', 'สื่อออนไลน์'],
     services: {
