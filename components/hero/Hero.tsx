@@ -18,7 +18,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           </div>
         </div>
         <figure className={styles.art}>
-          <img className={styles.scene} src={assetPath('/images/fahworks-hero-still-life.jpg')} alt={hero.alt} width={1280} height={853} fetchPriority="high" loading="eager" draggable={false} />
+          <img className={styles.scene} src={assetPath('/images/fahworks-hero-still-life-v3.webp')} alt={hero.alt} width={1536} height={1024} fetchPriority="high" loading="eager" draggable={false} />
           <figcaption>{hero.caption}</figcaption>
         </figure>
       </section>

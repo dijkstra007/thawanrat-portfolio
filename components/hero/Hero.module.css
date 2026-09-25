@@ -8,8 +8,8 @@
 .actions a { min-height: 44px; padding: 12px 24px; border-radius: 13px; font-size: 13px; }
 .actions .work { color: #fff; background: var(--blue); }
 .actions .contact { color: var(--blue); background: transparent; box-shadow: none; }
-/* Cap the overlap at 27% of the former 1280px width as the artwork expands. */
-.art { position: relative; z-index: 1; margin: max(-27%, -345.6px) 0 0; }
+/* Leave the upper part of the taller still life clear for the headline and actions. */
+.art { position: relative; z-index: 1; margin: max(-18%, -230.4px) 0 0; }
 .scene {
   display: block;
   width: 100%;
