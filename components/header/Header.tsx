@@ -28,7 +28,7 @@ export default function Header({ locale, pagePath, localeSuffix, activeSection, 
         <a className={styles.wordmark} href={`${localePath(locale)}#top`} aria-label={site.copy[locale].wordmarkAria}
           onClick={onCloseMenus}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={assetPath(site.assets.logo)} alt={locale === 'th' ? 'โลโก้ Fahworks' : 'Fahworks logo'} width={560} height={104} />
+          <img src={assetPath(site.assets.logo)} alt={locale === 'th' ? 'โลโก้ Fahworks' : 'Fahworks logo'} width={3992} height={609} />
         </a>
         <nav id="main-navigation" className={`${styles.nav}${mobileNavOpen ? ` ${styles.open}` : ''}`} aria-label={copy.menuLabel}>
           <a href={`${localePath(locale)}#work`} aria-current={activeSection === 'work' ? 'page' : undefined}

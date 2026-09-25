@@ -116,7 +116,7 @@ export type SiteCopy = {
 
 export const site = {
   assets: {
-    logo: '/assets/logo-fahworks@4x.png',
+    logo: '/assets/logo-fahworks.svg',
     heroImage: '/assets/thawanrat-packaging.webp',
     fahMark: '/assets/fah-signature.png',
     thaiStarMark: '/assets/thaistar-mark.png',

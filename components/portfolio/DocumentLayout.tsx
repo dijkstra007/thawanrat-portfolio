@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
+import { assetPath } from '@/lib/assets';
 import '@/app/globals.css';
 
 const lineSeedSans = localFont({
@@ -22,7 +23,14 @@ const lineSeedSansThai = localFont({
   adjustFontFallback: false,
 });
 
-export const metadata: Metadata = { icons: { icon: '/favicon.png' } };
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: assetPath('/favicon.png'), type: 'image/png', sizes: '512x512' },
+      { url: assetPath('/favicon.svg'), type: 'image/svg+xml', sizes: 'any' },
+    ],
+  },
+};
 
 export default function DocumentLayout({ children, locale }: Readonly<{
   children: React.ReactNode;
