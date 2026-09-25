@@ -46,7 +46,6 @@ const click = async (label, scope = container) => {
   assert.ok(button, `Missing button: ${label}`);
   await act(() => button.click());
 };
-const load = async (image) => act(() => image.dispatchEvent(new dom.window.Event('load')));
 
 test('portfolio image loading', async (t) => {
   await t.test('every localized cover has smaller valid previews, without upscaling or losing alpha', async () => {
@@ -115,33 +114,33 @@ test('portfolio image loading', async (t) => {
 
   const project = getProjectById(1);
   const props = { copy: copy.caseStudy, navigation: copy.navigation, locale: 'en', project, onClose: noop, onAdjacent: noop, onChangeLocale: noop };
-  await t.test('viewer loads only active full-resolution WebP, then one next image without a preload cascade', async () => {
+  await t.test('project page shows the complete gallery with one eager cover and lazy details', async () => {
     await render(h(CaseStudy, props));
-    assert.equal(container.querySelectorAll('img').length, 1);
-    assert.equal(preloads.length, 0);
-    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[0])}`);
-    await load(container.querySelector('img'));
-    assert.equal(preloads.length, 1);
-    assert.equal(preloads[0].url, `/portfolio${galleryPath(project.images[1])}`);
-    await act(() => preloads[0].onload());
-    assert.equal(preloads.length, 1, 'Completing lookahead must not preload the entire collection');
-    assert.equal(container.querySelectorAll('img').length, 2);
-    await click(copy.caseStudy.nextImageLabel);
-    assert.equal(preloads.length, 2);
-    assert.equal(preloads[1].url, `/portfolio${galleryPath(project.images[2])}`);
-    await click(`${copy.caseStudy.showImagePrefix} 5`);
-    assert.ok(container.querySelector(`img[src="/portfolio${galleryPath(project.images[4])}"]`));
-    assert.equal(preloads.length, 2, 'Jump target must load before its next image');
-    await load(container.querySelector(`img[src="/portfolio${galleryPath(project.images[4])}"]`));
-    assert.equal(preloads.at(-1).url, `/portfolio${galleryPath(project.images[5])}`);
+    const artwork = [...container.querySelectorAll('[data-open-image-viewer]')];
+    assert.equal(artwork.length, project.images.length);
+    assert.equal(container.querySelectorAll('[role="dialog"]').length, 0);
+    assert.equal(artwork[0].querySelector('img').getAttribute('loading'), 'eager');
+    assert.equal(artwork[0].querySelector('img').getAttribute('fetchpriority'), 'high');
+    for (const [index, trigger] of artwork.entries()) {
+      const image = trigger.querySelector('img');
+      assert.equal(image.getAttribute('src'), `/portfolio${galleryPath(project.images[index])}`);
+      if (index > 0) assert.equal(image.getAttribute('loading'), 'lazy');
+    }
+    assert.equal(preloads.length, 0, 'The editorial gallery relies on native lazy loading');
+    assert.ok(container.querySelector('a[href*="/work/"]'));
   });
 
-  await t.test('zoom, fullscreen, keyboard navigation and swipe retain optimized image sources', async () => {
-    await click(copy.caseStudy.zoomInLabel);
-    assert.ok(container.textContent.includes('125%'));
-    await click(copy.caseStudy.openViewerLabel);
-    const viewer = container.querySelector('[role="dialog"]');
+  await t.test('any artwork opens the correct fullscreen image and restores focus and scrolling', async () => {
+    const trigger = container.querySelectorAll('[data-open-image-viewer]')[4];
+    trigger.focus();
+    document.body.style.overflow = 'auto';
+    await act(() => trigger.click());
+    const viewer = document.querySelector('[data-image-viewer]');
+    assert.equal(viewer.getAttribute('role'), 'dialog');
+    assert.equal(document.body.style.overflow, 'hidden');
     assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[4])}`);
+    await click(copy.caseStudy.zoomInLabel, viewer);
+    assert.ok(viewer.textContent.includes('125%'));
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'ArrowRight' })));
     assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[5])}`);
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: '+' })));
@@ -160,19 +159,22 @@ test('portfolio image loading', async (t) => {
     await pointer('pointerup', 100);
     assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[6])}`);
     await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape' })));
-    assert.equal(container.querySelector('[role="dialog"]').getAttribute('aria-label'), project.title);
+    assert.equal(document.querySelector('[data-image-viewer]'), null);
+    assert.equal(document.body.style.overflow, 'auto');
+    assert.equal(document.activeElement, trigger);
+    document.body.style.overflow = '';
   });
 
-  await t.test('failed image does not preload the rest and navigation can recover', async () => {
+  await t.test('a failed gallery image does not prevent opening another artwork', async () => {
     await render(null);
-    preloads.length = 0;
     await render(h(CaseStudy, props));
     await act(() => container.querySelector('img').dispatchEvent(new dom.window.Event('error')));
-    assert.equal(preloads.length, 0);
-    await click(copy.caseStudy.nextImageLabel);
-    assert.equal(container.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[1])}`);
-    await load(container.querySelector('img'));
-    assert.equal(preloads.length, 1);
+    await act(() => container.querySelectorAll('[data-open-image-viewer]')[1].click());
+    const viewer = document.querySelector('[data-image-viewer]');
+    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[1])}`);
+    await click(copy.caseStudy.nextImageLabel, viewer);
+    assert.equal(viewer.querySelector('img').getAttribute('src'), `/portfolio${galleryPath(project.images[2])}`);
+    await act(() => document.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape' })));
   });
   await act(() => root.unmount());
   dom.window.close();

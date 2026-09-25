@@ -1,6 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { createPortal } from 'react-dom';
+import { caseStudyPageCopy } from '@/content/case-study';
+import { homepageContact } from '@/content/homepage';
+import ProjectThumbnail from '@/components/visuals/ProjectThumbnail';
 import { localePath } from '@/lib/routes';
 import { adjacentProject, projectImageAlt } from '@/lib/projects';
 
@@ -10,7 +14,6 @@ import type {
   PointerEvent as ReactPointerEvent,
   WheelEvent as ReactWheelEvent,
 } from 'react';
-import { visualClass } from '@/components/visuals/visuals';
 import type { SiteCopy } from '@/content/site';
 import { assetPath, galleryPath } from '@/lib/assets';
 import { hasPreviousProject } from '@/lib/projects';
@@ -460,25 +463,34 @@ function ZoomableImage({
 
 type CaseStudyProps = {
   copy: SiteCopy['caseStudy'];
-  navigation: SiteCopy['navigation'];
   locale: Locale;
   project: Project;
   onClose: () => void;
   onAdjacent: (offset: number) => void;
-  onChangeLocale: (locale: Locale) => void;
-  contactLabel?: string;
 };
+
+function ProjectArtwork({ image, index, alt, label, hero = false, onOpen }: {
+  image: string; index: number; alt: string; label: string; hero?: boolean;
+  onOpen: (index: number) => void;
+}) {
+  return <button type="button" className={styles.artwork} data-open-image-viewer
+    aria-label={label} onClick={() => onOpen(index)}>
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src={assetPath(galleryPath(image))} alt={alt} loading={hero ? 'eager' : 'lazy'}
+      fetchPriority={hero ? 'high' : undefined} decoding="async" />
+    <span className={styles.expand} aria-hidden="true">↗</span>
+  </button>;
+}
 
 export default function CaseStudy({
   copy,
-  navigation,
   locale,
   project,
   onClose,
   onAdjacent,
-  onChangeLocale,
-  contactLabel,
 }: CaseStudyProps) {
+  const pageCopy = caseStudyPageCopy[locale];
+  const nextProject = adjacentProject(project, 1, locale);
   const showBack = hasPreviousProject(project);
   const images = project.images ?? EMPTY_IMAGES;
   const [activeImage, setActiveImage] = useState<{ projectId: number; path: string } | null>(null);
@@ -492,21 +504,18 @@ export default function CaseStudy({
     : -1;
   const imageIndex = activeImageIndex >= 0 ? activeImageIndex : 0;
   const currentImage = images[imageIndex] ?? null;
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(() => new Set());
-  const markImageLoaded = useCallback((path: string) => {
-    setLoadedImages((loaded) => loaded.has(path) ? loaded : new Set([...loaded, path]));
-  }, []);
-  const currentImageLoaded = currentImage !== null && loadedImages.has(currentImage);
-  const nextImage = images.length > 1 ? images[(imageIndex + 1) % images.length] : null;
-
   useEffect(() => {
-    if (!currentImageLoaded || !nextImage) return;
-    // Only the active image can trigger a one-image lookahead; no preload cascade.
-    const preload = new Image();
-    preload.onload = () => markImageLoaded(nextImage);
-    preload.src = assetPath(galleryPath(nextImage));
-    return () => { preload.onload = null; };
-  }, [currentImageLoaded, nextImage, markImageLoaded]);
+    if (!viewerOpen) return;
+    const main = studyRef.current?.closest('main');
+    const previousOverflow = document.body.style.overflow;
+    const previousInert = main?.inert ?? false;
+    document.body.style.overflow = 'hidden';
+    if (main) main.inert = true;
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      if (main) main.inert = previousInert;
+    };
+  }, [viewerOpen]);
 
   useEffect(() => {
     if (viewerOpen) {
@@ -541,7 +550,8 @@ export default function CaseStudy({
     onAdjacent(offset);
   };
 
-  const openViewer = () => {
+  const openViewer = (index: number) => {
+    selectImage(index);
     lastFocusedElement.current = document.activeElement instanceof HTMLElement
       ? document.activeElement
       : null;
@@ -598,7 +608,7 @@ export default function CaseStudy({
   const renderViewer = () => {
     if (!viewerOpen || !currentImage) return null;
 
-    return (
+    return createPortal(
       <div
         ref={viewerRef}
         className={styles.viewer}
@@ -676,136 +686,77 @@ export default function CaseStudy({
             ))}
           </div>
         ) : null}
-      </div>
+      </div>,
+      document.body,
     );
   };
 
+
   return (
-    <div
-      className={styles.overlay}
-      role={viewerOpen ? undefined : 'dialog'}
-      aria-modal={viewerOpen ? undefined : true}
-      aria-label={viewerOpen ? undefined : project.title}
-    >
-      <div ref={studyRef} className={styles.study} aria-hidden={viewerOpen}>
-        <div className={styles.topActions}>
-          <Link className={styles.close} href={localePath(locale, '/work')} onNavigate={(event) => { event.preventDefault(); onClose(); }} aria-label={copy.closeLabel}>
-            {copy.closeLabel}
+    <>
+      <article className={styles.page} lang={locale} aria-labelledby="project-title">
+        <div ref={studyRef} className={`shell ${styles.study}`}>
+          <Link className={styles.backLink} href={localePath(locale, '/work')}
+            onNavigate={(event) => { event.preventDefault(); onClose(); }}>
+            <span aria-hidden="true">←</span> {pageCopy.allWork}
           </Link>
-          <div className={styles.language} role="group" aria-label={navigation.languageLabel}>
-            <Link
-              className={`${styles.languageOption}${locale === 'en' ? ` ${styles.languageActive}` : ''}`}
-              href={localePath('en', `/work/${project.slug}`)}
-              hrefLang="en"
-              aria-label={navigation.switchToEnglish}
-              aria-current={locale === 'en' ? 'page' : undefined}
-              onNavigate={(event) => { event.preventDefault(); onChangeLocale('en'); }}
-            >
-              EN
-            </Link>
-            <span className={styles.languageDivider} aria-hidden="true">/</span>
-            <Link
-              className={`${styles.languageOption}${locale === 'th' ? ` ${styles.languageActive}` : ''}`}
-              href={localePath('th', `/work/${project.slug}`)}
-              hrefLang="th"
-              aria-label={navigation.switchToThai}
-              aria-current={locale === 'th' ? 'page' : undefined}
-              onNavigate={(event) => { event.preventDefault(); onChangeLocale('th'); }}
-            >
-              TH
-            </Link>
-          </div>
-        </div>
-        <div className={styles.heading}>
-          <p className="eyebrow">{project.categoryLabel ?? copy.categoryLabels[project.category]}</p>
-          <h1><NoBreakText text={project.title} /></h1>
-          <p className={styles.description}><NoBreakText text={project.description} /></p>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.media}>
-            <div
-              className={`${styles.hero}${images.length === 0 ? ` ${visualClass(project.visual)}` : ''}`}
-            >
-              {images.length > 0 ? (
-                <div
-                  key={project.id}
-                  className={styles.slides}
-                  style={{ transform: `translate3d(-${imageIndex * 100}%, 0, 0)` }}
-                >
-                  {images.map((image, index) => (
-                    <div
-                      key={`${project.id}-${locale}-${image}-${index}`}
-                      className={styles.slide}
-                    >
-                      {(index === imageIndex || loadedImages.has(image)) && <ZoomableImage
-                        key={`${project.id}-${locale}-${imageIndex}-${image}-${index}`}
-                        src={image}
-                        onImageLoad={() => markImageLoaded(image)}
-                        alt={imageAlt(index)}
-                        copy={copy}
-                        showControls={index === imageIndex}
-                        showViewerButton={index === imageIndex}
-                        onOpenViewer={openViewer}
-                        onSwipe={index === imageIndex ? moveImage : undefined}
-                      />}
-                    </div>
-                  ))}
+          <header className={styles.projectHeading}>
+            <p className={styles.projectEyebrow}>{project.categoryLabel ?? copy.categoryLabels[project.category]}{project.year !== '—' ? ` / ${project.year}` : ''}</p>
+            <h1 id="project-title"><NoBreakText text={project.title} /><span className={styles.asterisk} aria-hidden="true">*</span></h1>
+            <p className={styles.subtitle}><NoBreakText text={project.meta} /></p>
+          </header>
+
+          {images[0] && <ProjectArtwork image={images[0]} index={0} alt={imageAlt(0)} label={`${copy.openViewerLabel} — ${copy.imageLabel} 1`} hero onOpen={openViewer} />}
+
+          <section className={styles.overview} aria-labelledby="project-overview">
+            <h2 id="project-overview">{pageCopy.behind[0]}<br />{pageCopy.behind[1]}<span>.</span></h2>
+            <dl className={styles.facts}>
+              <div><dt>{pageCopy.category}</dt><dd>{project.categoryLabel ?? copy.categoryLabels[project.category]}</dd></div>
+              <div><dt>{pageCopy.scope}</dt><dd><NoBreakText text={project.meta} /></dd></div>
+              {project.year !== '—' && <div><dt>{pageCopy.year}</dt><dd>{project.year}</dd></div>}
+            </dl>
+            <div className={styles.story}>
+              <h3>{pageCopy.approach}</h3>
+              <p><NoBreakText text={project.description} /></p>
+            </div>
+          </section>
+
+          {images.length > 1 && <section aria-label={pageCopy.gallery}>
+            <div className={styles.gallery}>
+              {images.slice(1).map((image, index) => (
+                <div key={image} className={index === 0 && (images.length - 1) % 2 === 1 ? styles.wideArtwork : undefined}>
+                  {<ProjectArtwork image={image} index={index + 1} alt={imageAlt(index + 1)} label={`${copy.openViewerLabel} — ${copy.imageLabel} ${index + 2}`} onOpen={openViewer} />}
                 </div>
-              ) : project.visual === 'fruit' ? <span className={styles.photo} /> : null}
-
-              {images.length > 1 ? (
-                <>
-                  <button
-                    className={`${styles.imageButton} ${styles.previous}`}
-                    type="button"
-                    onClick={() => moveImage(-1)}
-                    aria-label={copy.previousImageLabel}
-                  >
-                    <span aria-hidden="true">‹</span>
-                  </button>
-                  <button
-                    className={`${styles.imageButton} ${styles.next}`}
-                    type="button"
-                    onClick={() => moveImage(1)}
-                    aria-label={copy.nextImageLabel}
-                  >
-                    <span aria-hidden="true">›</span>
-                  </button>
-                </>
-              ) : null}
+              ))}
             </div>
+            <p className={styles.galleryCaption}>{pageCopy.gallery}</p>
+          </section>}
 
-            {images.length > 1 ? (
-              <div className={styles.dots} role="group" aria-label={copy.chooseImageLabel}>
-                {images.map((image, index) => (
-                  <button
-                    key={`${image}-${index}`}
-                    className={`${styles.dot}${index === imageIndex ? ` ${styles.dotActive}` : ''}`}
-                    type="button"
-                    onClick={() => selectImage(index)}
-                    aria-label={copy.showImagePrefix + ' ' + (index + 1)}
-                    aria-current={index === imageIndex ? 'true' : undefined}
-                  />
-                ))}
+          <section className={styles.projectContact} aria-label={pageCopy.contact}>
+            <h2>{pageCopy.contact}</h2>
+            <a className={styles.contactLink} href={homepageContact.line} target="_blank" rel="noopener noreferrer">
+              {pageCopy.line} <span aria-hidden="true">↗</span>
+            </a>
+          </section>
+
+          <nav className={styles.projectNavigation} aria-label={pageCopy.next}>
+            <Link className={styles.nextProject} href={localePath(locale, `/work/${nextProject.slug}`)}
+              onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(1); }}>
+              <div>
+                <p className={styles.nextLabel}>{pageCopy.next}</p>
+                <h2><NoBreakText text={nextProject.title} /> <span aria-hidden="true">↗</span></h2>
               </div>
-            ) : null}
-          </div>
-          <div className={styles.details}>
-            {contactLabel ? <Link className="button primary" href={`${localePath(locale)}#contact`}>{contactLabel}</Link> : null}
-            <div className={styles.pager}>
-              {showBack ? (
-                <Link href={localePath(locale, `/work/${adjacentProject(project, -1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(-1); }}>
-                  {copy.backLabel}
-                </Link>
-              ) : null}
-            <Link href={localePath(locale, `/work/${adjacentProject(project, 1, locale).slug}`)} onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(1); }}>
-                {copy.nextLabel}
-              </Link>
-            </div>
-          </div>
+              <ProjectThumbnail src={nextProject.images?.[0]} visual={nextProject.visual}
+                alt={projectImageAlt(nextProject, locale)} className={styles.nextImage} />
+            </Link>
+            {showBack && <Link className={styles.previousProject} href={localePath(locale, `/work/${adjacentProject(project, -1, locale).slug}`)}
+              onNavigate={(event) => { event.preventDefault(); moveToAdjacentProject(-1); }}>
+              <span aria-hidden="true">←</span> {pageCopy.previous}
+            </Link>}
+          </nav>
         </div>
-      </div>
+      </article>
       {renderViewer()}
-    </div>
+    </>
   );
 }

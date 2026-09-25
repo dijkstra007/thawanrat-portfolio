@@ -49,8 +49,6 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
     const readHash = () => setHomeHash(window.location.hash);
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        // The gallery owns Escape while its image viewer is open.
-        if (slug && !document.querySelector('[data-image-viewer]')) router.push(localePath(locale, '/work'));
         setMobileNavOpen(false);
       }
     };
@@ -61,12 +59,10 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
     window.addEventListener('hashchange', readHash);
     window.addEventListener('keydown', closeOnEscape);
     document.addEventListener('pointerdown', closeOutside);
-    document.body.style.overflow = slug ? 'hidden' : '';
     return () => {
       window.removeEventListener('hashchange', readHash);
       window.removeEventListener('keydown', closeOnEscape);
       document.removeEventListener('pointerdown', closeOutside);
-      document.body.style.overflow = '';
     };
   }, [slug, router, locale]);
 
@@ -93,11 +89,13 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
   return (
     <main className={styles.root}>
       <Suspense fallback={null}><CategoryFromUrl onChange={setCategory} /></Suspense>
-      {!activeProject && <>
-        <Header locale={locale} pagePath={pagePath} localeSuffix={localeSuffix} activeSection={activeSection}
+      <Header locale={locale} pagePath={pagePath} localeSuffix={localeSuffix} activeSection={activeSection}
           mobileNavOpen={mobileNavOpen}
           onOpenResume={() => { closeMenus(); router.push(localePath(locale, '/resume')); }}
           onCloseMenus={closeMenus} onToggleMobileNav={() => setMobileNavOpen((open) => !open)} onChangeLocale={changeLocale} />
+      {activeProject ? <CaseStudy key={activeProject.id} copy={copy.caseStudy} locale={locale}
+        project={activeProject} onClose={() => router.push(localePath(locale, '/work'))}
+        onAdjacent={showAdjacent} /> : <>
         {view === 'resume' ? <Resume locale={locale} /> : view === 'work' ? (
           <Archive locale={locale} copy={copy.archive} projects={archivedProjects} onOpenProject={openProject}
             filter={filter} onFilterChange={revealArchive} {...filters} />
@@ -114,12 +112,9 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
           <Process locale={locale} />
         </>}
         {view !== 'resume' && <Contact locale={locale} />}
-        <Footer locale={locale} />
-        <BackToTop label={design.backToTop} onActivate={closeMenus} />
       </>}
-      {activeProject && <CaseStudy key={activeProject.id} copy={{ ...copy.caseStudy, closeLabel: locale === 'th' ? 'กลับไปดูผลงาน' : 'Back to work' }} contactLabel={locale === 'th' ? 'มีโปรเจกต์ที่อยากทำ?' : 'Have a project in mind?'} navigation={copy.navigation} locale={locale}
-        project={activeProject} onClose={() => router.push(localePath(locale, '/work'))}
-        onAdjacent={showAdjacent} onChangeLocale={changeLocale} />}
+      <Footer locale={locale} />
+      <BackToTop label={design.backToTop} onActivate={closeMenus} />
     </main>
   );
 }

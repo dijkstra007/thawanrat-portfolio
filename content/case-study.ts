@@ -1,0 +1,28 @@
+export const caseStudyPageCopy = {
+  en: {
+    allWork: 'All work',
+    behind: ['Behind', 'the design'],
+    category: 'Discipline',
+    scope: 'Scope',
+    year: 'Year',
+    approach: 'About the project',
+    gallery: 'Project details',
+    contact: 'Have a project in mind?',
+    line: 'Let’s talk on LINE',
+    next: 'Next project',
+    previous: 'Previous project',
+  },
+  th: {
+    allWork: 'ผลงานทั้งหมด',
+    behind: ['เบื้องหลัง', 'งานออกแบบ'],
+    category: 'ประเภทงาน',
+    scope: 'ขอบเขตงาน',
+    year: 'ปี',
+    approach: 'เกี่ยวกับโปรเจกต์',
+    gallery: 'รายละเอียดงานออกแบบ',
+    contact: 'มีโปรเจกต์ที่อยากทำด้วยกัน?',
+    line: 'คุยงานผ่าน LINE',
+    next: 'ผลงานถัดไป',
+    previous: 'ผลงานก่อนหน้า',
+  },
+};
