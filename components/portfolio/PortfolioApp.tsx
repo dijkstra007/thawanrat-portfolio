@@ -1,7 +1,7 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Archive from '@/components/archive/Archive';
 import BackToTop from '@/components/back-to-top/BackToTop';
 import CaseStudy from '@/components/case-study/CaseStudy';
@@ -16,7 +16,8 @@ import Services from '@/components/services/Services';
 import { portfolioCopy } from '@/content/portfolio';
 import { site } from '@/content/site';
 import { localePath } from '@/lib/routes';
-import { restoreLocaleScroll, saveLocaleScroll } from '@/lib/locale-scroll';
+import { assetPath } from '@/lib/assets';
+import { syncLocaleDocument } from '@/lib/locale-document';
 import { adjacentProject, filterProjects, getFeaturedProjects, getProjectBySlug } from '@/lib/projects';
 import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
@@ -31,8 +32,11 @@ function CategoryFromUrl({ onChange }: { onChange: (category: string | null) => 
   return null;
 }
 
-export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: PortfolioProps) {
+export default function PortfolioApp({ view = 'home', slug, locale: initialLocale = 'en' }: PortfolioProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const locale: Locale = pathname ? (pathname === '/th' || pathname.startsWith('/th/') ? 'th' : 'en') : initialLocale;
+  const pendingLocaleScroll = useRef<{ x: number; y: number } | null>(null);
   const [category, setCategory] = useState<string | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [homeHash, setHomeHash] = useState('');
@@ -47,9 +51,11 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
   const localeSuffix = `${view !== 'resume' && !slug && filter !== 'All' ? `?category=${filter}` : ''}${view === 'home' ? homeHash : ''}`;
 
   useLayoutEffect(() => {
-    // Wait for the URL filter so its shorter grid cannot shift the restored viewport.
-    if (category === new URLSearchParams(window.location.search).get('category')) restoreLocaleScroll();
-  }, [locale, category]);
+    syncLocaleDocument(locale, view, activeProject);
+    const position = pendingLocaleScroll.current;
+    pendingLocaleScroll.current = null;
+    if (position) window.scrollTo({ left: position.x, top: position.y, behavior: 'instant' });
+  }, [locale, view, activeProject]);
 
   useEffect(() => {
     const readHash = () => setHomeHash(window.location.hash);
@@ -76,15 +82,17 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
   const changeLocale = (nextLocale: Locale) => {
     if (nextLocale === locale) return;
     const href = `${localePath(nextLocale, pagePath)}${localeSuffix}`;
-    // Locale root layouts reload the document, so router scroll:false alone is insufficient.
-    saveLocaleScroll(href);
-    router.push(href.split('#')[0], { scroll: false });
+    pendingLocaleScroll.current = { x: window.scrollX, y: window.scrollY };
+    // Native history updates Next's pathname without reloading the locale root layout.
+    window.history.pushState(null, '', assetPath(href));
     closeMenus();
   };
   const revealArchive = (nextCategory: CategoryFilter = 'All') => {
     closeMenus();
     setCategory(nextCategory);
-    router.push(`${localePath(locale, '/work')}${nextCategory === 'All' ? '' : `?category=${nextCategory}`}`, { scroll: view !== 'work' });
+    const href = `${localePath(locale, '/work')}${nextCategory === 'All' ? '' : `?category=${nextCategory}`}`;
+    if (view === 'work') window.history.pushState(null, '', assetPath(href));
+    else router.push(href);
   };
   const openProject = (project: Project) => {
     router.push(localePath(locale, `/work/${project.slug}`));
@@ -115,7 +123,7 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
             filter={filter} onFilterChange={(nextFilter) => {
               setCategory(nextFilter);
               setHomeHash('#work');
-              router.replace(`${localePath(locale)}${nextFilter === 'All' ? '' : `?category=${nextFilter}`}#work`, { scroll: false });
+              window.history.replaceState(null, '', assetPath(`${localePath(locale)}${nextFilter === 'All' ? '' : `?category=${nextFilter}`}#work`));
             }} {...filters} />
           <Services locale={locale} onRevealArchive={revealArchive} />
           <Process locale={locale} />

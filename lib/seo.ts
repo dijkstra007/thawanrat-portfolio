@@ -5,7 +5,7 @@ import type { Locale, Project } from '@/lib/types';
 
 const clean = (text: string) => text.replace(/\u2060/g, '').replace(/\u00a0/g, ' ');
 
-export function pageMetadata(locale: Locale, path: string, title: string, description: string, project = false): Metadata {
+export function pageMetadata(locale: Locale, path: string, title: string, description: string, project = false) {
   title = clean(title);
   description = clean(description);
   return {
@@ -25,7 +25,7 @@ export function pageMetadata(locale: Locale, path: string, title: string, descri
         alt: locale === 'th' ? 'พอร์ตโฟลิโอออกแบบบรรจุภัณฑ์และแบรนด์ของ Thawanrat T.' : 'Packaging and brand design portfolio by Thawanrat T.' }],
     },
     twitter: { card: 'summary_large_image', title, description, images: [`${SITE_ORIGIN}/og.png`] },
-  };
+  } satisfies Metadata;
 }
 
 export function homeMetadata(locale: Locale) {
