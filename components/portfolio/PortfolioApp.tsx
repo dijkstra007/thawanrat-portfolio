@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import Archive from '@/components/archive/Archive';
 import BackToTop from '@/components/back-to-top/BackToTop';
 import CaseStudy from '@/components/case-study/CaseStudy';
@@ -16,6 +16,7 @@ import Services from '@/components/services/Services';
 import { portfolioCopy } from '@/content/portfolio';
 import { site } from '@/content/site';
 import { localePath } from '@/lib/routes';
+import { restoreLocaleScroll, saveLocaleScroll } from '@/lib/locale-scroll';
 import { adjacentProject, filterProjects, getFeaturedProjects, getProjectBySlug } from '@/lib/projects';
 import type { CategoryFilter, Locale, Project } from '@/lib/types';
 import styles from './PortfolioApp.module.css';
@@ -45,6 +46,11 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
   const activeSection = view === 'resume' ? 'resume' : view === 'home' && homeHash === '#services' ? 'services' : 'work';
   const localeSuffix = `${view !== 'resume' && !slug && filter !== 'All' ? `?category=${filter}` : ''}${view === 'home' ? homeHash : ''}`;
 
+  useLayoutEffect(() => {
+    // Wait for the URL filter so its shorter grid cannot shift the restored viewport.
+    if (category === new URLSearchParams(window.location.search).get('category')) restoreLocaleScroll();
+  }, [locale, category]);
+
   useEffect(() => {
     const readHash = () => setHomeHash(window.location.hash);
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -64,12 +70,15 @@ export default function PortfolioApp({ view = 'home', slug, locale = 'en' }: Por
       window.removeEventListener('keydown', closeOnEscape);
       document.removeEventListener('pointerdown', closeOutside);
     };
-  }, [slug, router, locale]);
+  }, [slug, router, locale, category]);
 
   const closeMenus = () => setMobileNavOpen(false);
   const changeLocale = (nextLocale: Locale) => {
     if (nextLocale === locale) return;
-    router.push(`${localePath(nextLocale, pagePath)}${localeSuffix}`);
+    const href = `${localePath(nextLocale, pagePath)}${localeSuffix}`;
+    // Locale root layouts reload the document, so router scroll:false alone is insufficient.
+    saveLocaleScroll(href);
+    router.push(href.split('#')[0], { scroll: false });
     closeMenus();
   };
   const revealArchive = (nextCategory: CategoryFilter = 'All') => {
